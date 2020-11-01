@@ -2,6 +2,8 @@
     --primary-color: #A020F0;
     --secondary-color: #1DA1F2;
     --text-color: #ffffff;
+    --input-padding-x: 1.5rem;
+    --input-padding-y: .75rem;
 }
 
 *{
