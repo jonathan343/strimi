@@ -28,7 +28,7 @@
     <nav class="navbar fixed-top navbar-default navbar-expand-md navbar-dark " >
         <div class="navbar-header d-flex col">
             <a class="navbar-brand" href="#photo">
-                <img src="images/white-JAG-logo.png" alt="Logo" style="width:60px;" class="d-inline-block align-center" id="logo">
+                <!-- <img src="images/white-JAG-logo.png" alt="Logo" style="width:60px;" class="d-inline-block align-center" id="logo"> -->
             </a>
             
             <button type="button" data-target="#navbarCollapse" data-toggle="collapse"
@@ -64,7 +64,7 @@
             <h1 class="pl-3">Welcome</h1>
         </div>
         <div class="row">
-            
+            <button class="btn" onclick="document.getElementById('usr-form').style.display='block';">Sign Up</button>
         </div>
     </div>
 
@@ -98,16 +98,54 @@
                 <div class="row live-view-person mx-auto my-2">
                     
                 </div>
-                <div class="row live-view-person mx-auto my-2">
-                    
-                </div>
-                <div class="row live-view-person mx-auto my-2">
-                    
-                </div>
             </div>
         </div>
     </div>
 
+    <div class="container" id="usr-form">
+        <div class="row mt-5">
+          <div class="col-sm-9 col-md-7 col-lg-5 mt-4 mx-auto">
+            <div class="card card-signin y-5 mx-auto">
+              <div class="card-body">
+                    <button type="button" class="close" aria-label="Close" onclick="document.getElementById('usr-form').style.display='none';">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <h5 class="card-title text-center">Sign Up</h5>
+                <form class="form-signin">
+                    <div class="form-label-group">
+                        <input type="text" id="inputFName" class="form-control" placeholder="First Name" required autofocus>
+                        <label for="inputFName">First Name</label>
+                    </div>
+                    <div class="form-label-group">
+                        <input type="text" id="inputLName" class="form-control" placeholder="Last Name" required autofocus>
+                        <label for="inputLName">Last Name</label>
+                    </div>
+                    <div class="form-label-group">
+                        <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
+                        <label for="inputEmail">Email address</label>
+                    </div>
+
+                    <div class="form-label-group">
+                        <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
+                        <label for="inputPassword">Password</label>
+                    </div>
+    
+                    <div class="custom-control custom-checkbox mb-3">
+                        <input type="checkbox" class="custom-control-input" id="customCheck1">
+                        <label class="custom-control-label" for="customCheck1">Remember password</label>
+                    </div>
+                    <button class="btn btn-lg btn-primary btn-block text-uppercase" type="button" onclick="handleSignUp()">Sign Up</button>
+                    <hr class="my-4">
+                    <button class="btn btn-lg btn-google btn-block text-uppercase" type="submit"><i class="fa fa-google mr-2"></i> Sign in with Google</button>
+                    <button class="btn btn-lg btn-facebook btn-block text-uppercase" type="submit"><i class="fa fa-facebook-f mr-2"></i> Sign in with Facebook</button>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
@@ -116,5 +154,34 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
     <script src="main.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/8.0.0/firebase-app.js"></script>
+
+    <!-- TODO: Add SDKs for Firebase products that you want to use https://firebase.google.com/docs/web/setup#available-libraries -->
+    <script src="https://www.gstatic.com/firebasejs/8.0.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.0.0/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.0.0/firebase-analytics.js"></script>
+
+    <script>
+    // Your web app's Firebase configuration
+    // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+    var firebaseConfig = {
+        apiKey: "AIzaSyBQocowKvLEbFk1Q_Z7P9TGE_dlgRpQnIM",
+        authDomain: "strimi-58c7a.firebaseapp.com",
+        databaseURL: "https://strimi-58c7a.firebaseio.com",
+        projectId: "strimi-58c7a",
+        storageBucket: "strimi-58c7a.appspot.com",
+        messagingSenderId: "751901353961",
+        appId: "1:751901353961:web:3117e6752d538a20dc8d78",
+        measurementId: "G-36F2FKGCH1"
+    };
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+    firebase.analytics();
+    </script>
+
+    <script src="firebase.js"></script>
+    
 </body>
 </html>

@@ -26,12 +26,10 @@ function handleClick(cb) {
     if (cb.checked) {
         theme_file.href = "dark-theme.css";
         localStorage.setItem("theme", "dark");
-        console.log("dark stored true");
     
     } else {
         theme_file.href = "light-theme.css";
         localStorage.setItem("theme", "light");
-        console.log("dark false");
   }
 }
 
