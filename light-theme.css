@@ -20,6 +20,13 @@ body{
     color: var(--secondary-color);
   }
 
+#logo{
+    height: 50px;
+}
+#logo-text{
+    color: black;
+}
+
 .op-card{
     background: rgba(0, 0, 0, 0.3);
     padding: 20px;
@@ -61,6 +68,7 @@ body{
 .navbar {
     background: white;
     padding-right: 16px;
+    height: 56px;
     /* box-shadow: 0 0 4px rgba(0, 0, 0, .1); */
 }
 
