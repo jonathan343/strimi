@@ -61,9 +61,9 @@ function handleSignUp() {
     });
 }*/
 
-function signin() {
-    var email = document.getElementById("inputEmail").getValue();
-    var password = document.getElementById("inputPassword").getValue();
+function signIn() {
+    var email = document.getElementById("inputEmail2").value;
+    var password = document.getElementById("inputPassword2").value;
     firebase.auth().signInWithEmailAndPassword(email, password).catch(function(error) {
         // Handle Errors here.
         var errorCode = error.code;
@@ -76,7 +76,7 @@ function signin() {
             db.collection("users").get().then((querySnapshot) => {
                 querySnapshot.forEach((doc) => {
                     if (doc.id == user.uid) {
-                        console.log(doc.data().username);
+                        console.log(doc.data().firstName);
                     } 
                 });
             });

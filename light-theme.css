@@ -441,7 +441,18 @@ body{
     background-color: rgba(0, 0, 0, 0.2);
 }
 
-#usr-form{
+#sign-up-form{
+    display: none;/* Hidden by default */
+    max-width: none;
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    background: rgba(0, 0, 0, 0.6);
+}
+#sign-in-form{
     display: none;/* Hidden by default */
     max-width: none;
     position: fixed; /* Stay in place */
