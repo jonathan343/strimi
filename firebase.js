@@ -27,23 +27,25 @@ function handleSignUp() {
       }
       console.log(error);
       // [END_EXCLUDE]
+    }).then(function(){
+        firebase.auth().onAuthStateChanged(function(user) {
+            if (user) {
+                    db.collection("users").doc(user.uid).set({
+                    email: email,
+                    firstName: firstName,
+                    lastName: lastName
+                }).then(function() {
+                    console.log("Document successfully written!");
+                }).catch(function(error) {
+                    console.log("error adding document: ", error);
+                })
+            }
+        });
     });
     // [END createwithemail]
-    var user = firebase.auth().currentUser;
+    //var user = firebase.auth().currentUser;
       
-    firebase.auth().onAuthStateChanged(function(user) {
-        if (user) {
-                db.collection("users").doc(user.uid).set({
-                email: email,
-                firstName: firstName,
-                lastName: lastName
-            }).then(function() {
-                console.log("Document successfully written!");
-            }).catch(function(error) {
-                console.log("error adding document: ", error);
-            })
-        }
-    });
+    
   }
 
 /*firebase.auth().onAuthStateChanged(function(user) {
