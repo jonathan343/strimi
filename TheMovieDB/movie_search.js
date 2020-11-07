@@ -20,7 +20,7 @@ function getMovieID(movie){
             getMovieDetails(movie_id);      
         } 
     })
-}
+} //github is dumb
 
 function getMovieDetails(movie_id){
     url = baseURL + "movie/" + movie_id + "?api_key=" + API_key;
