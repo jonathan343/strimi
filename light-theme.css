@@ -45,8 +45,23 @@ body{
     /* The image used */
     /* background-image: url("images/mountains.jpg"); */
     background: linear-gradient(111.06deg, #3245B3 0.31%, rgba(99, 111, 181, 0) 99.16%), #551A8B;
-  
     /* Full height */
+    height: 100%;
+  
+    /* Create the parallax scrolling effect */
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+
+  .parallax-home2 {
+    /* The image used */
+    background: linear-gradient(111.06deg, #3245B3 0.31%, rgba(99, 111, 181, 0) 99.16%), #551A8B;
+    background-image: url("Images/home-image.jpg"); 
+    box-shadow: inset 0 0 0 1000px rgba(0,0,0,.7);
+    /* Full height */
+    padding-top: 56px;
     height: 100%;
   
     /* Create the parallax scrolling effect */
@@ -308,6 +323,17 @@ body{
     height: 90%;
 }
 
+.main-content-selection-home{
+    height: 20%;
+    width: 100%;
+    border-radius: 15px;
+    margin-top: 12px;
+    margin-bottom: 12px;
+    color: white;
+    max-width: 60%;
+    font-size: 1.5rem;
+}
+
 .main-content-selection{
     height: 20%;
     width: 100%;
@@ -317,6 +343,10 @@ body{
     color: white;
 }
 
+.acnt-stuff a:hover{
+    text-decoration: none;
+}
+
 .main-content-selection p{
     margin-top: auto;
     margin-bottom: auto;
@@ -324,6 +354,11 @@ body{
 
 .main-content-selections a:hover{
     text-decoration: none;
+}
+
+.strimi-phrase{
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 1.5rem;
 }
 
 .mcs-1{
@@ -339,6 +374,15 @@ body{
 #home{
     padding-top: 60px;
     height: 100vh; 
+}
+#home h2{
+    color: white;
+    margin-top: 10%;
+    font-size: 5rem;
+}
+#home-logo{
+    height: 5rem;
+    transform: translateY(80%);
 }
 
 .card-signin {

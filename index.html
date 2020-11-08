@@ -63,14 +63,39 @@
     </nav>
 
     <!-- Home Screen -->
-    <div class="container-fluid parallax-home" id="home">
-        <div class="row align-items-start">
+    <div class="container-fluid parallax-home2" id="home">
+        <!-- <div class="row align-items-start">
             <h1 class="pl-3">Welcome</h1>
+        </div> -->
+        <!-- <div class="col-md-6">
+                <button class="btn" onclick="document.getElementById('sign-up-form').style.display='block';">Sign Up</button>
+                <button class="btn" onclick="document.getElementById('sign-in-form').style.display='block';">Sign In</button>
+            </div> -->
+        
+        <div class="row align-items-center">
+            <div class="col-md-6 offset-md-3">
+                <img src="Images/strimi_logo_cropped.png" alt="Logo" class="mx-auto d-block" id="home-logo">
+                <h2 class="text-center">strimi</h2> 
+                <p class="text-center strimi-phrase">A New Way to Discover and Explore New Music, Movies, and TV Shows</p>
+                <div class="container acnt-stuff">
+                    <!-- <button class="btn mx-auto" onclick="document.getElementById('sign-up-form').style.display='block';">Sign Up</button>
+                    <button class="btn mx-auto" onclick="document.getElementById('sign-in-form').style.display='block';">Sign In</button> -->
+                    <a onclick="document.getElementById('sign-up-form').style.display='block';">
+                        <div class="main-content-selection-home mcs-1 d-flex justify-content-center align-items-center mx-auto">
+                            <p class="my-0 py-1">Create an Account</p>
+                        </div>
+                    </a>
+                    <a onclick="document.getElementById('sign-in-form').style.display='block';">
+                        <div class="main-content-selection-home mcs-2 d-flex justify-content-center align-items-center mx-auto">
+                            <p class="my-0 py-1">Sign In</p>
+                        </div>
+                    </a>
+                </div>
+                
+            </div>
         </div>
-        <div class="row">
-            <button class="btn" onclick="document.getElementById('sign-up-form').style.display='block';">Sign Up</button>
-            <button class="btn" onclick="document.getElementById('sign-in-form').style.display='block';">Sign In</button>
-        </div>
+        
+
     </div>
 
     <div class="container">
@@ -84,24 +109,58 @@
                     <div class="col-8 my-auto ml-1 pr-0 pl-2 pt-1 live-view-content">
                         <h6 class = "live-view-name">Abraham Sanchez</h6>
                         <div><h9 class = "live-view-media">Are You Bored Yet?</h9></div>
-                        
                         <h9 class = "live-view-media">Wallows</h9>
                     </div>
                 </div>
                 <div class="row live-view-person mx-auto my-2">
-                    
+                    <div class="col-3 my-auto ml-3 px-0 d-flex justify-content-center align-items-center live-view-img">
+                        <img src="Images/letter-j-blue.png" alt="">
+                    </div>
+                    <div class="col-8 my-auto ml-1 pr-0 pl-2 pt-1 live-view-content">
+                        <h6 class = "live-view-name">Joseph Phelan</h6>
+                        <div><h9 class = "live-view-media">Firework</h9></div>
+                        <h9 class = "live-view-media">Katy Perry</h9>
+                    </div>
                 </div>
                 <div class="row live-view-person mx-auto my-2">
-                    
+                    <div class="col-3 my-auto ml-3 px-0 d-flex justify-content-center align-items-center live-view-img">
+                        <img src="Images/letter-m.png" alt="">
+                    </div>
+                    <div class="col-8 my-auto ml-1 pr-0 pl-2 pt-1 live-view-content">
+                        <h6 class = "live-view-name">Matthew Bunker</h6>
+                        <div><h9 class = "live-view-media">WAP</h9></div>
+                        <h9 class = "live-view-media">Cardi B</h9>
+                    </div>
                 </div>
                 <div class="row live-view-person mx-auto my-2">
-                    
+                    <div class="col-3 my-auto ml-3 px-0 d-flex justify-content-center align-items-center live-view-img">
+                        <img src="Images/letter-j-orange.png" alt="">
+                    </div>
+                    <div class="col-8 my-auto ml-1 pr-0 pl-2 pt-1 live-view-content">
+                        <h6 class = "live-view-name">Jared Clifford</h6>
+                        <div><h9 class = "live-view-media">Party In The U.S.A.</h9></div>
+                        <h9 class = "live-view-media">Miley Cyrus</h9>
+                    </div>
                 </div>
                 <div class="row live-view-person mx-auto my-2">
-                    
+                    <div class="col-3 my-auto ml-3 px-0 d-flex justify-content-center align-items-center live-view-img">
+                        <img src="Images/A_Letter.png" alt="">
+                    </div>
+                    <div class="col-8 my-auto ml-1 pr-0 pl-2 pt-1 live-view-content">
+                        <h6 class = "live-view-name">Jared Clifford</h6>
+                        <div><h9 class = "live-view-media">Are You Bored Yet?</h9></div>
+                        <h9 class = "live-view-media">Wallows</h9>
+                    </div>
                 </div>
                 <div class="row live-view-person mx-auto my-2">
-                    
+                    <div class="col-3 my-auto ml-3 px-0 d-flex justify-content-center align-items-center live-view-img">
+                        <img src="Images/letter-n-green.png" alt="">
+                    </div>
+                    <div class="col-8 my-auto ml-1 pr-0 pl-2 pt-1 live-view-content">
+                        <h6 class = "live-view-name">Nick Milef</h6>
+                        <div><h9 class = "live-view-media">SAD!</h9></div>
+                        <h9 class = "live-view-media">XXXTentacion</h9>
+                    </div>
                 </div>
             </div>
         </div>
@@ -117,7 +176,7 @@
                     <button type="button" class="close" aria-label="Close" onclick="document.getElementById('sign-up-form').style.display='none';">
                         <span aria-hidden="true">&times;</span>
                     </button>
-                    <h5 class="card-title text-center">Sign Up</h5>
+                    <h5 class="card-title text-center">Create an Account</h5>
                 <form class="form-signin">
                     <div class="form-label-group">
                         <input type="text" id="inputFName" class="form-control" placeholder="First Name" required autofocus>
