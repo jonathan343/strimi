@@ -45,7 +45,7 @@ function handleSignUp() {
     // [END createwithemail]
     //var user = firebase.auth().currentUser;
       
-    
+    document.getElementById('sign-up-form').style.display='none';
   }
 
 /*firebase.auth().onAuthStateChanged(function(user) {
@@ -78,12 +78,14 @@ function signIn() {
             db.collection("users").get().then((querySnapshot) => {
                 querySnapshot.forEach((doc) => {
                     if (doc.id == user.uid) {
-                        console.log(doc.data().firstName);
+                        // console.log(doc.data().firstName);
                     } 
                 });
             });
         }
     });
+
+    document.getElementById('sign-in-form').style.display='none';
 }
 
 function signout() {
