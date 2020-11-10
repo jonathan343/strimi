@@ -50,9 +50,9 @@
             </ul>
             
             <div class="ml-auto d-flex flex-row-reverse">
-                <a class="px-3 text-white" id="live-view-btn" target="_blank"><button type="button" class="btn btn-outline-dark  btn-sm">Live View</button></a>
+                <a class="px-3 text-white" id="live-view-btn" tabindex="0" target="_blank"><button type="button" class="btn btn-outline-dark  btn-sm">Live View</button></a>
 
-                <label class="px-3 switch my-auto">
+                <label tabindex="0" class="px-3 switch my-auto">
                     <input type="checkbox" id="themeToggle" onclick="handleClick(this);">
                     <span class="slider round"></span>
                 </label>
@@ -80,12 +80,12 @@
                 <div class="container acnt-stuff">
                     <!-- <button class="btn mx-auto" onclick="document.getElementById('sign-up-form').style.display='block';">Sign Up</button>
                     <button class="btn mx-auto" onclick="document.getElementById('sign-in-form').style.display='block';">Sign In</button> -->
-                    <a onclick="document.getElementById('sign-up-form').style.display='block';">
+                    <a onclick="document.getElementById('sign-up-form').style.display='block';" tabindex="0" id="sign-up-btn">
                         <div class="main-content-selection-home mcs-1 d-flex justify-content-center align-items-center mx-auto">
                             <p class="my-0 py-1">Create an Account</p>
                         </div>
                     </a>
-                    <a onclick="document.getElementById('sign-in-form').style.display='block';">
+                    <a onclick="document.getElementById('sign-in-form').style.display='block';" tabindex="0" id="sign-in-btn">
                         <div class="main-content-selection-home mcs-2 d-flex justify-content-center align-items-center mx-auto">
                             <p class="my-0 py-1">Sign In</p>
                         </div>

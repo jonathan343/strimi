@@ -41,3 +41,24 @@ document.getElementById("live-view-btn").addEventListener("click",function(){
         document.getElementById("live-view").style.display = 'none';
     }    
 });
+
+
+
+
+
+var sign_in_btn = document.getElementById("sign-in-btn");
+var sign_up_btn = document.getElementById("sign-up-btn");
+
+// Execute a function when the user releases a key on the keyboard
+sign_in_btn.addEventListener("keyup", function(event) {
+    if (event.key === 'Enter') {
+        document.getElementById('sign-in-form').style.display='block';
+    }
+});
+
+
+sign_up_btn.addEventListener("keyup", function(e) {
+    if (event.key === 'Enter') {
+        document.getElementById('sign-up-form').style.display='block';
+    }
+});
