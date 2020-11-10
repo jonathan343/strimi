@@ -15,7 +15,22 @@ function handleSignUp() {
     }
     // Create user with email and pass.
     // [START createwithemail]
-    firebase.auth().createUserWithEmailAndPassword(email, password).catch(function(error) {
+    firebase.auth().createUserWithEmailAndPassword(email, password).then(function(){
+        firebase.auth().onAuthStateChanged(function(user) {
+            if (user) {
+                db.collection("users").doc(user.uid).set({
+                email: email,
+                firstName: firstName,
+                lastName: lastName
+                }).then(function() {
+                    console.log("Document successfully written!");
+                    document.getElementById('sign-up-form').style.display='none';
+                }).catch(function(error) {
+                    console.log("error adding document: ", error);
+                })
+            }
+        });
+    }).catch(function(error) {
       // Handle Errors here.
       var errorCode = error.code;
       var errorMessage = error.message;
@@ -27,25 +42,9 @@ function handleSignUp() {
       }
       console.log(error);
       // [END_EXCLUDE]
-    }).then(function(){
-        firebase.auth().onAuthStateChanged(function(user) {
-            if (user) {
-                    db.collection("users").doc(user.uid).set({
-                    email: email,
-                    firstName: firstName,
-                    lastName: lastName
-                }).then(function() {
-                    console.log("Document successfully written!");
-                }).catch(function(error) {
-                    console.log("error adding document: ", error);
-                })
-            }
-        });
     });
     // [END createwithemail]
     //var user = firebase.auth().currentUser;
-      
-    document.getElementById('sign-up-form').style.display='none';
   }
 
 /*firebase.auth().onAuthStateChanged(function(user) {
@@ -66,26 +65,29 @@ function handleSignUp() {
 function signIn() {
     var email = document.getElementById("inputEmail2").value;
     var password = document.getElementById("inputPassword2").value;
-    firebase.auth().signInWithEmailAndPassword(email, password).catch(function(error) {
+    firebase.auth().signInWithEmailAndPassword(email, password).then(function(){
+        firebase.auth().onAuthStateChanged(function(user) {
+            if (user) {
+                db.collection("users").get().then((querySnapshot) => {
+                    querySnapshot.forEach((doc) => {
+                        if (doc.id == user.uid) {
+                            document.getElementById('sign-in-form').style.display='none';
+                            // console.log(doc.data().firstName);
+                        } 
+                    });
+                });
+            }
+        });
+      }).catch(function(error) {
         // Handle Errors here.
         var errorCode = error.code;
         var errorMessage = error.message;
         console.log(errorMessage);
+        alert('Incorrect Email and Password Combination');
+        return;
         // ...
       });
-    firebase.auth().onAuthStateChanged(function(user) {
-        if (user) {
-            db.collection("users").get().then((querySnapshot) => {
-                querySnapshot.forEach((doc) => {
-                    if (doc.id == user.uid) {
-                        // console.log(doc.data().firstName);
-                    } 
-                });
-            });
-        }
-    });
-
-    document.getElementById('sign-in-form').style.display='none';
+    
 }
 
 function signout() {
