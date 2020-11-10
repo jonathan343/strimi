@@ -72,6 +72,7 @@ function signIn() {
                     querySnapshot.forEach((doc) => {
                         if (doc.id == user.uid) {
                             document.getElementById('sign-in-form').style.display='none';
+                            alert('Welcome!');
                             // console.log(doc.data().firstName);
                         } 
                     });
