@@ -64,7 +64,7 @@ body{
   
     /* Create the parallax scrolling effect */
     background-attachment: fixed;
-    background-position: center;
+    /* background-position: center; */
     background-repeat: no-repeat;
     background-size: cover;
   }
@@ -243,6 +243,7 @@ body{
     /* background: rgba(0, 0, 0, 0.4); */
     /* background: rgba(34, 40, 49, 1); */
     background: rgba(55, 57, 63, 1);
+    
     height: calc(var(--screen_height) - 4vh);
     width: 275px;
     border-radius: 10px;
@@ -263,6 +264,8 @@ body{
 
 .media-content{
     background: rgba(0, 0, 0, 0.4);
+    /* background: rgb(147,30,90);
+    background: linear-gradient(45deg, rgba(147,30,90,0.5) 0%, rgba(35,80,150,0.5) 100%); */
     /* background: rgba(55, 57, 63, 1); */
     height: 33vh;
     margin-left: 25px;
