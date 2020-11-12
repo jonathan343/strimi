@@ -541,3 +541,8 @@ body{
     color: #777;
 }
 }
+
+#live-view-content{
+    overflow: auto;
+    max-height: 100%;
+}

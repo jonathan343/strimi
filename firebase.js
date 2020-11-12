@@ -186,7 +186,7 @@ function updateLiveView(){
                     `
                     <div class="row live-view-person mx-auto my-2" id="${doc2.id}">
                         <div class="col-3 my-auto ml-3 px-0 d-flex justify-content-center align-items-center live-view-img">
-                            <img src="Images/Profile_Pictures/${firstName[0]}_Letter.png" alt="">
+                            <img src="Images/Profile_Pictures/${firstName[0].toUpperCase()}_Letter.png" alt="">
                         </div>
                         <div class="col-8 my-auto ml-1 pr-0 pl-2 pt-1 live-view-content">
                             <h6 class = "live-view-name">${firstName} ${lastName}</h6>
