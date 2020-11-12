@@ -23,7 +23,6 @@ function handleSignUp() {
             email: email,
             firstName: firstName,
             lastName: lastName,
-            friends: {}
             }).then(function() {
                 console.log("Document successfully written!");
                 document.getElementById('sign-up-form').style.display='none';
