@@ -29,6 +29,7 @@ function getTVShowDetails(tv_show_id){
     .then(result => result.json())
     .then((data) => {
         //console.log(data);
+        getTvShowID(tv_show_id);
         getTitle(data.name);
         getGenres(data.genres);
         getOverview(data.overview);
@@ -38,6 +39,10 @@ function getTVShowDetails(tv_show_id){
         getPosterImage(data.poster_path);
         getRunTime(data.runtime);
     })
+}
+
+function getTvShowID(tv_show_id){
+    console.log(tv_show_id);
 }
 
 function getTitle(tv_show_name){

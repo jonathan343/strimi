@@ -1,3 +1,5 @@
+//Run: node movie_search.js
+
 //Global variables
 let info;
 let url;
@@ -20,7 +22,7 @@ function getMovieID(movie){
             getMovieDetails(movie_id);      
         } 
     })
-} //github is dumb
+}
 
 function getMovieDetails(movie_id){
     url = baseURL + "movie/" + movie_id + "?api_key=" + API_key;
@@ -29,6 +31,7 @@ function getMovieDetails(movie_id){
     .then(result => result.json())
     .then((data) => {
         //console.log(data);
+        getMovieID(movie_id);
         getTitle(data.title);
         getGenres(data.genres);
         getOverview(data.overview);
@@ -38,6 +41,10 @@ function getMovieDetails(movie_id){
         getPosterImage(data.poster_path);
         getRunTime(data.runtime);
     })
+}
+
+function getMovieID(movie_id){
+    console.log(movie_id);
 }
 
 function getTitle(movie_name){
