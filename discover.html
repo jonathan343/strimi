@@ -17,7 +17,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
 
-    <title>strimi</title>
+    <title>strimi | Discover</title>
     <meta name="keywords" content="strimi, Spotify, Netflix, Apple Music, Hulu">
     <meta name="description" content="This is a social media platform that centralizes all streaming platforms and allows you to share your favorite movies, shows, and songs.">
     
@@ -46,7 +46,7 @@
                 <li class="nav-item"><a href="index.html" class="cool-link nav-link">Home</a></li>
                 <li class="nav-item"><a href="discover.html" class="cool-link nav-link active">Discover</a></li>
                 <li class="nav-item"><a href="#friends" class="cool-link nav-link">Friends</a></li>
-                <li class="nav-item"><a href="#my-profile" class="cool-link nav-link">My Profile</a></li>  
+                <li class="nav-item"><a href="myProfile.html" class="cool-link nav-link">My Profile</a></li>  
             </ul>
             
             <div class="ml-auto d-flex flex-row-reverse">
@@ -198,7 +198,7 @@
 
     <div class="container">
         <div id="live-view">
-            <div class="col px-2">
+            <div class="col px-2" id="live-view-content">
                 <h2 class="text-center pt-2">Live View</h1>
                 <div class="row live-view-person mx-auto my-2">
                     <div class="col-3 my-auto ml-3 px-0 d-flex justify-content-center align-items-center live-view-img">
@@ -272,5 +272,33 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
     <script src="main.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/8.0.0/firebase-app.js"></script>
+
+    <!-- TODO: Add SDKs for Firebase products that you want to use https://firebase.google.com/docs/web/setup#available-libraries -->
+    <script src="https://www.gstatic.com/firebasejs/8.0.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.0.0/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.0.0/firebase-analytics.js"></script>
+
+    <script>
+    // Your web app's Firebase configuration
+    // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+    var firebaseConfig = {
+        apiKey: "AIzaSyBQocowKvLEbFk1Q_Z7P9TGE_dlgRpQnIM",
+        authDomain: "strimi-58c7a.firebaseapp.com",
+        databaseURL: "https://strimi-58c7a.firebaseio.com",
+        projectId: "strimi-58c7a",
+        storageBucket: "strimi-58c7a.appspot.com",
+        messagingSenderId: "751901353961",
+        appId: "1:751901353961:web:3117e6752d538a20dc8d78",
+        measurementId: "G-36F2FKGCH1"
+    };
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+    firebase.analytics();
+    </script>
+
+    <script src="firebase.js"></script>
 </body>
 </html>
