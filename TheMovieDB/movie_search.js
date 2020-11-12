@@ -16,7 +16,7 @@ function getMovieID(movie){
     fetch(url)
     .then(result => result.json())
     .then((data) => {
-        info = data.results.slice(0, 16);
+        info = data.results.slice(0, 15);
         for(let i = 0; i < info.length; i++){
             movie_id = info[i].id;
             getMovieDetails(movie_id);      

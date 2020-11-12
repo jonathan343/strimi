@@ -1,3 +1,4 @@
+
 var db = firebase.firestore();
 
 function handleSignUp() {
@@ -33,7 +34,8 @@ function handleSignUp() {
                     db.collection("users").doc(user.uid).set({
                     email: email,
                     firstName: firstName,
-                    lastName: lastName
+                    lastName: lastName,
+                    MovieList
                 }).then(function() {
                     console.log("Document successfully written!");
                 }).catch(function(error) {
@@ -93,4 +95,17 @@ function signout() {
         console.error("Log out not successful", error)
       });
       
+}
+
+function addMovie(MovieID){
+    var user = firebase.auth().currentUser;
+    if(user){
+        db.collection("users").doc(user.uid).collection("MovieList").doc(MovieID).set({}).then(function(){
+            console.log("Movie Id succesfully written in database");
+        });
+    }
+    else{
+        console.log("No user is signed in");
+    }
+    
 }

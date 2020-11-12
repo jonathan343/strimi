@@ -1,6 +1,3 @@
-//Global variables
-let info;
-let url;
 const baseURL = "https://api.themoviedb.org/3/";
 const API_key = "0b3c99fd0f35bf406b61b4076e59dce5"; //key for the movie database API
 
@@ -9,12 +6,12 @@ const fetch = require("node-fetch");
 
 function getTVShowID(tv_show){
     let tv_show_id;
-    url = baseURL + "search/tv?api_key=" + API_key + "&query=\"" + tv_show + "\"";
+    let url = baseURL + "search/tv?api_key=" + API_key + "&query=\"" + tv_show + "\"";
     //console.log(url);
     fetch(url)
     .then(result => result.json())
     .then((data) => {
-        info = data.results.slice(0, 1);
+        let info = data.results.slice(0, 15);
         for(let i = 0; i < info.length; i++){
             tv_show_id = info[i].id;
             getTVShowDetails(tv_show_id);      
@@ -23,7 +20,7 @@ function getTVShowID(tv_show){
 }
 
 function getTVShowDetails(tv_show_id){
-    url = baseURL + "tv/" + tv_show_id + "?api_key=" + API_key;
+    let url = baseURL + "tv/" + tv_show_id + "?api_key=" + API_key;
     console.log(url);
     fetch(url)
     .then(result => result.json())
