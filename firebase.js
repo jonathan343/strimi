@@ -99,7 +99,9 @@ function signout() {
 
 function addMovie(MovieID){
     var user = firebase.auth().currentUser;
-    if(user){
+    console.log(MovieID);
+    console.log(user.uid);
+        if(user){
         db.collection("users").doc(user.uid).collection("MovieList").doc(MovieID).set({}).then(function(){
             console.log("Movie Id succesfully written in database");
         });
