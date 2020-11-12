@@ -100,6 +100,10 @@ function signout() {
 
 function searchPeople() {
     var value = document.getElementById("friendSearch").value;
+    parent = document.getElementById('list');
+        while (parent.lastChild) {
+            parent.removeChild(parent.lastChild);
+        }
     var list = inputToTuple(value);
     people = new Array;
     var count = 0;
@@ -107,12 +111,13 @@ function searchPeople() {
         db.collection("users").get().then((querySnapshot) => {
             querySnapshot.forEach((doc) => {
                 if (doc.data().firstName.toLowerCase() == list[0].toLowerCase() && doc.data().lastName.toLowerCase() == list[1].toLowerCase()) {
-                    people.push(doc.data().firstName);
+                    people.push(doc);
                     console.log(doc.data().firstName, doc.data().lastName);
                     count = 1;
                 }
             });
-        });
+            return people;
+        }).then(listToInnerText);
     } else {
         db.collection("users").get().then((querySnapshot) => {
             querySnapshot.forEach((doc) => {
@@ -141,7 +146,7 @@ function listToInnerText(docs) {
     docs.forEach((doc) => {
         var div = document.createElement('div');
         div.setAttribute(`onclick`,`addFriend("${ doc.id }")`);
-        div.innerHTML = `${doc.data().firstName}`;
+        div.innerHTML = `${doc.data().firstName} ${doc.data().lastName}`;
         document.getElementById('list').appendChild(div);
     })
 }
@@ -155,10 +160,6 @@ function addFriend(doc) {
         }).then(function() {
             console.log("Document successfully written!");
         });
-        parent = document.getElementById('list');
-        while (parent.lastChild) {
-            parent.removeChild(parent.lastChild);
-        }
     } else {
         console.log("Not currently signed in");
     }
