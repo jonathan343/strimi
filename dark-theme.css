@@ -144,7 +144,8 @@ body{
 } 
 
 #discover h1{
-    font-size: 15vh;
+    /* font-size: 15vh; */
+    font-size: 7vw;
 }
 
 #photo img{
