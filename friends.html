@@ -1,50 +1,198 @@
 <!doctype html>
 <html lang="en">
-    <head>
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-        <!-- <link rel="stylesheet" href="style.css" > -->
-        <link rel="stylesheet" href="light-theme.css"  id="theme-link">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-        <!-- Font Awesome -->
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <!-- <link rel="stylesheet" href="style.css" > -->
+    <link rel="stylesheet" href="light-theme.css"  id="theme-link">
+    <link rel="stylesheet" href="friends.css" type="text/css">
 
-        <!-- Google Font -->
-        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
-        <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
-    </head>
-    <body>
-        <h1>
-            <input type="text" id="friendSearch" placeholder="Search Friends">
-            <button type="button" onclick="searchPeople()">Search</button> 
-        </h1>
-        <h2 id="lister">
-            <p id="list"></p>
-        </h2>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
+
+    <title>strimi | Friends</title>
+    <meta name="keywords" content="strimi, Spotify, Netflix, Apple Music, Hulu">
+    <meta name="description" content="This is a social media platform that centralizes all streaming platforms and allows you to share your favorite movies, shows, and songs.">
+    
+    <link rel="shortcut icon" type="image/x-icon" href="Images/strimi_logo_white.png" />
+  </head>
+  <body>
+
+    <!-- Navigation Bar -->
+    <nav class="navbar fixed-top navbar-default navbar-expand-md navbar-dark " >
+        <div class="navbar-header d-flex col">
+            <a class="navbar-brand" href="index.html">
+                <img src="Images/strimi_logo_cropped.png" alt="Logo" class="d-inline-block align-center" id="logo">
+            </a>
+            <a class="my-auto navbar-brand" href="index.html">
+                <div id="logo-text"><h3>strimi</h3></div>
+            </a>
+            
+            <button type="button" data-target="#navbarCollapse" data-toggle="collapse"
+                class="navbar-toggle navbar-toggler ml-auto">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+        </div>
+
+        <div id="navbarCollapse" class="collapse navbar-collapse justify-content-start">
+            <ul class="nav navbar-nav">
+                <li class="nav-item"><a href="index.html" class="cool-link nav-link">Home</a></li>
+                <li class="nav-item"><a href="discover.html" class="cool-link nav-link">Discover</a></li>
+                <li class="nav-item"><a href="friends.html" class="cool-link nav-link active">Friends</a></li>
+                <li class="nav-item"><a href="myProfile.html" class="cool-link nav-link">My Profile</a></li>  
+            </ul>
+            
+            <div class="ml-auto d-flex flex-row-reverse">
+                <a class="px-3 text-white" id="live-view-btn" target="_blank"><button type="button" class="btn btn-outline-dark  btn-sm">Live View</button></a>
+
+                <label class="px-3 switch my-auto">
+                    <input type="checkbox" id="themeToggle" onclick="handleClick(this);">
+                    <span class="slider round"></span>
+                </label>
+            </div>
+            
+        </div>
+        
+    </nav>
+
+    <!-- Home Screen -->
+    <div class="container-fluid parallax-home" id="discover">
+        <div class="row align-items-start">
+            <h1 class="pl-3" id="profile-welcome">Friends</h1>
+        </div>
+        <div class="row">
+            <!-- Search form -->
+            <div class="md-form active-purple-2 mb-3 mx-auto">
+                <p class="mb-1">Find Friends</p>
+                <input id="friend-search" class="form-control" style="min-width: 400px;" type="text" placeholder="Search" aria-label="Search">
+                <p class="mt-4 mb-0">Scroll Right ------></p>
+            </div> 
+        </div>
+        <div class="content">
+            <div class="container-fluid friend-src-list">
+                <div class="row" id="friendList">
+                </div>
+                <!-- end row -->
+            </div>
+            <!-- container -->
+        </div>
+    </div>
+
+    <div class="container">
+        <div id="live-view">
+            <div class="col px-2" id="live-view-content">
+                <h2 class="text-center pt-2">Live View</h1>
+                <div class="row live-view-person mx-auto my-2">
+                    <div class="col-3 my-auto ml-3 px-0 d-flex justify-content-center align-items-center live-view-img">
+                        <img src="Images/A_Letter.png" alt="">
+                    </div>
+                    <div class="col-8 my-auto ml-1 pr-0 pl-2 pt-1 live-view-content">
+                        <h6 class = "live-view-name">Abraham Sanchez</h6>
+                        <div><h9 class = "live-view-media">Are You Bored Yet?</h9></div>
+                        <h9 class = "live-view-media">Wallows</h9>
+                    </div>
+                </div>
+                <div class="row live-view-person mx-auto my-2">
+                    <div class="col-3 my-auto ml-3 px-0 d-flex justify-content-center align-items-center live-view-img">
+                        <img src="Images/letter-j-blue.png" alt="">
+                    </div>
+                    <div class="col-8 my-auto ml-1 pr-0 pl-2 pt-1 live-view-content">
+                        <h6 class = "live-view-name">Joseph Phelan</h6>
+                        <div><h9 class = "live-view-media">Firework</h9></div>
+                        <h9 class = "live-view-media">Katy Perry</h9>
+                    </div>
+                </div>
+                <div class="row live-view-person mx-auto my-2">
+                    <div class="col-3 my-auto ml-3 px-0 d-flex justify-content-center align-items-center live-view-img">
+                        <img src="Images/letter-m.png" alt="">
+                    </div>
+                    <div class="col-8 my-auto ml-1 pr-0 pl-2 pt-1 live-view-content">
+                        <h6 class = "live-view-name">Matthew Bunker</h6>
+                        <div><h9 class = "live-view-media">WAP</h9></div>
+                        <h9 class = "live-view-media">Cardi B</h9>
+                    </div>
+                </div>
+                <div class="row live-view-person mx-auto my-2">
+                    <div class="col-3 my-auto ml-3 px-0 d-flex justify-content-center align-items-center live-view-img">
+                        <img src="Images/letter-j-orange.png" alt="">
+                    </div>
+                    <div class="col-8 my-auto ml-1 pr-0 pl-2 pt-1 live-view-content">
+                        <h6 class = "live-view-name">Jared Clifford</h6>
+                        <div><h9 class = "live-view-media">Party In The U.S.A.</h9></div>
+                        <h9 class = "live-view-media">Miley Cyrus</h9>
+                    </div>
+                </div>
+                <div class="row live-view-person mx-auto my-2">
+                    <div class="col-3 my-auto ml-3 px-0 d-flex justify-content-center align-items-center live-view-img">
+                        <img src="Images/A_Letter.png" alt="">
+                    </div>
+                    <div class="col-8 my-auto ml-1 pr-0 pl-2 pt-1 live-view-content">
+                        <h6 class = "live-view-name">Shawna Thomas</h6>
+                        <div><h9 class = "live-view-media">Aggie War Hymn</h9></div>
+                        <h9 class = "live-view-media">Corps Of Cadets</h9>
+                    </div>
+                </div>
+                <div class="row live-view-person mx-auto my-2">
+                    <div class="col-3 my-auto ml-3 px-0 d-flex justify-content-center align-items-center live-view-img">
+                        <img src="Images/letter-n-green.png" alt="">
+                    </div>
+                    <div class="col-8 my-auto ml-1 pr-0 pl-2 pt-1 live-view-content">
+                        <h6 class = "live-view-name">Nick Milef</h6>
+                        <div><h9 class = "live-view-media">SAD!</h9></div>
+                        <h9 class = "live-view-media">XXXTentacion</h9>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Optional JavaScript -->
 
 
 
-        <!-- The core Firebase JS SDK is always required and must be listed first -->
-        <script src="https://www.gstatic.com/firebasejs/8.0.0/firebase-app.js"></script>
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+    <script src="main.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
-        <!-- TODO: Add SDKs for Firebase products that you want to use https://firebase.google.com/docs/web/setup#available-libraries -->
-        <script src="https://www.gstatic.com/firebasejs/8.0.0/firebase-auth.js"></script>
-        <script src="https://www.gstatic.com/firebasejs/8.0.0/firebase-firestore.js"></script>
-        <script src="https://www.gstatic.com/firebasejs/8.0.0/firebase-analytics.js"></script>
-        <script>
-            var firebaseConfig = {
-            apiKey: "AIzaSyBQocowKvLEbFk1Q_Z7P9TGE_dlgRpQnIM",
-            authDomain: "strimi-58c7a.firebaseapp.com",
-            databaseURL: "https://strimi-58c7a.firebaseio.com",
-            projectId: "strimi-58c7a",
-            storageBucket: "strimi-58c7a.appspot.com",
-            messagingSenderId: "751901353961",
-            appId: "1:751901353961:web:3117e6752d538a20dc8d78",
-            measurementId: "G-36F2FKGCH1"
-            };  
-            // For Firebase JS SDK v7.20.0 and later, measurementId is optional
-            // Initialize Firebase
-            firebase.initializeApp(firebaseConfig);
-            firebase.analytics();</script>
-        <script src="firebase.js"></script>
-    </body>
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/8.0.0/firebase-app.js"></script>
+
+    <!-- TODO: Add SDKs for Firebase products that you want to use https://firebase.google.com/docs/web/setup#available-libraries -->
+    <script src="https://www.gstatic.com/firebasejs/8.0.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.0.0/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.0.0/firebase-analytics.js"></script>
+
+    <script>
+    // Your web app's Firebase configuration
+    // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+    var firebaseConfig = {
+        apiKey: "AIzaSyBQocowKvLEbFk1Q_Z7P9TGE_dlgRpQnIM",
+        authDomain: "strimi-58c7a.firebaseapp.com",
+        databaseURL: "https://strimi-58c7a.firebaseio.com",
+        projectId: "strimi-58c7a",
+        storageBucket: "strimi-58c7a.appspot.com",
+        messagingSenderId: "751901353961",
+        appId: "1:751901353961:web:3117e6752d538a20dc8d78",
+        measurementId: "G-36F2FKGCH1"
+    };
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+    firebase.analytics();
+    </script>
+
+    <script src="firebase.js"></script>
+    <script src="findFriends.js"></script>
+</body>
 </html>
