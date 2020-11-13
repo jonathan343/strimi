@@ -2,7 +2,7 @@ const baseURL = "https://api.themoviedb.org/3/";
 const API_key = "0b3c99fd0f35bf406b61b4076e59dce5"; //key for the movie database API
 
 //installed npm i node-fetch --save
-const fetch = require("node-fetch");
+//const fetch = require("node-fetch");
 
 function getTVShowID(tv_show){
     let tv_show_id;
@@ -11,7 +11,7 @@ function getTVShowID(tv_show){
     fetch(url)
     .then(result => result.json())
     .then((data) => {
-        let info = data.results.slice(0, 15);
+        let info = data.results.slice(0, 1);
         for(let i = 0; i < info.length; i++){
             tv_show_id = info[i].id;
             getTVShowDetails(tv_show_id);      
@@ -99,5 +99,3 @@ function getRunTime(run_time){
     console.log("Run Time: " + run_time);
     console.log("--------------------");
 }
-
-getTVShowID("The Office");

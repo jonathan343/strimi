@@ -28,10 +28,10 @@
     <!-- Navigation Bar -->
     <nav class="navbar fixed-top navbar-default navbar-expand-md navbar-dark " >
         <div class="navbar-header d-flex col">
-            <a class="navbar-brand" href="index.html">
+            <a class="navbar-brand" href="Home.html">
                 <img src="Images/strimi_logo_cropped.png" alt="Logo" class="d-inline-block align-center" id="logo">
             </a>
-            <a class="my-auto navbar-brand" href="index.html">
+            <a class="my-auto navbar-brand" href="Home.html">
                 <div id="logo-text"><h3>strimi</h3></div>
             </a>
             
@@ -43,7 +43,7 @@
         <!-- Test -->
         <div id="navbarCollapse" class="collapse navbar-collapse justify-content-start">
             <ul class="nav navbar-nav">
-                <li class="nav-item"><a href="index.html" class="cool-link nav-link">Home</a></li>
+                <li class="nav-item"><a href="Home.html" class="cool-link nav-link">Home</a></li>
                 <li class="nav-item"><a href="discover.html" class="cool-link nav-link active">Discover</a></li>
                 <li class="nav-item"><a href="#friends" class="cool-link nav-link">Friends</a></li>
                 <li class="nav-item"><a href="#my-profile" class="cool-link nav-link">My Profile</a></li>  
@@ -70,7 +70,7 @@
         <div class="row">
             <div class="col-md-4 mt-0 px-0 text-justify media-content">
                 <div class="row pl-5 mb-0 pt-2 align-items-center">
-                    <h2 class="my-0">Wallows</h2>
+                    <h2 class="my-0"></h2>
                     <div class ="mt-auto ml-5"><h8 class=" mt-auto ml-5">8 friends listen to this</h8></div>
                     
                 </div>
@@ -81,7 +81,7 @@
                         </div>
                     </div>
                     <div class="col-5 main-content-selections my-auto px-0">
-                        <a onclick='addMovie("500")'>
+                        <a onclick='createCard()'>
                             <div class="main-content-selection mcs-1 d-flex justify-content-center align-items-center mx-auto">
                                 <p>Add Song</p>
                             </div>
@@ -239,33 +239,34 @@
     <script src="main.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
-    <!-- The core Firebase JS SDK is always required and must be listed first -->
-    <script src="https://www.gstatic.com/firebasejs/8.0.0/firebase-app.js"></script>
+   <!-- The core Firebase JS SDK is always required and must be listed first -->
+   <script src="https://www.gstatic.com/firebasejs/8.0.0/firebase-app.js"></script>
+  <!--<script src="/__/firebase/init.js"></script> -->
 
-    <!-- TODO: Add SDKs for Firebase products that you want to use https://firebase.google.com/docs/web/setup#available-libraries -->
-    <script src="https://www.gstatic.com/firebasejs/8.0.0/firebase-auth.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/8.0.0/firebase-firestore.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/8.0.0/firebase-analytics.js"></script>
+   <!-- TODO: Add SDKs for Firebase products that you want to use https://firebase.google.com/docs/web/setup#available-libraries -->
+   <script src="https://www.gstatic.com/firebasejs/8.0.0/firebase-auth.js"></script>
+   <script src="https://www.gstatic.com/firebasejs/8.0.0/firebase-firestore.js"></script>
+   <script src="https://www.gstatic.com/firebasejs/8.0.0/firebase-analytics.js"></script>
 
-    <script>
-    // Your web app's Firebase configuration
-    // For Firebase JS SDK v7.20.0 and later, measurementId is optional
-    var firebaseConfig = {
-        apiKey: "AIzaSyBQocowKvLEbFk1Q_Z7P9TGE_dlgRpQnIM",
-        authDomain: "strimi-58c7a.firebaseapp.com",
-        databaseURL: "https://strimi-58c7a.firebaseio.com",
-        projectId: "strimi-58c7a",
-        storageBucket: "strimi-58c7a.appspot.com",
-        messagingSenderId: "751901353961",
-        appId: "1:751901353961:web:3117e6752d538a20dc8d78",
-        measurementId: "G-36F2FKGCH1"
-    };
-    // Initialize Firebase
-    firebase.initializeApp(firebaseConfig);
-    firebase.analytics();
-    </script>
+   <script>
+   // Your web app's Firebase configuration
+   // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+   var firebaseConfig = {
+       apiKey: "AIzaSyBQocowKvLEbFk1Q_Z7P9TGE_dlgRpQnIM",
+       authDomain: "strimi-58c7a.firebaseapp.com",
+       databaseURL: "https://strimi-58c7a.firebaseio.com",
+       projectId: "strimi-58c7a",
+       storageBucket: "strimi-58c7a.appspot.com",
+       messagingSenderId: "751901353961",
+       appId: "1:751901353961:web:3117e6752d538a20dc8d78",
+       measurementId: "G-36F2FKGCH1"
+   };
+   // Initialize Firebase
+   firebase.initializeApp(firebaseConfig);
+   firebase.analytics();
+   </script>
 
 
-    <script src="firebase.js"></script>
+    <script src="discover.js"></script>
 </body>
 </html>

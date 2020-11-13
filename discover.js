@@ -1,31 +1,63 @@
-//Run: node movie_search.js
+var db = firebase.firestore();
 
-//Global variables
-let info;
-let url;
-const baseURL = "https://api.themoviedb.org/3/";
-const API_key = "0b3c99fd0f35bf406b61b4076e59dce5"; //key for the movie database API
+function addMovie(MovieID){
+    var user = firebase.auth().currentUser;
+        if(user){
+        db.collection("users").doc(user.uid).collection("MovieList").doc(MovieID).set({}).then(function(){
+            console.log("Movie Id succesfully written in database");
+        });
+    }
+    else{
+        console.log("No user is signed in");
+    }  
+}
 
-//installed npm i node-fetch --save
-//const fetch = require("node-fetch");
+function addTvShow(TvShowID){
+    var user = firebase.auth().currentUser;
+    if(user){
+        db.collection("users").doc(user.uid).collection("TvShowList").doc(TvShowID).set({}).then(function(){
+        console.log("Tv Show Id succesfully written in database");
+        });
+    }
+    else{
+        console.log("No user is signed in");
+    }  
+}
 
-function getMovieID(movie){
-    let movie_id;
-    url = baseURL + "search/movie?api_key=" + API_key + "&query=" + movie;
-    //console.log(url);
-    fetch(url)
-    .then(result => result.json())
-    .then((data) => {
-        info = data.results.slice(0, 15);
-        for(let i = 0; i < info.length; i++){
-            movie_id = info[i].id;
-            getMovieDetails(movie_id);      
-        } 
-    })
+function addSong(SongID){
+    var user = firebase.auth().currentUser;
+    if(user){
+        db.collection("users").doc(user.uid).collection("SongList").doc(SongID).set({}).then(function(){
+        console.log("Song Id succesfully written in database");
+        });
+    }
+    else{
+        console.log("No user is signed in");
+    }  
+}
+
+function createCard(){
+    var user = firebase.auth().currentUser;
+    var MovieList = db.collection("users").doc(user.uid).collection("MovieList");
+
+    MovieList.get().then((querySnapshot) => {
+        querySnapshot.forEach((doc) => {
+            if(doc){
+                var Movie = doc.id;
+                getMovieDetails(Movie);    
+            }
+            else{
+                console.log("User has no movies");
+            }
+        });
+    });
 }
 
 function getMovieDetails(movie_id){
-    url = baseURL + "movie/" + movie_id + "?api_key=" + API_key;
+    const baseURL = "https://api.themoviedb.org/3/";
+    const API_key = "0b3c99fd0f35bf406b61b4076e59dce5"; //key for the movie database API
+    
+    let url = baseURL + "movie/" + movie_id + "?api_key=" + API_key;
 
     fetch(url)
     .then(result => result.json())
@@ -105,4 +137,3 @@ function getRunTime(run_time){
     console.log("--------------------");
 }
 
-getMovieID("avengers");
