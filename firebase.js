@@ -72,7 +72,10 @@ function handleSignUp() {
                 db.collection("users").doc(user.uid).set({
                 email: email,
                 firstName: firstName,
-                lastName: lastName
+                lastName: lastName,
+                followers: 0,
+                following: 0,
+                reviewCount: 0
                 }).then(function() {
                     console.log("Document successfully written!");
                     document.getElementById('sign-up-form').style.display='none';
