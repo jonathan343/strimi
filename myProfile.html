@@ -9,7 +9,8 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <!-- <link rel="stylesheet" href="style.css" > -->
     <link rel="stylesheet" href="light-theme.css"  id="theme-link">
-
+    <link rel="stylesheet" href="myProfile.css">
+    <link rel="stylesheet" href="friends.css" type="text/css">
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
@@ -64,11 +65,87 @@
 
     <!-- Home Screen -->
     <div class="container-fluid parallax-home" id="discover">
-        <div class="row align-items-start">
+        <!-- <div class="row align-items-start">
             <h1 class="pl-3" style="font-size: 7vw;" id="profile-welcome">Signed Out</h1>
-        </div>
+        </div> -->
         <div class="row">
             <button type="button" style="display: none;" id="sign-out-btn" class="btn btn-outline-danger" onclick="signOut()">Sign Out</button>
+        </div>
+        <div class="container-fluid pt-5 pl-4 mt-4" id="profile-container">
+            <div class="row">
+                <div class="col-md-4">
+                    <h3>
+                        Welcome, Jonathan
+                    </h3>
+                    <img alt="Bootstrap Image Preview" src="https://www.layoutit.com/img/sports-q-c-140-140-3.jpg" class="rounded-circle" id="profile-img"> 
+                    <div class="col-md-4 mt-4">
+                        <button type="button" class="btn btn-outline-primary btn-sm">
+                            Edit Image
+                        </button>
+                        <button type="button" style="display: none;" id="sign-out-btn" class="btn btn-outline-danger" onclick="signOut()">Sign Out</button>
+                    </div>
+                    
+                </div>
+                <div class="col-md-8">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h3>
+                                Your Reviews
+                            </h3>
+                            <div class="btn-group" role="group">
+                                 
+                                <button class="btn btn-secondary" type="button">
+                                    Movies
+                                </button> 
+                                <button class="btn btn-secondary" type="button">
+                                    TV Shows
+                                </button> 
+                                <button class="btn btn-secondary" type="button">
+                                    Songs
+                                </button> 
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12 mt-4">
+                            <div class="col-lg-4">
+                                <div class="text-center card-box">
+                                    <div class="member-card pb-2">
+                                        <div class="thumb-lg member-thumb mx-auto mb-2"><img src="Images/Profile_Pictures/J_Letter.png" class="rounded-circle img-thumbnail" alt="profile-image"></div>
+                                        <div class="">
+                                            <h4>The Office</h4>
+                                            <p class="text-muted">TV Network</p>
+                                        </div>
+                                        <button type="button" id="" class="btn btn-primary mt-3 btn-rounded waves-effect w-md waves-light" onclick="">read</button>
+                                        <div class="mt-4">
+                                            <div class="row">
+                                                <div class="col-4">
+                                                    <div class="mt-3">
+                                                        <h4 id="followers-${doc.id}">11</h4>
+                                                        <p class="mb-0 text-muted">Followers</p>
+                                                    </div>
+                                                </div>
+                                                <div class="col-4">
+                                                    <div class="mt-3">
+                                                        <h4 id="following-${doc.id}">11</h4>
+                                                        <p class="mb-0 text-muted">Following</p>
+                                                    </div>
+                                                </div>
+                                                <div class="col-4">
+                                                    <div class="mt-3">
+                                                        <h4 id="reviewCount-${doc.id}">11</h4>
+                                                        <p class="mb-0 text-muted">Reviews</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 
