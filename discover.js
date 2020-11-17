@@ -253,3 +253,4 @@ function getRunTime(run_time){
 }
 
 
+getMovieDetails(24428);

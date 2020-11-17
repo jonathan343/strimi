@@ -167,7 +167,7 @@ body{
 .btn {
     transition-duration: 0.2s;
     color: white;
-    border-color: white;
+    /* border-color: white; */
 }
  
 .btn:hover {
@@ -261,6 +261,10 @@ body{
     width: 100%;
     background: rgba(0, 0, 0, 0.2);
     border-radius: 10px;
+}
+
+.live-btn{
+    border-color: white;
 }
 
 .media-content{
@@ -634,3 +638,49 @@ body{
     overflow: auto;
     max-height: 100%;
 }
+
+/* Discover */
+.card-box {
+    padding: 20px;
+    border-radius: 3px;
+    margin-bottom: 30px;
+    /* background: rgba(55, 57, 63, 1); */
+    background: white;
+}
+
+.thumb-lg {
+    height: 88px;
+    width: 88px;
+}
+.img-thumbnail {
+    padding: .25rem;
+    background-color: #fff;
+    border: 1px solid #dee2e6;
+    border-radius: .25rem;
+    max-width: 100%;
+    height: auto;
+}
+.text-pink {
+    color: #ff679b!important;
+}
+.btn-rounded {
+    border-radius: 2em;
+    min-width: 150px;
+}
+.text-muted {
+    color: #98a6ad!important;
+}
+h4 {
+    line-height: 22px;
+    font-size: 18px;
+    color: black;
+}
+
+.discover-src-list > .row {
+    display: block;
+    overflow-x: auto;
+    white-space: nowrap;
+  }
+  .discover-src-list > .row > .col-lg-4 {
+    display: inline-block;
+  }
