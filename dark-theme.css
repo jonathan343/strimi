@@ -59,7 +59,7 @@ body{
     background-image: url("Images/home-image.jpg"); 
     box-shadow: inset 0 0 0 1000px rgba(0,0,0,.7);
     /* Full height */
-    padding-top: 56px;
+    padding-top: 57px;
     height: 100%;
   
     /* Create the parallax scrolling effect */
@@ -82,7 +82,7 @@ body{
     /* background:rgba(0, 0, 0, 0.4); */
     background: rgba(55, 57, 63, 1);
     padding-right: 16px;
-    height: 56px;
+    /* height: 56px; */
     /* box-shadow: 0 0 4px rgba(0, 0, 0, .1); */
 }
 
@@ -136,7 +136,7 @@ body{
 
 /* Home Page */
 #discover {
-    padding-top: 60px;
+    padding-top: 78px;
     color: white;
     /* box-shadow: inset 0 0 0 1000px rgba(0,0,0,.5); */
     height: 100vh;
@@ -240,7 +240,7 @@ body{
 
 /* Live View */
 #live-view{
-    --screen_height: calc(100vh - 58px);
+    --screen_height: calc(100vh - 78px);
     /* background: rgba(0, 0, 0, 0.4); */
     /* background: rgba(34, 40, 49, 1); */
     background: rgba(55, 57, 63, 1);
@@ -249,9 +249,9 @@ body{
     width: 275px;
     border-radius: 10px;
     position: absolute;
-    top: calc(58px + 2vh);
+    top: calc(78px + 2vh);
     right: 0;
-    margin-top: 58px + 10px;
+    margin-top: 78px + 10px;
     margin-right: 10px;
     display: flex;
     color: white;
@@ -306,10 +306,10 @@ body{
     
 }
 
-.main-content{
+/* .main-content{
     height: 100%;
     width: 100%;   
-}
+} */
 
 .main-content-img{
     height: 90%;
@@ -338,7 +338,8 @@ body{
 }
 
 .main-content-selection{
-    height: 20%;
+    /* height: 30%; */
+    line-height: 2.5;
     width: 100%;
     border-radius: 15px;
     margin-top: 12px;
