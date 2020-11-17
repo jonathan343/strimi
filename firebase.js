@@ -1,56 +1,5 @@
 var db = firebase.firestore();
 
-// window.onload = function() {
-//     initApp();
-// };
-
-// function initApp() {
-//     // Listening for auth state changes.
-//     // [START authstatelistener]
-//     firebase.auth().onAuthStateChanged(function(user) {
-//       // [START_EXCLUDE silent]
-//       //document.getElementById('quickstart-verify-email').disabled = true;
-//       // [END_EXCLUDE]
-//       if (user) {
-//         // User is signed in.
-//         var displayName = user.firstName;
-//         var email = user.email;
-//         // var emailVerified = user.emailVerified;
-//         // var photoURL = user.photoURL;
-//         // var isAnonymous = user.isAnonymous;
-//         var uid = user.uid;
-//         // var providerData = user.providerData;
-//         // [START_EXCLUDE]
-//         // document.getElementById('quickstart-sign-in-status').textContent = 'Signed in';
-//         // document.getElementById('quickstart-sign-in').textContent = 'Sign out';
-//         // document.getElementById('quickstart-account-details').textContent = JSON.stringify(user, null, '  ');
-//         // if (!emailVerified) {
-//         //   document.getElementById('quickstart-verify-email').disabled = false;
-//         // }
-
-//         alert("Welcome! " + displayName);
-//         // [END_EXCLUDE]
-//       } else {
-//         // User is signed out.
-//         // [START_EXCLUDE]
-//         // document.getElementById('quickstart-sign-in-status').textContent = 'Signed out';
-//         // document.getElementById('quickstart-sign-in').textContent = 'Sign in';
-//         // document.getElementById('quickstart-account-details').textContent = 'null';
-//         // [END_EXCLUDE]
-//       }
-//       // [START_EXCLUDE silent]
-//       //document.getElementById('quickstart-sign-in').disabled = false;
-//       // [END_EXCLUDE]
-//     });
-//     // [END authstatelistener]
-
-//     // document.getElementById('quickstart-sign-in').addEventListener('click', toggleSignIn, false);
-//     // document.getElementById('quickstart-sign-up').addEventListener('click', handleSignUp, false);
-//     // document.getElementById('quickstart-verify-email').addEventListener('click', sendEmailVerification, false);
-//     // document.getElementById('quickstart-password-reset').addEventListener('click', sendPasswordReset, false);
-//   }
-
-
 function handleSignUp() {
     var firstName = document.getElementById("inputFName").value;
     var lastName = document.getElementById("inputLName").value;
@@ -100,21 +49,6 @@ function handleSignUp() {
     // [END createwithemail]
     //var user = firebase.auth().currentUser;
   }
-
-// firebase.auth().onAuthStateChanged(function(user) {
-//     if (user) {
-//         db.collection("users").get().then((querySnapshot) => {
-//             querySnapshot.forEach((doc) => {
-//                 if (doc.id == user.uid) {
-//                     console.log("here")
-//                 } else {
-//                     console.log(doc.id,user.uid);
-//                 }
-//             });
-//         });
-//     }
-//     });
-// }
 
 function signIn() {
     if (firebase.auth().currentUser) {
