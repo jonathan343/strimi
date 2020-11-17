@@ -62,6 +62,14 @@ function updateLiveView(){
     });
 }
 
+document.getElementById("live-view-btn").addEventListener("click",function(){
+    if(document.getElementById("live-view").style.display == 'none'){
+        document.getElementById("live-view").style.display = 'flex';
+    }
+    else{
+        document.getElementById("live-view").style.display = 'none';
+    }    
+});
 
 firebase.auth().onAuthStateChanged(function(user) {
     if(user){

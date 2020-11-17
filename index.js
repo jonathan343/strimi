@@ -106,19 +106,6 @@ function signIn() {
 }
 
 
-document.getElementById("live-view-btn").addEventListener("click",function(){
-    if(document.getElementById("live-view").style.display == 'none'){
-        document.getElementById("live-view").style.display = 'flex';
-    }
-    else{
-        document.getElementById("live-view").style.display = 'none';
-    }    
-});
-
-
-
-
-
 var sign_in_btn = document.getElementById("sign-in-btn");
 var sign_up_btn = document.getElementById("sign-up-btn");
 
