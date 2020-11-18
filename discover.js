@@ -423,10 +423,10 @@ function getTopShows(){
     
     })
 }
-getTopShows();
 
 //showMovies();
 function showMovies(){
+    getTopMovies();
     document.getElementById("discover-music-list").style.display = 'none';
     document.getElementById("discover-shows-list").style.display = 'none';
     document.getElementById("discover-movies-list").style.display = 'block';
@@ -435,6 +435,7 @@ function showMovies(){
     document.getElementById("discover-movies-btn").classList.add('active');
 }
 function showShows(){
+    getTopShows();
     document.getElementById("discover-music-list").style.display = 'none';
     document.getElementById("discover-movies-list").style.display = 'none';
     document.getElementById("discover-shows-list").style.display = 'block';
