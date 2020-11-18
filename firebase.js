@@ -184,9 +184,9 @@ function updateLiveView(){
                     var lastName = doc2.data().lastName;
                     const html =
                     `
-                    <div class="row live-view-person mx-auto my-2" id="${doc2.id}">
+                    <div class="row live-view-person mx-auto my-2" id="${doc.id}">
                         <div class="col-3 my-auto ml-3 px-0 d-flex justify-content-center align-items-center live-view-img">
-                            <img id="${realID(doc.id)}" src="${getPFP(doc.id)} alt="">
+                            <img id="img-${doc.id}" src="${getPFP(doc.id)} alt="">
                         </div>
                         <div class="col-8 my-auto ml-1 pr-0 pl-2 pt-1 live-view-content">
                             <h6 class = "live-view-name">${firstName} ${lastName}</h6>
@@ -219,27 +219,15 @@ firebase.auth().onAuthStateChanged(function(user) {
 function getPFP(id) {
     var picRef = firebase.storage().ref(`users/${id}.jpg`).getDownloadURL().then( 
         (url) => {
-            document.querySelector(`#${realID(id)}`).src=url;
+            document.querySelector(`#img-${id}`).src=url;
     }).catch((error) => {
         picRef = firebase.storage().ref(`users/default${id.charCodeAt(0)%6}.jpg`).getDownloadURL().then(
             (url) => {
-                document.querySelector(`#${realID(id)}`).src=url;
+                document.querySelector(`#img-${id}`).src=url;
         });
     });
     
     return "";
     
 
-}
-
-
-function realID(id){
-    var test;
-    console.log(id[0])
-    if (id[0]<9) {
-        console.log("here");
-        test = "a";
-    }
-    var test = test + id
-    return test;
 }

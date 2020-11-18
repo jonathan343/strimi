@@ -62,7 +62,7 @@ function listToInnerText(docs) {
         <div class="col-lg-4">
             <div class="text-center card-box">
                 <div class="member-card pb-2">
-                    <div class="thumb-lg member-thumb mx-auto mb-2"><img id="${realID(doc.id)}" src="https://jonathan343.github.io/strimi/Images/Profile_Pictures/J_Letter.png${getPFP(doc.id)}" class="rounded-circle img-thumbnail" alt="profile-image"></div>
+                    <div class="thumb-lg member-thumb mx-auto mb-2"><img id="img-${doc.id}" src="https://jonathan343.github.io/strimi/Images/Profile_Pictures/J_Letter.png${getPFP(doc.id)}" class="rounded-circle img-thumbnail" alt="profile-image"></div>
                     <div class="">
                         <h4>${doc.data().firstName} ${doc.data().lastName}</h4>
                         <p class="text-muted">@${doc.data().firstName}</p>
@@ -136,26 +136,15 @@ function inputToTuple(input) {
 function getPFP(id) {
     var picRef = firebase.storage().ref(`users/${id}.jpg`).getDownloadURL().then( 
         (url) => {
-            document.querySelector(`#${realID(id)}`).src=url;
+            document.querySelector(`#img-${id}`).src=url;
     }).catch((error) => {
         picRef = firebase.storage().ref(`users/default${id.charCodeAt(0)%6}.jpg`).getDownloadURL().then(
             (url) => {
-                document.querySelector(`#${realID(id)}`).src=url;
+                document.querySelector(`#img-${id}`).src=url;
         });
     });
     
     return "";
     
 
-}
-
-function realID(id){
-    var test;
-    console.log(id[0])
-    if (id[0]<9) {
-        console.log("here");
-        test = "a";
-    }
-    var test = test + id
-    return test;
 }
