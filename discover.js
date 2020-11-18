@@ -9,7 +9,7 @@ function addMovie(MovieID){
     }
     else{
         console.log("No user is signed in");
-    }  
+    }  //hi
 }
 
 function addTvShow(TvShowID){
