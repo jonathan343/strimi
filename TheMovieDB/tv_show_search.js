@@ -11,7 +11,7 @@ function getTVShowID(tv_show){
     fetch(url)
     .then(result => result.json())
     .then((data) => {
-        let info = data.results.slice(0, 1);
+        let info = data.results.slice(0, 15);
         for(let i = 0; i < info.length; i++){
             tv_show_id = info[i].id;
             getTVShowDetails(tv_show_id);      

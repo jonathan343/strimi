@@ -30,7 +30,7 @@ function getMovieDetails(movie_id){
     fetch(url)
     .then(result => result.json())
     .then((data) => {
-        //console.log(data);
+        //console.log(data)
         getMovieID(movie_id);
         getTitle(data.title);
         getGenres(data.genres);
