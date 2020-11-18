@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <!-- <link rel="stylesheet" href="style.css" > -->
     <link rel="stylesheet" href="light-theme.css"  id="theme-link">
+    <link rel="stylesheet" href="discover.css">
 
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -50,7 +51,7 @@
             </ul>
             
             <div class="ml-auto d-flex flex-row-reverse">
-                <a class="px-3 text-white" id="live-view-btn" target="_blank"><button type="button" class="btn btn-outline-dark  btn-sm">Live View</button></a>
+                <a class="px-3 text-white" id="live-view-btn" target="_blank"><button type="button" class="btn btn-outline-dark live-btn btn-sm">Live View</button></a>
 
                 <label class="px-3 switch my-auto">
                     <input type="checkbox" id="themeToggle" onclick="handleClick(this);">
@@ -67,133 +68,25 @@
         <div class="row align-items-start">
             <h1 class="pl-3">Discover</h1>
         </div>
-        <div class="row">
-            <div class="col-md-4 mt-0 px-0 text-justify media-content">
-                <div class="row pl-5 mb-0 pt-2 align-items-center">
-                    <h2 class="my-0">Wallows</h2>
-                    <div class ="mt-auto ml-5"><h8 class=" mt-auto ml-5">8 friends listen to this</h8></div>
-                    
-                </div>
-                <div class="row main-content pl-2 mx-0">
-                    <div class="col-6 main-content-img my-auto mr-2 px-0">
-                        <div class="d-flex justify-content-center">
-                            <img src="Images/wallows.jpeg" alt="">
-                        </div>
-                    </div>
-                    <div class="col-5 main-content-selections my-auto px-0">
-                        <a href="">
-                            <div class="main-content-selection mcs-1 d-flex justify-content-center align-items-center mx-auto">
-                                <p>Add Song</p>
-                            </div>
-                        </a>
-                        <a href="">
-                            <div class="main-content-selection mcs-2 d-flex justify-content-center align-items-center mx-auto">
-                                <p>Recommend</p>
-                            </div>
-                        </a>
-                        <a href="">
-                            <div class="main-content-selection mcs-3 d-flex justify-content-center align-items-center mx-auto">
-                                <p>Favorite</p>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4 mt-0 text-justify media-content">
-                <div class="row pl-5 mb-0 pt-2 align-items-center">
-                    <h2 class="my-0">Billie Eilish</h2>
-                    <div class ="mt-auto ml-1"><h8 class=" mt-auto ml-5">6 friends listen to this</h8></div>
-                    
-                </div>
-                <div class="row main-content pl-2 mx-0">
-                    <div class="col-6 main-content-img my-auto mr-2 px-0">
-                        <div class="d-flex justify-content-center">
-                            <img src="Images/billie.jpg" alt="">
-                        </div>
-                    </div>
-                    <div class="col-5 main-content-selections my-auto px-0">
-                        <a href="">
-                            <div class="main-content-selection mcs-1 d-flex justify-content-center align-items-center mx-auto">
-                                <p>Add Song</p>
-                            </div>
-                        </a>
-                        <a href="">
-                            <div class="main-content-selection mcs-2 d-flex justify-content-center align-items-center mx-auto">
-                                <p>Recommend</p>
-                            </div>
-                        </a>
-                        <a href="">
-                            <div class="main-content-selection mcs-3 d-flex justify-content-center align-items-center mx-auto">
-                                <p>Favorite</p>
-                            </div>
-                        </a>
-                    </div>
-                </div>
+        <div class="col-lg-4 text-center mb-1 mx-auto">
+            <div class="btn-group mb-3 ml-3" role="group" aria-label="Discover Selections">
+                <button type="button" id="discover-movies-btn" class="btn btn-secondary active" onclick="showMovies()"> Movies</button>
+                <button type="button" id="discover-shows-btn" class="btn btn-secondary" onclick="showShows()">TV Shows</button>
+                <button type="button" id="discover-music-btn" class="btn btn-secondary" onclick="showMusic()">Music</button>
             </div>
         </div>
-        <div class="row">
-            <div class="col-md-4 text-justify media-content">
-                <div class="row pl-5 mb-0 pt-2 align-items-center">
-                    <h2 class="my-0">Khalid</h2>
-                    <div class ="mt-auto ml-5"><h8 class=" mt-auto ml-5">5 friends listen to this</h8></div>
-                </div>
-                <div class="row main-content pl-2 mx-0">
-                    <div class="col-6 main-content-img my-auto mr-2 px-0">
-                        <div class="d-flex justify-content-center">
-                            <img src="Images/khalid.jpg" alt="">
-                        </div>
-                    </div>
-                    <div class="col-5 main-content-selections my-auto px-0">
-                        <a href="">
-                            <div class="main-content-selection mcs-1 d-flex justify-content-center align-items-center mx-auto">
-                                <p>Add Song</p>
-                            </div>
-                        </a>
-                        <a href="">
-                            <div class="main-content-selection mcs-2 d-flex justify-content-center align-items-center mx-auto">
-                                <p>Recommend</p>
-                            </div>
-                        </a>
-                        <a href="">
-                            <div class="main-content-selection mcs-3 d-flex justify-content-center align-items-center mx-auto">
-                                <p>Favorite</p>
-                            </div>
-                        </a>
-                    </div>
-                </div>
+        <div class="container-fluid discover-src-list">
+            <div class="row" id="discover-movies-list">
+
             </div>
-            <div class="col-md-4 text-justify media-content">
-                <div class="row pl-5 mb-0 pt-2 align-items-center">
-                    <h2 class="my-0">The Smiths</h2>
-                    <div class ="mt-auto "><h8 class=" mt-auto ml-5">2 friends listen to this</h8></div>
-                    
-                </div>
-                <div class="row main-content pl-2 mx-0">
-                    <div class="col-6 main-content-img my-auto mr-2 px-0">
-                        <div class="d-flex justify-content-center">
-                            <img src="Images/smiths.jpg" alt="">
-                        </div>
-                    </div>
-                    <div class="col-5 main-content-selections my-auto px-0">
-                        <a href="">
-                            <div class="main-content-selection mcs-1 d-flex justify-content-center align-items-center mx-auto">
-                                <p>Add Song</p>
-                            </div>
-                        </a>
-                        <a href="">
-                            <div class="main-content-selection mcs-2 d-flex justify-content-center align-items-center mx-auto">
-                                <p>Recommend</p>
-                            </div>
-                        </a>
-                        <a href="">
-                            <div class="main-content-selection mcs-3 d-flex justify-content-center align-items-center mx-auto">
-                                <p>Favorite</p>
-                            </div>
-                        </a>
-                    </div>
-                </div>
+            <div class="row" style="display: none" id="discover-shows-list">
+
+            </div>
+            <div class="row" style="display: none" id="discover-music-list">
+
             </div>
         </div>
+        
     </div>
 
     <div class="container">
@@ -270,7 +163,6 @@
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
-    <script src="main.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
     <!-- The core Firebase JS SDK is always required and must be listed first -->
@@ -300,5 +192,6 @@
     </script>
 
     <script src="firebase.js"></script>
+    <script src="discover.js"></script>
 </body>
 </html>

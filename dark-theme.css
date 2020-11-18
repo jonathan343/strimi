@@ -59,7 +59,7 @@ body{
     background-image: url("Images/home-image.jpg"); 
     box-shadow: inset 0 0 0 1000px rgba(0,0,0,.7);
     /* Full height */
-    padding-top: 56px;
+    padding-top: 57px;
     height: 100%;
   
     /* Create the parallax scrolling effect */
@@ -82,7 +82,7 @@ body{
     /* background:rgba(0, 0, 0, 0.4); */
     background: rgba(55, 57, 63, 1);
     padding-right: 16px;
-    height: 56px;
+    /* height: 56px; */
     /* box-shadow: 0 0 4px rgba(0, 0, 0, .1); */
 }
 
@@ -136,7 +136,7 @@ body{
 
 /* Home Page */
 #discover {
-    padding-top: 60px;
+    padding-top: 78px;
     color: white;
     /* box-shadow: inset 0 0 0 1000px rgba(0,0,0,.5); */
     height: 100vh;
@@ -167,7 +167,7 @@ body{
 .btn {
     transition-duration: 0.2s;
     color: white;
-    border-color: white;
+    /* border-color: white; */
 }
  
 .btn:hover {
@@ -240,7 +240,7 @@ body{
 
 /* Live View */
 #live-view{
-    --screen_height: calc(100vh - 58px);
+    --screen_height: calc(100vh - 78px);
     /* background: rgba(0, 0, 0, 0.4); */
     /* background: rgba(34, 40, 49, 1); */
     background: rgba(55, 57, 63, 1);
@@ -249,9 +249,9 @@ body{
     width: 275px;
     border-radius: 10px;
     position: absolute;
-    top: calc(58px + 2vh);
+    top: calc(78px + 2vh);
     right: 0;
-    margin-top: 58px + 10px;
+    margin-top: 78px + 10px;
     margin-right: 10px;
     display: flex;
     color: white;
@@ -262,6 +262,10 @@ body{
     width: 100%;
     background: rgba(0, 0, 0, 0.2);
     border-radius: 10px;
+}
+
+.live-btn{
+    border-color: white;
 }
 
 .media-content{
@@ -309,10 +313,10 @@ body{
     
 }
 
-.main-content{
+/* .main-content{
     height: 100%;
     width: 100%;   
-}
+} */
 
 .main-content-img{
     height: 90%;
@@ -341,7 +345,8 @@ body{
 }
 
 .main-content-selection{
-    height: 20%;
+    /* height: 30%; */
+    line-height: 2.5;
     width: 100%;
     border-radius: 15px;
     margin-top: 12px;
@@ -364,6 +369,13 @@ body{
 
 .main-content-selections a:hover{
     text-decoration: none;
+}
+
+.media-content h2{
+    font-size: 2vw;
+}
+.media-content h8{
+    font-size: 1vw;
 }
 
 .strimi-phrase{
@@ -629,3 +641,53 @@ body{
     overflow: auto;
     max-height: 100%;
 }
+
+/* Discover */
+.card-box {
+    padding: 20px;
+    border-radius: 30px;
+    margin-bottom: 30px;
+    background: rgba(55, 57, 63, 1);
+    box-shadow: 0 4px 8px 0 rgba(255, 255, 255, 0.1), 0 6px 20px 0 rgba(255, 255, 255, 0.09);
+    /* background: white; */
+}
+
+.thumb-lg {
+    height: 178px;
+    width: 120px;
+}
+.img-thumbnail {
+    padding: .05rem;
+    background-color: #fff;
+    border: 1px solid #dee2e6;
+    border-radius: .25rem;
+    max-width: 100%;
+    height: auto;
+}
+.text-pink {
+    color: #ff679b!important;
+}
+.btn-rounded {
+    border-radius: 2em;
+    min-width: 150px;
+}
+.text-muted {
+    color: #98a6ad!important;
+}
+h4 {
+    line-height: 22px;
+    font-size: 18px;
+    color: white;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin-bottom: 1px;
+}
+
+.discover-src-list > .row {
+    display: block;
+    overflow-x: auto;
+    white-space: nowrap;
+  }
+  .discover-src-list > .row > .col-lg-4 {
+    display: inline-block;
+  }
