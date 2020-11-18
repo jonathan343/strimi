@@ -364,8 +364,7 @@ function getTopShows(){
         var showsDiv = document.getElementById('discover-shows-list');
         showsDiv.innerHTML = "";
         for(let i = 0; i < info.length; i++){
-            show_id = info[i].id;
-            
+            show_id = info[i].id;    
 
             const baseURL = "https://api.themoviedb.org/3/";
             const API_key = "0b3c99fd0f35bf406b61b4076e59dce5"; //key for the movie database API
@@ -374,7 +373,14 @@ function getTopShows(){
             fetch(url)
             .then(result => result.json())
             .then((data2) => {
-                movie_maker = data2.networks[0].name;
+
+                if(data2.networks.length == 0){
+                    movie_maker = "&nbsp;";
+                }
+                else{
+                    movie_maker = data2.networks[0].name;
+                }
+                
                 poster_image = "https://image.tmdb.org/t/p/w500" + data2.poster_path;
 
                 const html =
