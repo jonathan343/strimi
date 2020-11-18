@@ -92,7 +92,7 @@ function getMovieDetails(movie_id){
     const API_key = "0b3c99fd0f35bf406b61b4076e59dce5"; //key for the movie database API
     
     let url = baseURL + "movie/" + movie_id + "?api_key=" + API_key;
-
+    details = new Array;
     fetch(url)
     .then(result => result.json())
     .then((data) => {
@@ -106,6 +106,21 @@ function getMovieDetails(movie_id){
         getReleaseDate(data.release_date);
         getPosterImage(data.poster_path);
         getRunTime(data.runtime);
+        details = [movie_id,data.title,data.production_companies[0].name];
+        console.log("testttttt: ",details);
+        return details;
+    })
+}
+
+function getTopMovies(){
+    const baseURL = "https://api.themoviedb.org/3/";
+    const API_key = "0b3c99fd0f35bf406b61b4076e59dce5"; //key for the movie database API
+    
+    let url = baseURL + "movie/popular" + "?api_key=" + API_key;
+    fetch(url)
+    .then(result => result.json())
+    .then((data) => {
+    
     })
 }
 
@@ -252,5 +267,44 @@ function getRunTime(run_time){
     console.log("--------------------");
 }
 
-
-getMovieDetails(24428);
+var movieDiv = document.getElementById('discover-movies-list');
+movieDiv.innerHTML = "";
+test = getMovieDetails(24428);
+const html =
+`
+<div class="col-lg-4">
+                    <div class="text-center card-box">
+                        <div class="member-card pb-2">
+                            <div class="thumb-lg member-thumb mx-auto mb-2"><img src="Images/Profile_Pictures/J_Letter.png" class="rounded-circle img-thumbnail" alt="profile-image"></div>
+                            <div class="">
+                                <h4>${test[1]}</h4>
+                                <p class="text-muted">${test[0]}</p>
+                            </div>
+                            <button type="button" id="" class="btn btn-primary mt-3 btn-rounded waves-effect w-md waves-light" onclick="">Read Review</button>
+                            <div class="mt-4">
+                                <div class="row">
+                                    <div class="col-4">
+                                        <div class="mt-3">
+                                            <h4 id="followers-${test[0]}">11</h4>
+                                            <p class="mb-0 text-muted">Likes</p>
+                                        </div>
+                                    </div>
+                                    <div class="col-4">
+                                        <div class="mt-3">
+                                            <h4 id="following-$${test[0]}">11</h4>
+                                            <p class="mb-0 text-muted">Dislikes</p>
+                                        </div>
+                                    </div>
+                                    <div class="col-4">
+                                        <div class="mt-3">
+                                            <h4 id="reviewCount-${test[0]}">11</h4>
+                                            <p class="mb-0 text-muted">Reviews</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+`;
+movieDiv.insertAdjacentHTML('beforeend',html);
