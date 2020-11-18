@@ -1,0 +1,14 @@
+List of movie data from the-movie-database.js that I want to grab
+1. title
+2. genres
+3. overview
+4. popularity
+5. production companies
+    5.a name
+    5.b logo_path
+6. release date
+7. poster_path
+8. runtime
+
+List of tv data from the-movie-database.js that I want to grab
+1. 
