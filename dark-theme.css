@@ -642,14 +642,16 @@ body{
 /* Discover */
 .card-box {
     padding: 20px;
-    border-radius: 3px;
+    border-radius: 30px;
     margin-bottom: 30px;
-    /* background: rgba(55, 57, 63, 1); */
-    background: white;
+    background: rgba(55, 57, 63, 1);
+    /* box-shadow: 0 4px 8px 0 rgba(255, 255, 255, 0.1), 0 6px 20px 0 rgba(255, 255, 255, 0.09); */
+    box-shadow: 0 -2px 5px rgba(0, 0, 0, 1);
+    /* background: white; */
 }
 
 .thumb-lg {
-    height: 88px;
+    height: 127px;
     width: 88px;
 }
 .img-thumbnail {
@@ -673,7 +675,9 @@ body{
 h4 {
     line-height: 22px;
     font-size: 18px;
-    color: black;
+    color: white;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .discover-src-list > .row {
