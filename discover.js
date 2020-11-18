@@ -149,7 +149,14 @@ function getTopMovies(){
             fetch(url)
             .then(result => result.json())
             .then((data2) => {
-                movie_maker = data2.production_companies[0].name;
+                // console.log(data2.production_companies);
+                if(data2.production_companies.length == 0){
+                    movie_maker = "&nbsp;";
+                }
+                else{
+                    movie_maker = data2.production_companies[0].name;
+                }
+                
                 poster_image = "https://image.tmdb.org/t/p/w500" + info[i].poster_path;
 
                 const html =
@@ -418,7 +425,7 @@ function getTopShows(){
 }
 getTopShows();
 
-showMovies();
+//showMovies();
 function showMovies(){
     document.getElementById("discover-music-list").style.display = 'none';
     document.getElementById("discover-shows-list").style.display = 'none';
