@@ -76,3 +76,12 @@ firebase.auth().onAuthStateChanged(function(user) {
         updateLiveView();
     }
 });
+
+firebase.auth().onAuthStateChanged(function(user) {
+    if(user){
+        document.getElementById("navbar").style.display = "flex";
+    }
+    else{
+        document.getElementById("navbar").style.display = "none";
+    }
+});

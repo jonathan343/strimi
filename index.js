@@ -109,6 +109,8 @@ function signIn() {
 var sign_in_btn = document.getElementById("sign-in-btn");
 var sign_up_btn = document.getElementById("sign-up-btn");
 
+
+
 // Execute a function when the user releases a key on the keyboard
 // sign_in_btn.addEventListener("keyup", function(event) {
 //     if (event.key === 'Enter') {
