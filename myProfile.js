@@ -28,12 +28,16 @@ firebase.auth().onAuthStateChanged(function(user) {
 function signOut() {
     firebase.auth().signOut().then(function() {
         console.log("Log out successful");
+        alert("Log out successful");
         document.getElementById("profile-welcome").innerHTML = "Signed Out";
         document.getElementById('sign-out-btn').style.display='none';
         var mainDiv = document.getElementById('live-view-content');
         mainDiv.innerHTML = '<h2 class="text-center pt-2">Live View</h1>';
+        // Simulate an HTTP redirect:
+        window.location.replace("index.html");
       }).catch(function(error) {
         console.error("Log out not successful", error)
       });
       
 }
+
