@@ -70,6 +70,37 @@ function createTVShowCard(){
     });
 }
 
+<<<<<<< Updated upstream
+=======
+const getSpotifyToken = async () => {
+    
+    const result = await fetch('https://accounts.spotify.com/api/token', {
+        method: 'POST',
+        headers: {
+            'Content-Type' : 'application/x-www-form-urlencoded', 
+            'Authorization' : 'Basic ' + btoa(clientId + ':' + clientSecret)
+        },
+        body: 'grant_type=client_credentials'
+    });
+
+    const data = await result.json();
+    return data.access_token;
+}
+
+// returns id, image, name, and artist of song in list form
+const getTrackInfo = async (token, trackEndPoint) => {
+    
+    const result = await fetch(`${trackEndPoint}`, {
+        method: 'GET',
+        headers: { 'Authorization' : 'Bearer ' + token}
+    });
+
+    const data = await result.json();
+    const print = [data.id, data.album.images[0].url, data.name, data.artists[0].name];
+    return print;
+}
+
+>>>>>>> Stashed changes
 function createSongCard(){
     var user = firebase.auth().currentUser;
     var SongList = db.collection("users").doc(user.uid).collection("SongList");
