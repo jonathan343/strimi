@@ -70,8 +70,6 @@ function createTVShowCard(){
     });
 }
 
-<<<<<<< Updated upstream
-=======
 const getSpotifyToken = async () => {
     
     const result = await fetch('https://accounts.spotify.com/api/token', {
@@ -100,7 +98,6 @@ const getTrackInfo = async (token, trackEndPoint) => {
     return print;
 }
 
->>>>>>> Stashed changes
 function createSongCard(){
     var user = firebase.auth().currentUser;
     var SongList = db.collection("users").doc(user.uid).collection("SongList");
