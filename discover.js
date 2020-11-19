@@ -87,7 +87,7 @@ const getSpotifyToken = async () => {
 
 // returns id, image, name, and artist of song in list form
 const getTrackInfo = async (token, trackEndPoint) => {
-    
+
     const result = await fetch(`${trackEndPoint}`, {
         method: 'GET',
         headers: { 'Authorization' : 'Bearer ' + token}
@@ -106,7 +106,9 @@ function createSongCard(){
         querySnapshot.forEach((doc) => {
             if(doc){
                 var Song = doc.id;
-                //getTVShowDetails(Song);    change to Abraham's song information function
+                const trackEndPoint = `https://api.spotify.com/v1/tracks/${Song}`;
+                var currToken = getSpotifyToken();
+                var SongDetails = getTrackInfo(currToken, trackEndPoint);
             }
             else{
                 console.log("User has no Song");
