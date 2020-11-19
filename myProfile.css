@@ -5,3 +5,11 @@
 #profile-img{
     width: 50%;
 }
+.img-thumbnail2 {
+    padding: .1rem;
+    background-color: #fff;
+    border: 1px solid #dee2e6;
+    border-radius: .1px;
+    max-width: 100%;
+    height: auto;
+}

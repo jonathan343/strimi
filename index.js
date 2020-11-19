@@ -1,4 +1,4 @@
-
+updateLiveView();
 function handleSignUp() {
     var firstName = document.getElementById("inputFName").value;
     var lastName = document.getElementById("inputLName").value;
