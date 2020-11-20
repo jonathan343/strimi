@@ -707,20 +707,40 @@ h4 {
     font-size: 7vw;
 }
 
-.developers{
-    padding-top: 100px;
+#video{
+   width: 29%;
+   display: flex;
+   justify-content: space-evenly;
 }
 
-.card{
-    color: black;
+#title{
+    padding-top:10px;
+    padding-bottom: 0px;
+    display:flex;
+    justify-content: space-evenly;
+    width: 100%
 }
 
-.card_content{
+#sub-title{
+    display:flex;
+    justify-content: space-evenly;
+}
+
+#individual_card{
+    background: rgba(55, 57, 63, 1);
+}
+
+#card_content{
+    display:flex;
+    flex-direction: column;
+    justify-content: space-evenly;  
+}
+
+.rows{
     display:flex;
     flex-direction: row;
-    padding-top: 50px;
-    margin:0px;
-    justify-content: space-evenly;  
+    padding: 50px;
+    justify-content: space-evenly; 
 }
 
 .social_media{
@@ -756,5 +776,6 @@ h4 {
 #git:hover{
     color: #F4CBB2;
 }
+
 
 
