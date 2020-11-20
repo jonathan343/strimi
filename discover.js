@@ -170,7 +170,7 @@ function getTopMovies(){
                         </div>
                         <div class="thumb-lg member-thumb mx-auto mb-2"><img src="${poster_image}" class=" img-thumbnail" alt="profile-image"></div>
                         
-                        <button type="button" id="" class="btn btn-primary mt-2 btn-rounded waves-effect w-md waves-light" onclick="">Read Reviews</button>
+                        <button type="button" id="" class="btn btn-primary mt-2 btn-rounded waves-effect w-md waves-light" data-toggle="modal" data-target="#modal-${data2.id}" onclick="">Read Reviews</button>
                         <div class="mt-2">
                             <div class="row">
                                 <div class="col-4">
@@ -198,12 +198,38 @@ function getTopMovies(){
             </div>
             `;
             movieDiv.insertAdjacentHTML('beforeend',html);
+
+            const modal =
+            `
+            <div class="modal fade" id="modal-${data2.id}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLongTitle">${info[i].title} Reviews</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                        ...
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-primary">Save changes</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            `;
+
+            document.body.insertAdjacentHTML('beforeend',modal);;
             })
         
             //test = getMovieDetails(movie_id);
-        } 
-    
+        }     
     })
+
+    
 }
 
 getTopMovies();

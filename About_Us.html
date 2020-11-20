@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <!-- <link rel="stylesheet" href="style.css" > -->
     <link rel="stylesheet" href="light-theme.css"  id="theme-link">
-    <link rel="stylesheet" href="discover.css">
+    <!-- <link rel="stylesheet" href="About_Us.css"> -->
 
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -18,21 +18,21 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
 
-    <title>strimi | Discover</title>
+    <title>strimi | Home</title>
     <meta name="keywords" content="strimi, Spotify, Netflix, Apple Music, Hulu">
     <meta name="description" content="This is a social media platform that centralizes all streaming platforms and allows you to share your favorite movies, shows, and songs.">
-    
+    <!-- <base href="https://jonathan343.github.io/strimi/"> -->
     <link rel="shortcut icon" type="image/x-icon" href="Images/strimi_logo_white.png" />
   </head>
   <body>
 
     <!-- Navigation Bar -->
-    <nav class="navbar fixed-top navbar-default navbar-expand-md navbar-dark" id="navbar">
+    <nav class="navbar fixed-top navbar-default navbar-expand-md navbar-dark " >
         <div class="navbar-header d-flex col">
-            <a class="navbar-brand" href="index.html">
+            <a class="navbar-brand" href="discover.html">
                 <img src="Images/strimi_logo_cropped.png" alt="Logo" class="d-inline-block align-center" id="logo">
             </a>
-            <a class="my-auto navbar-brand" href="index.html">
+            <a class="my-auto navbar-brand" href="discover.html">
                 <div id="logo-text"><h3>strimi</h3></div>
             </a>
             
@@ -44,111 +44,137 @@
 
         <div id="navbarCollapse" class="collapse navbar-collapse justify-content-start">
             <ul class="nav navbar-nav">
-                <li class="nav-item"><a href="discover.html" class="cool-link nav-link active">Discover</a></li>
+                <li class="nav-item"><a href="discover.html" class="cool-link nav-link">Discover</a></li>
                 <li class="nav-item"><a href="friends.html" class="cool-link nav-link">Friends</a></li>
-                <li class="nav-item"><a href="myProfile.html" class="cool-link nav-link">My Profile</a></li>  
-                <li class="nav-item"><a href="About_Us.html" class="cool-link nav-link">About Us</a></li>
+                <li class="nav-item"><a href="myProfile.html" class="cool-link nav-link">My Profile</a></li>
+                <li class="nav-item"><a href="About_Us.html" class="cool-link nav-link active">About Us</a></li>
             </ul>
             
             <div class="ml-auto d-flex flex-row-reverse">
-                <a class="px-3 text-white" id="live-view-btn" target="_blank"><button type="button" class="btn btn-outline-dark live-btn btn-sm">Live View</button></a>
+                <a class="px-3 text-white" id="live-view-btn" tabindex="0" target="_blank"><button type="button" class="btn btn-outline-dark live-btn btn-sm">Live View</button></a>
 
-                <label class="px-3 switch my-auto">
+                <label tabindex="0" class="px-3 switch my-auto">
                     <input type="checkbox" id="themeToggle" onclick="handleClick(this);">
                     <span class="slider round"></span>
                 </label>
             </div>
             
-        </div>
-        
+        </div>  
     </nav>
 
     <!-- Home Screen -->
-    <div class="container-fluid parallax-home" id="discover">
-        <div class="row align-items-start">
-            <h1 class="pl-3">Discover</h1>
+    <div class="container-fluid" id="About_Us">
+        <div class="row align-items-center">
+            <h1 class="pl-3" id="title">About Us</h1>
         </div>
-        <div class="col-lg-4 text-center mb-1 mx-auto">
-            <div class="btn-group mb-3 ml-3" role="group" aria-label="Discover Selections">
-                <button type="button" id="discover-movies-btn" class="btn btn-secondary active" onclick="showMovies()"> Movies</button>
-                <button type="button" id="discover-shows-btn" class="btn btn-secondary" onclick="showShows()">TV Shows</button>
-                <button type="button" id="discover-music-btn" class="btn btn-secondary" onclick="showMusic()">Music</button>
+        
+        <!--<div class="d-flex justify-content-center">
+            <div class="card" id="video">
+                <div class="card-body">
+                     Actual video when it comes time <video width="400" height="320" controls>
+                        <source src="https://www.youtube.com/watch?v=EWMPVn1kgIQ" type="video/webm">
+                      Your browser does not support the video tag.
+                      </video>
+                    <iframe width="500" height="370" 
+                        src="https://www.youtube.com/watch?v=EWMPVn1kgIQ">
+                    </iframe>
+                </div>
             </div>
-        </div>
-        <div class="container-fluid discover-src-list">
-            <div class="row" id="discover-movies-list">
-                <div class="col-lg-4 mt-2">
-                    <div class="text-center card-box">
-                        <div class="member-card pb-2">
-                            <div class="col-12">
-                                <h4>Test Movie</h4>
-                                <p class="text-muted">Movie Maker</p>
-                            </div>
-                            <div class="thumb-lg member-thumb mx-auto mb-2"><img src="Images/khalid.jpg" class=" img-thumbnail" alt="profile-image"></div>
-                            
-                            <button type="button" id="" class="btn btn-primary mt-2 btn-rounded waves-effect w-md waves-light" data-toggle="modal" data-target="#exampleModalLong" onclick="">Read Reviews</button>
-
-                            <div class="mt-2">
-                                <div class="row">
-                                    <div class="col-4">
-                                        <div class="mt-3">
-                                            <h4 id="followers-${11}">11</h4>
-                                            <p class="mb-0 text-muted">Likes</p>
-                                        </div>
-                                    </div>
-                                    <div class="col-4">
-                                        <div class="mt-3">
-                                            <h4 id="following-$${11}">11</h4>
-                                            <p class="mb-0 text-muted">Dislikes</p>
-                                        </div>
-                                    </div>
-                                    <div class="col-4">
-                                        <div class="mt-3">
-                                            <h4 id="reviewCount-${11}">11</h4>
-                                            <p class="mb-0 text-muted">Reviews</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+        </div>-->
+        <h1 id="title">Our Team</h1>
+        <h5 id="sub-title">Texas A&M - Computer Science</h5>
+        <div id="card_content">
+            <div class="rows">
+                <div class="card" style="width: 19rem;" id="individual_card">
+                    <img src="Images/Jonathan2.jpg" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title"><strong>Jonathan Gaytan</strong></h5>
+                        <h6 class="card-subtitle mb-2 text-muted">Project Manager, Front-end</h6>
+                        <p class="card-text">I did nothing on this project, like absolutely nothing. Seriously I did nothing.</p>
+                        <div class="social_media">
+                            <a class="fa fa-facebook" id="fb"></a>
+                            <a class="fa fa-twitter" id="twitter"></a>
+                            <a class="fa fa-instagram" id="IG"></a>
+                            <a class="fa fa-linkedin" id="link"></a>
+                            <a class="fa fa-github" id="git"></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="card" style="width: 19rem;" id="individual_card">
+                    <img src="Images/Matthew.jpeg" class="card-img-top"  alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title"><strong>Matthew Bunker</strong></h5>
+                        <h6 class="card-subtitle mb-2 text-muted">Front-end, Movie/Tv Show API Manager</h6>
+                        <p class="card-text">I did nothing on this project, like absolutely nothing. Seriously I did nothing.</p>
+                        <div class="social_media">
+                            <a class="fa fa-facebook" id="fb"></a>
+                            <a class="fa fa-twitter" id="twitter"></a>
+                            <a class="fa fa-instagram" id="IG"></a>
+                            <a class="fa fa-linkedin" id="link"></a>
+                            <a class="fa fa-github" id="git"></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="card" style="width: 19rem;" id="individual_card">
+                    <img src="Images/Abraham.jpg" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title"><strong>Abraham Sanchez</strong></h5>
+                        <h6 class="card-subtitle mb-2 text-muted">Song API Manager</h6>
+                        <p class="card-text">I did nothing on this project, like absolutely nothing. Seriously I did nothing.</p>
+                        <div class="social_media">
+                            <a class="fa fa-facebook" id="fb"></a>
+                            <a class="fa fa-twitter" id="twitter"></a>
+                            <a class="fa fa-instagram" id="IG"></a>
+                            <a class="fa fa-linkedin" id="link"></a>
+                            <a class="fa fa-github" id="git"></a>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="row" style="display: none" id="discover-shows-list">
-
+            <div class="rows">
+                <div class="card" style="width: 19rem;" id="individual_card">
+                    <img src="Images/Jared.png" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title"><strong>Jared Clifford</strong></h5>
+                        <h6 class="card-subtitle mb-2 text-muted">Front-end, Databases Manager</h6>
+                        <p class="card-text">I did nothing on this project, like absolutely nothing. Seriously I did nothing.</p>
+                        <div class="social_media">
+                            <a class="fa fa-facebook" id="fb"></a>
+                            <a class="fa fa-twitter" id="twitter"></a>
+                            <a class="fa fa-instagram" id="IG"></a>
+                            <a class="fa fa-linkedin" id="link"></a>
+                            <a class="fa fa-github" id="git"></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="card" style="width: 19rem;" id="individual_card">
+                    <img src="Images/Joseph.jpg" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title"><strong>Joseph Phelan</strong></h5>
+                        <h6 class="card-subtitle mb-2 text-muted">Team Coordinator</h6>
+                        <p class="card-text">I did nothing on this project, like absolutely nothing. Seriously I did nothing.</p>
+                        <div class="social_media">
+                            <a class="fa fa-facebook" id="fb"></a>
+                            <a class="fa fa-twitter" id="twitter"></a>
+                            <a class="fa fa-instagram" id="IG"></a>
+                            <a class="fa fa-linkedin" id="link"></a>
+                            <a class="fa fa-github" id="git"></a>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="row" style="display: none" id="discover-music-list">
-
+        </div>
+        <h1 id="title">Why We Created strimi</h1>
+        <div class="card" id="individual_card">
+            <div class="card-body">
+              It was a grade
             </div>
         </div>
     </div>
 
-    <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
-            <div class="modal-body">
-              ...
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-              <button type="button" class="btn btn-primary">Save changes</button>
-            </div>
-          </div>
-        </div>
-      </div>
-
-
-    
-
     <div class="container">
         <div id="live-view" style="display: none;">
-            <div class="col px-2" id="live-view-content">
+            <div class="col px-2 " id="live-view-content">
                 <h2 class="text-center pt-2">Live View</h1>
                 <div class="row live-view-person mx-auto my-2">
                     <div class="col-3 my-auto ml-3 px-0 d-flex justify-content-center align-items-center live-view-img">
@@ -206,14 +232,13 @@
                     </div>
                     <div class="col-8 my-auto ml-1 pr-0 pl-2 pt-1 live-view-content">
                         <h6 class = "live-view-name">Nick Milef</h6>
-                        <div><h9 class = "live-view-media">SAD!</h9></div>
-                        <h9 class = "live-view-media">XXXTentacion</h9>
+                        <div><h9 class = "live-view-media">Für Elise</h9></div>
+                        <h9 class = "live-view-media">Ludwig van Beethoven</h9>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
@@ -221,7 +246,7 @@
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-
+    
     <!-- The core Firebase JS SDK is always required and must be listed first -->
     <script src="https://www.gstatic.com/firebasejs/8.0.0/firebase-app.js"></script>
 
@@ -249,6 +274,6 @@
     </script>
 
     <script src="firebase.js"></script>
-    <script src="discover.js"></script>
 </body>
 </html>
+                

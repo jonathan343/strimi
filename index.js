@@ -1,3 +1,12 @@
+firebase.auth().onAuthStateChanged(function(user) {
+    if(user){
+        window.location.replace("discover.html");
+    }
+    else{
+        document.getElementById("navbar").style.display = "none";
+    }
+});
+
 
 function handleSignUp() {
     var firstName = document.getElementById("inputFName").value;
@@ -108,7 +117,6 @@ function signIn() {
 
 var sign_in_btn = document.getElementById("sign-in-btn");
 var sign_up_btn = document.getElementById("sign-up-btn");
-
 
 
 // Execute a function when the user releases a key on the keyboard
