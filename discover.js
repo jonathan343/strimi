@@ -71,6 +71,8 @@ function createTVShowCard(){
 }
 
 const getSpotifyToken = async () => {
+    const clientId = config.CLIENT_ID;
+    const clientSecret = config.SECRET_KEY;
     
     const result = await fetch('https://accounts.spotify.com/api/token', {
         method: 'POST',
