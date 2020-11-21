@@ -76,3 +76,4 @@ firebase.auth().onAuthStateChanged(function(user) {
         updateLiveView();
     }
 });
+
