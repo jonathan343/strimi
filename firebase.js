@@ -92,28 +92,3 @@ firebase.auth().onAuthStateChanged(function(user) {
         updateLiveView();
     }
 });
-
-
-function getPFP(id) {
-    var picRef = firebase.storage().ref(`users/${id}.jpg`).getDownloadURL().then( 
-        (url) => {
-            document.querySelector(`#img-${id}`).src=url;
-    }).catch((error) => {
-        picRef = firebase.storage().ref(`users/default${id.charCodeAt(0)%6}.jpg`).getDownloadURL().then(
-            (url) => {
-                document.querySelector(`#img-${id}`).src=url;
-        });
-    });
-    
-    return "";
-    
-
-}
-firebase.auth().onAuthStateChanged(function(user) {
-    if(user){
-        document.getElementById("navbar").style.display = "flex";
-    }
-    else{
-        document.getElementById("navbar").style.display = "none";
-    }
-});

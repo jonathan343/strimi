@@ -699,3 +699,91 @@ h4 {
   .discover-src-list > .row > .col-lg-4 {
     display: inline-block;
   }
+
+  /*About Us */
+
+#About_Us {
+    padding-top: 78px;
+    color: white;
+    /* box-shadow: inset 0 0 0 1000px rgba(0,0,0,.5); */
+    background: linear-gradient(111.06deg, #3245B3 0.31%, rgba(99, 111, 181, 0) 99.16%), #551A8B;
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: repeat;
+    background-size: cover;
+    padding-bottom:50px;
+} 
+
+.pl-3 {
+    font-size: 7vw;
+}
+
+#video{
+   width: 29%;
+   display: flex;
+   justify-content: space-evenly;
+}
+
+#title{
+    padding-top:10px;
+    padding-bottom: 0px;
+    display:flex;
+    justify-content: space-evenly;
+    width: 100%
+}
+
+#sub-title{
+    display:flex;
+    justify-content: space-evenly;
+}
+
+#individual_card{
+    background: rgba(55, 57, 63, 1);
+}
+
+#card_content{
+    display:flex;
+    flex-direction: column;
+    justify-content: space-evenly;  
+}
+
+.rows{
+    display:flex;
+    flex-direction: row;
+    padding: 50px;
+    justify-content: space-evenly; 
+}
+
+.social_media{
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.social_media a{
+    /*border: 1px solid black;*/
+    font-size: 30px;
+    width: 30px;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 50%;
+}
+
+#fb:hover{
+    color: #3B5998;
+}
+
+#twitter:hover{
+    color: #00ACEE;
+}
+
+#IG:hover{
+    background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%,#d6249f 60%,#285AEB 90%);
+}
+
+#link:hover{
+    color: #0E76A8;
+}
+
+#git:hover{
+    color: #F4CBB2;
+}
