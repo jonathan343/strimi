@@ -660,15 +660,15 @@ body{
     padding: .05rem;
     background-color: #fff;
     border: 1px solid #dee2e6;
-    border-radius: .25rem;
+    border-radius: .1rem;
     max-width: 100%;
     height: auto;
 }
 .img-thumbnail2 {
-    padding: .1rem;
+    padding: .05rem;
     background-color: #fff;
-    border: 1px solid #dee2e6;
-    border-radius: .1px;
+    border: 1px solid #fff;
+    border-radius: .1rem;
     max-width: 100%;
     height: auto;
 }
