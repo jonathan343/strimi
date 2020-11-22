@@ -99,7 +99,7 @@ const UIController = (function() {
                             <h4>${name}</h4>
                             <p class="text-muted">${artist}</p>
                         </div>
-                        <div class="thumb-lg member-thumb mx-auto mb-2"><a href="${SpotifyURL}" target="_blank"><img src="${imageURL}" class=" img-thumbnail" alt="profile-image"></a></div>
+                        <div class="thumb-xlg member-thumb mx-auto mb-2"><a href="${SpotifyURL}" target="_blank"><img src="${imageURL}" class=" img-thumbnail" alt="profile-image"></a></div>
                         
                         <button type="button" id="" class="mr-2 btn btn-primary mt-2 btn-rounded waves-effect w-md waves-light" data-toggle="modal" data-target="#modal-song-${id2}" onclick="">Read Reviews</button>
                         <button type="button" id="" class="ml-2 btn btn-primary mt-2 btn-rounded waves-effect w-md waves-light" data-toggle="modal" data-target="#modal2-song-${id2}" onclick="writeSongReview('${id2}')">Write Review</button>
