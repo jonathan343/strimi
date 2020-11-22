@@ -81,11 +81,11 @@ const UIController = (function() {
         },
 
         // need method to create a track list group item 
-        createTrack(id, name,artist,id2,imageURL) {
+        createTrack(SpotifyURL, name,artist,id2,imageURL) {
             // const track = await APICtrl.getTrack(token, id);
             // // load the track details
             // // UICtrl.createTrackDetail(track.album.images[0].url, track.name, track.artists[0].name);
-            console.log("id: ", id);
+            console.log("Spotify: ", SpotifyURL);
             console.log("Track Name: ",name);
             console.log("Artist: ", artist);
             console.log("id2: ", id2);
@@ -100,7 +100,7 @@ const UIController = (function() {
                             <h4>${name}</h4>
                             <p class="text-muted">${artist}</p>
                         </div>
-                        <div class="thumb-lg member-thumb mx-auto mb-2"><img src="${imageURL}" class=" img-thumbnail" alt="profile-image"></div>
+                        <div class="thumb-lg member-thumb mx-auto mb-2"><a href="${SpotifyURL}"><img src="${imageURL}" class=" img-thumbnail" alt="profile-image"></a></div>
                         
                         <button type="button" id="" class="mr-2 btn btn-primary mt-2 btn-rounded waves-effect w-md waves-light" data-toggle="modal" data-target="#modal-song-${id2}" onclick="">Read Reviews</button>
                         <button type="button" id="" class="ml-2 btn btn-primary mt-2 btn-rounded waves-effect w-md waves-light" data-toggle="modal" data-target="#modal2-song-${id2}" onclick="writeSongReview('${id2}')">Write Review</button>
@@ -258,7 +258,7 @@ const APPController = (function(UICtrl, APICtrl) {
         const tracks = await APICtrl.getTracks(token, tracksEndPoint);
         // create a track list item
         console.log(tracks);
-        tracks.forEach(el => UICtrl.createTrack(el.track.href, el.track.name,el.track.artists[0].name,el.track.id,el.track.album.images[0].url))
+        tracks.forEach(el => UICtrl.createTrack(el.track.external_urls.spotify, el.track.name,el.track.artists[0].name,el.track.id,el.track.album.images[0].url))
         
     });
 
