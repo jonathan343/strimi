@@ -1,11 +1,11 @@
-// firebase.auth().onAuthStateChanged(function(user) {
-//     if(user){
-//         window.location.replace("discover.html");
-//     }
-//     else{
-//         document.getElementById("navbar").style.display = "none";
-//     }
-// });
+firebase.auth().onAuthStateChanged(function(user) {
+    if(user){
+        window.location.replace("discover.html");
+    }
+    else{
+        document.getElementById("navbar").style.display = "none";
+    }
+});
 
 
 function handleSignUp() {
