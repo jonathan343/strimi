@@ -816,5 +816,11 @@ h4 {
     color: #F4CBB2;
 }
 
+/* a tag */
+a, a:hover, a:focus, a:active {
+    text-decoration: none;
+    color: inherit;
+}
+
 
 
