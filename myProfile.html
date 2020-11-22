@@ -44,21 +44,30 @@
 
         <div id="navbarCollapse" class="collapse navbar-collapse justify-content-start">
             <ul class="nav navbar-nav">
-                <li class="nav-item"><a href="index.html" class="cool-link nav-link">Home</a></li>
                 <li class="nav-item"><a href="discover.html" class="cool-link nav-link">Discover</a></li>
                 <li class="nav-item"><a href="friends.html" class="cool-link nav-link">Friends</a></li>
                 <li class="nav-item"><a href="myProfile.html" class="cool-link nav-link active">My Profile</a></li>  
+                <li class="nav-item"><a href="About_Us.html" class="cool-link nav-link">About Us</a></li>
             </ul>
+        </div>
             
-            <div class="ml-auto d-flex flex-row-reverse">
-                <a class="px-3 text-white" id="live-view-btn" target="_blank"><button type="button" class="btn btn-outline-dark live-btn btn-sm">Live View</button></a>
-
-                <label class="px-3 switch my-auto">
-                    <input type="checkbox" id="themeToggle" onclick="handleClick(this);">
-                    <span class="slider round"></span>
-                </label>
+        <div class="search-navbar">
+            <div class="search-container">
+                <input type="text" name="search" placeholder="Search..." class="search-input" id="search-bar">
+                <a onclick="search()" class="search-btn">
+                    <i class="fa fa-search" aria-hidden="true"></i>
+                <!-- <img src="Images/search.png" height="10px" width="10px" alt=""> -->
+                </a>
             </div>
-            
+        </div>
+
+        <div class="ml-auto d-flex flex-row-reverse">
+            <a class="px-3 text-white" id="live-view-btn" target="_blank"><button type="button" class="btn btn-outline-dark live-btn btn-sm">Live View</button></a>
+
+            <label class="px-3 switch my-auto">
+                <input type="checkbox" id="themeToggle" onclick="handleClick(this);">
+                <span class="slider round"></span>
+            </label>
         </div>
         
     </nav>
@@ -152,7 +161,7 @@
     </div>
 
     <div class="container">
-        <div id="live-view">
+        <div id="live-view" style="display: none;">
             <div class="col px-2" id="live-view-content">
                 <h2 class="text-center pt-2">Live View</h1>
                 <div class="row live-view-person mx-auto my-2">
