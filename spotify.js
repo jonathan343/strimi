@@ -102,25 +102,25 @@ const UIController = (function() {
                         </div>
                         <div class="thumb-lg member-thumb mx-auto mb-2"><img src="${imageURL}" class=" img-thumbnail" alt="profile-image"></div>
                         
-                        <button type="button" id="" class="mr-2 btn btn-primary mt-2 btn-rounded waves-effect w-md waves-light" data-toggle="modal" data-target="#modal-${id2}" onclick="">Read Reviews</button>
-                        <button type="button" id="" class="ml-2 btn btn-primary mt-2 btn-rounded waves-effect w-md waves-light" data-toggle="modal" data-target="#modal2-${id2}" onclick="writeMovieReview('${id2}')">Write Review</button>
+                        <button type="button" id="" class="mr-2 btn btn-primary mt-2 btn-rounded waves-effect w-md waves-light" data-toggle="modal" data-target="#modal-song-${id2}" onclick="">Read Reviews</button>
+                        <button type="button" id="" class="ml-2 btn btn-primary mt-2 btn-rounded waves-effect w-md waves-light" data-toggle="modal" data-target="#modal2-song-${id2}" onclick="writeSongReview('${id2}')">Write Review</button>
                         <div class="mt-2">
                             <div class="row">
                                 <div class="col-4">
                                     <div class="mt-3">
-                                        <h4 id="likes-${id2}">0</h4>
+                                        <h4 id="likes-song-${id2}">0</h4>
                                         <p class="mb-0 text-muted">Likes</p>
                                     </div>
                                 </div>
                                 <div class="col-4">
                                     <div class="mt-3">
-                                        <h4 id="dislikes-${id2}">0</h4>
+                                        <h4 id="dislikes-song-${id2}">0</h4>
                                         <p class="mb-0 text-muted">Dislikes</p>
                                     </div>
                                 </div>
                                 <div class="col-4">
                                     <div class="mt-3">
-                                        <h4 id="reviewCount-${id2}">0</h4>
+                                        <h4 id="reviewCount-song-${id2}">0</h4>
                                         <p class="mb-0 text-muted">Reviews</p>
                                     </div>
                                 </div>
@@ -131,6 +131,57 @@ const UIController = (function() {
             </div>
             `;
             songDiv.insertAdjacentHTML('beforeend',html);
+            
+            const modal =
+            `
+            <div class="modal fade" id="modal-song-${id2}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLongTitle">${name} Reviews</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body" id="reviews-show-${id2}">
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-primary">Save changes</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="modal fade" id="modal2-show-${id2}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                            <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLongTitle">Write a Review for: ${name}</h5>
+                            <button id="close-song-btn-${id2}" type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="input-group mb-3">
+                                <textarea id="review-song-${id2}" class="form-control" aria-label="With textarea" placeholder="Write your Review Here..."></textarea>
+                            </div>
+                            <button id="dislike-song-${id2}" class="dislike" onclick="dislikeSongClick('${id2}')">
+                                <i class="fa fa-thumbs-o-down fa-2x" aria-hidden="true"></i>
+                            </button>
+                            <button id="like-song-${id2}" class="like" onclick="likeSongClick('${id2}')">
+                                <i class="fa fa-thumbs-o-up fa-2x" aria-hidden="true"></i>
+                            </button>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-primary" onclick="saveSongReview('${id2}')" >Save Review</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            `;
+            document.body.insertAdjacentHTML('beforeend',modal);
         },
 
         // need method to create the song detail
