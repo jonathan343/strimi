@@ -31,7 +31,6 @@ const APIController = (function() {
     }
 
     const _getPlaylistByGenre = async (token, genreId) => {
-
         const limit = 10;
         
         const result = await fetch(`https://api.spotify.com/v1/browse/categories/${genreId}/playlists?limit=${limit}`, {
@@ -63,7 +62,8 @@ const APIController = (function() {
         });
 
         const data = await result.json();
-        return data;
+        const print = [data.id, data.album.images[0].url, data.name, data.artists[0].name];
+        return print;
     }
 
     return {
@@ -185,7 +185,7 @@ const APPController = (function(UICtrl, APICtrl) {
     const DOMInputs = UICtrl.inputField();
 
     // get genres on page load
-    const loadGenres = async () => {
+    const loadToken = async () => {
         //get the token
         const token = await APICtrl.getToken();           
         //store the token onto the page
@@ -249,10 +249,11 @@ const APPController = (function(UICtrl, APICtrl) {
     });    
 
     return {
-        init() {
+        token() {
             console.log('App is starting');
-            loadGenres();
+            loadToken();
         }
+        
     }
 
 })(UIController, APIController);

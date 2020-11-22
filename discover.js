@@ -99,6 +99,35 @@ const getTrackInfo = async (token, trackEndPoint) => {
     const print = [data.id, data.album.images[0].url, data.name, data.artists[0].name];
     return print;
 }
+const getTop50Playlist = async (token) => {
+    var playlist_id = '37i9dQZF1DXcBWIGoYBM5M';
+    
+    const result = await fetch(`https://api.spotify.com/v1/playlists/${playlist_id}?fields=tracks`, {
+        method: 'GET',
+        headers: { 'Authorization' : 'Bearer ' + token}
+    });
+
+    const data = await result.json();
+    // console.log(data.playlists.items[0]);
+    return data;
+}
+
+// TESTING SPOTIFY API STUFF //
+console.log("Testing Spotify Token Stuff");
+const trackId = '11dFghVXANMlKmJXsNCbNl';
+const trackEndPoint = `https://api.spotify.com/v1/tracks/${trackId}`;
+
+// var token = getSpotifyToken();
+var token = APIController.getToken();
+console.log("token:",token);
+UIController.storeToken(token);
+// var tokenSpot = UIController.getStoredToken();
+// console.log("tokenFromCode:",tokenSpot);
+var tokenConsole = `BQBGdJC_0jlZX31wZ9YEqp_qFUnRwu22lZSjooAn-nYeeMmFvB12w0c0VxL2OLWH1YS8cDS96SQYSDtk6lMdfk-ilMOhi7uFbKk71HgzUCvePoh7D93oz6D51dChX_4hRWaewv10_keHwx0ZzXUDu4-8npn1k804PEoekzI2ZSJo9Uyo_psS2Jc19l-pRqIbqxZjwQrZCoA4Q9ZsI4oZ31GPJcy6uA2VKjryz6phhd0O6V_fhik4`
+
+var tracksEndPoint = `https://api.spotify.com/v1/playlists/37i9dQZF1DXcBWIGoYBM5M/tracks`;
+var top50Tracks = getTop50Playlist(tokenConsole);
+console.log("top50Tracks:",top50Tracks);
 
 function createSongCard(){
     var user = firebase.auth().currentUser;
