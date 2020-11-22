@@ -79,11 +79,12 @@ firebase.auth().onAuthStateChanged(function(user) {
 
 //Search functions
 
-function searchs(){
+function search(){
     var search_input = document.getElementById("search-bar").value;
+    window.location.replace("search.html");
     console.log(search_input);
-    getMovieID(search_input);
-    getTvShowID(search_input);
+    //getMovieID(search_input);
+    // getTvShowID(search_input);
     //call getSongID(search_input) function here
 }
 
@@ -99,7 +100,8 @@ function getMovieID(movie){
         let info = data.results.slice(0, 15);
         for(let i = 0; i < info.length; i++){
             movie_id = info[i].id;
-            getMovieDetails(movie_id);      
+            // getMovieDetails(movie_id);     
+            console.log(info[i].title); 
         } 
     })
 }
