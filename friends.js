@@ -254,14 +254,18 @@ function inputToTuple(input) {
 }
 
 function searchFriendPFP(id) {
-    console.log('Friends');
     var picRef = firebase.storage().ref(`users/${id}.jpg`).getDownloadURL().then( 
         (url) => {
             document.querySelector(`#friend-${id}`).src=url;
     }).catch((error) => {
-        picRef = firebase.storage().ref(`users/default${id.charCodeAt(0)%6}.jpg`).getDownloadURL().then(
+        var picRef = firebase.storage().ref(`users/${id}.png`).getDownloadURL().then( 
             (url) => {
                 document.querySelector(`#friend-${id}`).src=url;
+        }).catch((error) => {
+            picRef = firebase.storage().ref(`users/default${id.charCodeAt(0)%6}.jpg`).getDownloadURL().then(
+                (url) => {
+                    document.querySelector(`#friend-${id}`).src=url;
+            });
         });
     });
 }

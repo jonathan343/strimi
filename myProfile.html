@@ -72,31 +72,33 @@
         <div class="container-fluid pt-5 pl-4 mt-4" id="profile-container" style="padding-left: 10%; padding-right: 10%;">
             <div class="row">
                 <button type="button" id="sign-out-btn" class="btn btn-outline-danger" onclick="signOut()">Sign Out</button>
+                <button type="button" data-toggle="modal" data-target="#modal-edit" class="btn btn-outline-primary "><i class="fa fa-pencil" aria-hidden="true"></i>&nbsp;&nbsp;Edit</button>
             </div>
                 <div class="col-md-4" style="margin: 0 auto;">
                     <h3 id="profile-welcome" style="text-align: center;">
                         Signed Out
                     </h3>
                     <img src="" class="gradient" id="profile-img" style="display:block;margin-left: auto; margin-right: auto;"> 
-                    <h5 id="bio" style="text-align: center;"></h5>
+                    <h5 id="bio" style="text-align: center; padding-bottom: 10%;"></h5>
                 </div>
-                <div class="col-md-8">
-                    <div class="row">
-                        <div class="col-md-12">
-                            <h3>
+                <div class="col-md-8 mx-auto">
+                    <div class="row mx-auto">
+                        <div class="col-md-12 mx-auto">
+                            <h3 style="text-align: center;">
                                 Your Reviews
                             </h3>
-                            <div class="btn-group" role="group">
-                                 
-                                <button class="btn btn-secondary" type="button">
-                                    Movies
-                                </button> 
-                                <button class="btn btn-secondary" type="button">
-                                    TV Shows
-                                </button> 
-                                <button class="btn btn-secondary" type="button">
-                                    Songs
-                                </button> 
+                            <div class="col-lg-4 mx-auto">
+                                <div class="btn-group group-class" role="group" style="display: auto; margin-left: auto; margin-right: auto;">
+                                    <button class="btn btn-secondary" type="button">
+                                        Movies
+                                    </button> 
+                                    <button class="btn btn-secondary" type="button">
+                                        TV Shows
+                                    </button> 
+                                    <button class="btn btn-secondary" type="button">
+                                        Songs
+                                    </button> 
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -158,7 +160,7 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLongTitle">Edit Bio</h5>
+                    <h5 class="modal-title" id="exampleModalLongTitle" style="color: black;">Edit Profile</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -170,7 +172,6 @@
                         </div>
                         <div>
                             <input type="file" class="btn btn-primary" id="myFile" accept="image/*" onchange="showFile()">
-                            <button type="button" class="btn btn-primary" >Edit Bio</button>
                         </div>
                     </div>
                     <div class="form-label-group">

@@ -45,16 +45,21 @@ function signOut() {
 }
 
 function setPFP(id) {
-    console.log('Friends');
     var picRef = firebase.storage().ref(`users/${id}.jpg`).getDownloadURL().then( 
         (url) => {
             document.querySelector(`#profile-img`).src=url;
             document.querySelector(`#modal-img`).src=url;
     }).catch((error) => {
-        picRef = firebase.storage().ref(`users/default${id.charCodeAt(0)%6}.jpg`).getDownloadURL().then(
+        var picRef = firebase.storage().ref(`users/${id}.png`).getDownloadURL().then( 
             (url) => {
                 document.querySelector(`#profile-img`).src=url;
                 document.querySelector(`#modal-img`).src=url;
+        }).catch((error) => {
+            picRef = firebase.storage().ref(`users/default${id.charCodeAt(0)%6}.jpg`).getDownloadURL().then(
+                (url) => {
+                    document.querySelector(`#profile-img`).src=url;
+                    document.querySelector(`#modal-img`).src=url;
+            });
         });
     });
 }
@@ -111,8 +116,14 @@ function showFile(){
     }
     if (file.type == "image/jpeg")
         picRef = firebase.storage().ref().child(`users/${user.uid}.jpg`);
+        firebase.storage().ref().child(`users/${user.uid}.png`).delete().catch(function (error) {
+            console.log("Didn't have png");
+        });
     if (file.type == "image/png")
         picRef = firebase.storage().ref().child(`users/${user.uid}.png`);
+        firebase.storage().ref().child(`users/${user.uid}.jpg`).delete().catch(function (error) {
+            console.log("Didn't have jpg");
+        });
     reader.readAsDataURL(file);
     console.log(file)
     picRef.put(file).then(function(snapshot) {
