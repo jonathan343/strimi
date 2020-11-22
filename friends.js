@@ -36,7 +36,7 @@ function searchPeople() {
             });
             querySnapshot.forEach((doc) => {
                 if (doc.data().firstName.toLowerCase().search(list[0].toLowerCase()) != -1 || doc.data().lastName.toLowerCase().search(list[0].toLowerCase()) != -1) {
-                    if (!people.includes(doc)) {
+                    if (!isInList(people,doc)) {
                         if (user.uid != doc.id) {
                             people.push(doc);
                             console.log(doc.data().firstName, doc.data().lastName);
@@ -48,7 +48,15 @@ function searchPeople() {
             return people;
         }).then(listToInnerText);
     }
-    
+}
+
+function isInList(list,doc) {
+    for (let i = 0; i < list.length; i++) {
+        if (list[i].id == doc.id) {
+            return 1;
+        }
+    }
+    return 0;
 }
 
 
