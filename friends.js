@@ -1,3 +1,4 @@
+var db = firebase.firestore();
 document.getElementById("friend-search").onkeypress = function(e) {
     if(e.key === 'Enter') {
         searchPeople();
@@ -5,6 +6,7 @@ document.getElementById("friend-search").onkeypress = function(e) {
 }
 
 function searchPeople() {
+    var user = firebase.auth().currentUser;
     var value = document.getElementById("friend-search").value;
     var list = inputToTuple(value);
     people = new Array;
@@ -24,18 +26,22 @@ function searchPeople() {
         db.collection("users").get().then((querySnapshot) => {
             querySnapshot.forEach((doc) => {
                 if (doc.data().firstName.toLowerCase() == list[0].toLowerCase() || doc.data().lastName.toLowerCase() == list[0].toLowerCase()) {
-                    people.push(doc);
-                    console.log(doc.data().firstName, doc.data().lastName);
-                    count = 1;
+                    if (user.uid != doc.id) {
+                        people.push(doc);
+                        console.log(doc.data().firstName, doc.data().lastName);
+                        count = 1;
+                    }
                 }
                 
             });
             querySnapshot.forEach((doc) => {
                 if (doc.data().firstName.toLowerCase().search(list[0].toLowerCase()) != -1 || doc.data().lastName.toLowerCase().search(list[0].toLowerCase()) != -1) {
                     if (!people.includes(doc)) {
-                        people.push(doc);
-                        console.log(doc.data().firstName, doc.data().lastName);
-                        count = 1;
+                        if (user.uid != doc.id) {
+                            people.push(doc);
+                            console.log(doc.data().firstName, doc.data().lastName);
+                            count = 1;
+                        }
                     }
                 }
             });
@@ -72,7 +78,7 @@ function listToInnerText(docs) {
         <div class="col-lg-4">
             <div class="text-center card-box">
                 <div class="member-card pb-2">
-                    <div class="thumb-lg member-thumb mx-auto mb-2"><img id="img-${doc.id}" src="Images/Profile_Pictures/${getPFP(doc.id)}_Letter.png" class="rounded-circle img-thumbnail" alt="profile-image"></div>
+                    <div class="thumb-lg member-thumb mx-auto mb-2"><img id="friend-${doc.id}" src="Images/Profile_Pictures/${searchFriendPFP(doc.id)}_Letter.png" class="rounded-circle img-thumbnail" alt="profile-image"></div>
                     <div class="">
                         <h4>${doc.data().firstName} ${doc.data().lastName}</h4>
                         <p class="text-muted">@${doc.data().firstName}</p>
@@ -237,4 +243,17 @@ function inputToTuple(input) {
     tuple[0] = input.substring(0,input.indexOf(" "));
     tuple[1] = input.substring(input.indexOf(" ")+1, input.length);
     return tuple;
+}
+
+function searchFriendPFP(id) {
+    console.log('Friends');
+    var picRef = firebase.storage().ref(`users/${id}.jpg`).getDownloadURL().then( 
+        (url) => {
+            document.querySelector(`#friend-${id}`).src=url;
+    }).catch((error) => {
+        picRef = firebase.storage().ref(`users/default${id.charCodeAt(0)%6}.jpg`).getDownloadURL().then(
+            (url) => {
+                document.querySelector(`#friend-${id}`).src=url;
+        });
+    });
 }

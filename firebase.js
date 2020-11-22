@@ -92,3 +92,18 @@ firebase.auth().onAuthStateChanged(function(user) {
         updateLiveView();
     }
 });
+
+function getPFP(id) {
+    console.log('live');
+    var picRef = firebase.storage().ref(`users/${id}.jpg`).getDownloadURL().then( 
+        (url) => {
+            document.querySelector(`#img-${id}`).src=url;
+    }).catch((error) => {
+        picRef = firebase.storage().ref(`users/default${id.charCodeAt(0)%6}.jpg`).getDownloadURL().then(
+            (url) => {
+                document.querySelector(`#img-${id}`).src=url;
+        });
+    });
+    
+    return "";
+}

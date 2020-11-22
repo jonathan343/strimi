@@ -153,6 +153,25 @@ body{
     min-width: 350px;
 }
 
+.modal-img {
+    border-radius:999em;
+    width: 250px;
+    height: 250px;
+    padding: 5px;
+    line-height: 0;
+    padding-left: auto;
+    padding-right: auto;
+}
+
+.modal-center {
+    padding-bottom: 10%;
+}
+
+.input-button {
+    position: absolute;
+    bottom: 0;
+}
+
 #homeTxt{
     font-weight: normal;
     letter-spacing: 0.2em;
@@ -689,6 +708,17 @@ h4 {
     overflow: hidden;
     text-overflow: ellipsis;
     margin-bottom: 1px;
+}
+
+.gradient {
+    border-radius:999em;
+    max-width: 350px;
+    min-width: 350px;
+    max-height: 350px;
+    min-height: 350px;
+    padding: 5px;
+    line-height: 0;
+    background: linear-gradient(111.06deg, #3245B3 0.31%, rgba(99, 111, 181, 0) 99.16%), #551A8B;
 }
 
 .discover-src-list > .row {
