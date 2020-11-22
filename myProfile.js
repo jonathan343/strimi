@@ -26,6 +26,9 @@ firebase.auth().onAuthStateChanged(function(user) {
             console.log("Error getting document:", error);
         });
     }
+    else{
+        window.location.replace("index.html");
+    }
 });
 
 function signOut() {

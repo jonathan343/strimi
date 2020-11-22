@@ -1,11 +1,11 @@
-firebase.auth().onAuthStateChanged(function(user) {
-    if(user){
-        window.location.replace("discover.html");
-    }
-    else{
-        document.getElementById("navbar").style.display = "none";
-    }
-});
+// firebase.auth().onAuthStateChanged(function(user) {
+//     if(user){
+//         window.location.replace("discover.html");
+//     }
+//     else{
+//         document.getElementById("navbar").style.display = "none";
+//     }
+// });
 
 
 function handleSignUp() {
@@ -37,6 +37,19 @@ function handleSignUp() {
                 }).then(function() {
                     console.log("Document successfully written!");
                     document.getElementById('sign-up-form').style.display='none';
+                    window.location.replace("discover.html");
+                    db.collection("users").doc(user.uid).collection("MovieList").doc("abcdefghij").set({
+                    }).then(function() {
+                        console.log("Movie Collection Created");
+                    });
+                    db.collection("users").doc(user.uid).collection("MusicList").doc("abcdefghij").set({
+                    }).then(function() {
+                        console.log("Music Collection Created");
+                    });
+                    db.collection("users").doc(user.uid).collection("ShowsList").doc("abcdefghij").set({
+                    }).then(function() {
+                        console.log("Shows Collection Created");
+                    });
                 }).catch(function(error) {
                     console.log("error adding document: ", error);
                 })
@@ -88,7 +101,8 @@ function signIn() {
                             var firstName = doc.data().firstName;
                             var lastName = doc.data().lastName;
                             document.getElementById('sign-in-form').style.display='none';
-                            alert("Welcome " + firstName + lastName + "!");
+                            window.location.replace("discover.html");
+                            alert("Welcome " + firstName + " " + lastName + "!");
                         } else {
                             // doc.data() will be undefined in this case
                             alert("No User In Data Base");

@@ -59,6 +59,15 @@ function isInList(list,doc) {
     return 0;
 }
 
+function isInList(list,doc) {
+    for (let i = 0; i < list.length; i++) {
+        if (list[i].id == doc.id) {
+            return 1;
+        }
+    }
+    return 0;
+}
+
 
 
 function listToInnerText(docs) {
