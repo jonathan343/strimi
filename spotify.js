@@ -42,6 +42,19 @@ const APIController = (function() {
         return data;
     }
 
+    const _searchTrack = async (token, q) => {
+
+        const limit = 10;
+
+        const result = await fetch(`https://api.spotify.com/v1/search?q=${q}&type=track&limit=${limit}`, {
+            method: 'GET',
+            headers: { 'Authorization' : 'Bearer ' + token}
+        });
+
+        const data = await result.json();
+        return data;
+    }
+
     return {
         getToken() {
             return _getToken();
@@ -51,6 +64,9 @@ const APIController = (function() {
         },
         getTrack(token, trackEndPoint) {
             return _getTrack(token, trackEndPoint);
+        },
+        searchTrack(token, q) {
+            return _searchTrack(token, q);
         }
     }
 })();
@@ -283,53 +299,12 @@ const UIController = (function() {
                         });
                         
                         })
-                        // console.log("likes",likeTotal);
-                        // console.log("dislikes",dislikeTotal);
-                        // console.log("reviewCount",reviewCount);
-                        // const vals = [likeTotal,dislikeTotal,reviewCount];
-
-                        // document.getElementById(`likes-${id2}`).innerHTML = likeTotal;
-                        // document.getElementById(`dislikes-${id2}`).innerHTML = dislikeTotal;
-                        // document.getElementById(`reviewCount-${id2}`).innerHTML = reviewCount;
-
                     });
             }
             else{
                 console.log("Not signed in");
             }
         },
-
-        // need method to create the song detail
-        // createTrackDetail(img, title, artist) {
-
-        //     const detailDiv = document.querySelector(DOMElements.divSongDetail);
-        //     // any time user clicks a new song, we need to clear out the song detail div
-        //     detailDiv.innerHTML = '';
-
-        //     const html = 
-        //     `
-        //     <div class="row col-sm-12 px-0">
-        //         <img src="${img}" alt="">        
-        //     </div>
-        //     <div class="row col-sm-12 px-0">
-        //         <label for="Genre" class="form-label col-sm-12">${title}:</label>
-        //     </div>
-        //     <div class="row col-sm-12 px-0">
-        //         <label for="artist" class="form-label col-sm-12">By ${artist}:</label>
-        //     </div> 
-        //     `;
-
-        //     detailDiv.insertAdjacentHTML('beforeend', html)
-        // },
-
-        // resetTrackDetail() {
-        //     this.inputField().songDetail.innerHTML = '';
-        // },
-
-        // resetTracks() {
-        //     this.inputField().tracks.innerHTML = '';
-        //     this.resetTrackDetail();
-        // },
         
         storeToken(value) {
             document.querySelector(DOMElements.hfToken).value = value;
@@ -345,8 +320,6 @@ const UIController = (function() {
 })();
 
 const APPController = (function(UICtrl, APICtrl) {
-
-    
 
     // get input field object ref
     const DOMInputs = UICtrl.inputField();
@@ -376,21 +349,6 @@ const APPController = (function(UICtrl, APICtrl) {
         tracks.forEach(el => UICtrl.createTrack(el.track.external_urls.spotify, el.track.name,el.track.artists[0].name,el.track.id,el.track.album.images[0].url))
         
     });
-
-    // create song selection click event listener
-    // DOMInputs.tracks.addEventListener('click', async (e) => {
-    //     // prevent page reset
-    //     e.preventDefault();
-    //     UICtrl.resetTrackDetail();
-    //     // get the token
-    //     const token = UICtrl.getStoredToken().token;
-    //     // get the track endpoint
-    //     const trackEndpoint = e.target.id;
-    //     //get the track object
-    //     const track = await APICtrl.getTrack(token, trackEndpoint);
-    //     // load the track details
-    //     UICtrl.createTrackDetail(track.album.images[0].url, track.name, track.artists[0].name);
-    // });
 
     return {
         init() {

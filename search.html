@@ -54,7 +54,7 @@
         <div class="search-navbar">
             <div class="search-container">
                 <input type="text" name="search" placeholder="Search..." class="search-input" id="search-bar">
-                <a onclick="search()" class="search-btn">
+                <a onclick="searchLoad()" class="search-btn">
                     <i class="fa fa-search" aria-hidden="true"></i>
                 <!-- <img src="Images/search.png" height="10px" width="10px" alt=""> -->
                 </a>
@@ -74,24 +74,30 @@
     <!-- Home Screen -->
     <div class="container-fluid parallax-home" id="discover">
         <div class="row align-items-start">
-            <h1 class="pl-3">Discover</h1>
+            <h1 class="pl-3">Search</h1>
         </div>
         <div class="col-lg-4 text-center mb-3 mx-auto">
             <div class="btn-group mb-3 ml-3" role="group" aria-label="Discover Selections">
-                <button type="button" id="discover-movies-btn" class="btn btn-secondary active" onclick="showSearchMovies()"> Movies</button>
-                <button type="button" id="discover-shows-btn" class="btn btn-secondary" onclick="showSearchShows()">TV Shows</button>
-                <button type="button" id="discover-music-btn" class="btn btn-secondary" onclick="showSearchMusic()">Music</button>
+                <button type="button" id="search-movies-btn" class="btn btn-secondary active" onclick="searchMovies()"> Movies</button>
+                <button type="button" id="search-shows-btn" class="btn btn-secondary" onclick="searchShows()">TV Shows</button>
+                <button type="button" id="search-music-btn" class="btn btn-secondary" onclick="searchMusic()">Songs</button>
             </div>
         </div>
         <div class="container-fluid discover-src-list">
-            <div class="row" id="discover-movies-list">
+            <div class="row" id="search-movies-list">
+
+            </div>
+            <div class="row" id="search-shows-list">
+
+            </div>
+            <div class="row" id="search-music-list">
 
             </div>
         </div>
     </div>
 
     <div class="container">
-        <div id="live-view">
+        <div id="live-view" style="display: none;">
             <div class="col px-2" id="live-view-content">
                 <h2 class="text-center pt-2">Live View</h1>
                 <div class="row live-view-person mx-auto my-2">
@@ -193,5 +199,6 @@
     </script>
 
     <script src="firebase.js"></script>
+    <script src="search.js"></script>
 </body>
 </html>

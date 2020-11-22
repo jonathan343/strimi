@@ -79,32 +79,16 @@ firebase.auth().onAuthStateChanged(function(user) {
 
 //Search functions
 
-function search(){
+function searchLoad(){
     var search_input = document.getElementById("search-bar").value;
-    window.location.replace("search.html");
+    window.location.href = "search.html?search="+search_input;
+    // window.location.replace("search.html");
     console.log(search_input);
-    //getMovieID(search_input);
-    // getTvShowID(search_input);
+    
+    //getTvShowID(search_input);
     //call getSongID(search_input) function here
 }
 
-function getMovieID(movie){
-    const baseURL = "https://api.themoviedb.org/3/";
-    const API_key = "0b3c99fd0f35bf406b61b4076e59dce5"; //key for the movie database API
-    let movie_id;
-    let url = baseURL + "search/movie?api_key=" + API_key + "&query=" + movie;
-
-    fetch(url)
-    .then(result => result.json())
-    .then((data) => {
-        let info = data.results.slice(0, 15);
-        for(let i = 0; i < info.length; i++){
-            movie_id = info[i].id;
-            // getMovieDetails(movie_id);     
-            console.log(info[i].title); 
-        } 
-    })
-}
 
 function getTVShowID(tv_show){
     const baseURL = "https://api.themoviedb.org/3/";

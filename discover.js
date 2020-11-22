@@ -437,7 +437,7 @@ function writeMovieReview(movie_id){
 firebase.auth().onAuthStateChanged(function(user) {
     if (user) {
         getTopMovies();
-        getTopShows();
+        // getTopShows();
     }
   });
 
