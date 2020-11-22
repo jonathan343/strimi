@@ -137,7 +137,7 @@ function getTopMovies(){
         var movieDiv = document.getElementById('discover-movies-list');
         movieDiv.innerHTML = "";
         for(let i = 0; i < info.length; i++){
-            movie_id = info[i].id;
+            let movie_id = info[i].id;
             
 
             const baseURL = "https://api.themoviedb.org/3/";
@@ -147,7 +147,6 @@ function getTopMovies(){
             fetch(url)
             .then(result => result.json())
             .then((data2) => {
-                // console.log(data2.production_companies);
                 if(data2.production_companies.length == 0){
                     movie_maker = "&nbsp;";
                 }
