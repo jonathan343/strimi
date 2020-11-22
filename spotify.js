@@ -18,7 +18,6 @@ const APIController = (function() {
         const data = await result.json();
         return data.access_token;
     }
-
     const _getTracks = async (token, tracksEndPoint) => {
 
         const limit = 20;
