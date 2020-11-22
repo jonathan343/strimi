@@ -49,16 +49,25 @@
                 <li class="nav-item"><a href="myProfile.html" class="cool-link nav-link">My Profile</a></li>
                 <li class="nav-item"><a href="About_Us.html" class="cool-link nav-link active">About Us</a></li>
             </ul>
+        </div>
             
-            <div class="ml-auto d-flex flex-row-reverse">
-                <a class="px-3 text-white" id="live-view-btn" target="_blank"><button type="button" class="btn btn-outline-dark live-btn btn-sm">Live View</button></a>
-
-                <label class="px-3 switch my-auto">
-                    <input type="checkbox" id="themeToggle" onclick="handleClick(this);">
-                    <span class="slider round"></span>
-                </label>
+        <div class="search-navbar">
+            <div class="search-container">
+                <input type="text" name="search" placeholder="Search..." class="search-input" id="search-bar">
+                <a onclick="search()" class="search-btn">
+                    <i class="fa fa-search" aria-hidden="true"></i>
+                <!-- <img src="Images/search.png" height="10px" width="10px" alt=""> -->
+                </a>
             </div>
-            
+        </div>
+
+        <div class="ml-auto d-flex flex-row-reverse">
+            <a class="px-3 text-white" id="live-view-btn" target="_blank"><button type="button" class="btn btn-outline-dark live-btn btn-sm">Live View</button></a>
+
+            <label class="px-3 switch my-auto">
+                <input type="checkbox" id="themeToggle" onclick="handleClick(this);">
+                <span class="slider round"></span>
+            </label>
         </div>
         
     </nav>

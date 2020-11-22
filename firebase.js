@@ -76,3 +76,47 @@ firebase.auth().onAuthStateChanged(function(user) {
         updateLiveView();
     }
 });
+
+//Search functions
+
+function searchs(){
+    var search_input = document.getElementById("search-bar").value;
+    console.log(search_input);
+    getMovieID(search_input);
+    getTvShowID(search_input);
+    //call getSongID(search_input) function here
+}
+
+function getMovieID(movie){
+    const baseURL = "https://api.themoviedb.org/3/";
+    const API_key = "0b3c99fd0f35bf406b61b4076e59dce5"; //key for the movie database API
+    let movie_id;
+    let url = baseURL + "search/movie?api_key=" + API_key + "&query=" + movie;
+
+    fetch(url)
+    .then(result => result.json())
+    .then((data) => {
+        let info = data.results.slice(0, 15);
+        for(let i = 0; i < info.length; i++){
+            movie_id = info[i].id;
+            getMovieDetails(movie_id);      
+        } 
+    })
+}
+
+function getTVShowID(tv_show){
+    const baseURL = "https://api.themoviedb.org/3/";
+    const API_key = "0b3c99fd0f35bf406b61b4076e59dce5"; //key for the movie database API
+    let tv_show_id;
+    let url = baseURL + "search/tv?api_key=" + API_key + "&query=\"" + tv_show + "\"";
+
+    fetch(url)
+    .then(result => result.json())
+    .then((data) => {
+        let info = data.results.slice(0, 15);
+        for(let i = 0; i < info.length; i++){
+            tv_show_id = info[i].id;
+            getTVShowDetails(tv_show_id);      
+        } 
+    })
+}

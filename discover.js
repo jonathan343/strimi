@@ -135,11 +135,11 @@ function getTopMovies(){
     .then(result => result.json())
     .then((data) => {
 
-        info = data.results.slice(0, 15);
+        let info = data.results.slice(0, 15);
         var movieDiv = document.getElementById('discover-movies-list');
         movieDiv.innerHTML = "";
         for(let i = 0; i < info.length; i++){
-            movie_id = info[i].id;
+            let movie_id = info[i].id;
             
 
             const baseURL = "https://api.themoviedb.org/3/";
@@ -149,8 +149,13 @@ function getTopMovies(){
             fetch(url)
             .then(result => result.json())
             .then((data2) => {
-                movie_maker = data2.production_companies[0].name;
-                poster_image = "https://image.tmdb.org/t/p/w500" + info[i].poster_path;
+                if(data2.production_companies.length == 0){
+                    movie_maker = "&nbsp;";
+                }
+                else{
+                    movie_maker = data2.production_companies[0].name;
+                }
+                let poster_image = "https://image.tmdb.org/t/p/w500" + info[i].poster_path;
 
                 const html =
             `
@@ -342,4 +347,5 @@ function getRunTime(run_time){
     console.log("Run Time: " + run_time);
     console.log("--------------------");
 }
+
 
