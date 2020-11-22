@@ -42,6 +42,19 @@ const APIController = (function() {
         return data;
     }
 
+    const _searchTrack = async (token, q) => {
+
+        const limit = 10;
+
+        const result = await fetch(`https://api.spotify.com/v1/search?q=${q}&type=track&limit=${limit}`, {
+            method: 'GET',
+            headers: { 'Authorization' : 'Bearer ' + token}
+        });
+
+        const data = await result.json();
+        return data;
+    }
+
     return {
         getToken() {
             return _getToken();
@@ -51,6 +64,9 @@ const APIController = (function() {
         },
         getTrack(token, trackEndPoint) {
             return _getTrack(token, trackEndPoint);
+        },
+        searchTrack(token, q) {
+            return _searchTrack(token, q);
         }
     }
 })();
