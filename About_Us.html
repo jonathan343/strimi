@@ -49,16 +49,25 @@
                 <li class="nav-item"><a href="myProfile.html" class="cool-link nav-link">My Profile</a></li>
                 <li class="nav-item"><a href="About_Us.html" class="cool-link nav-link active">About Us</a></li>
             </ul>
+        </div>
             
-            <div class="ml-auto d-flex flex-row-reverse">
-                <a class="px-3 text-white" id="live-view-btn" tabindex="0" target="_blank"><button type="button" class="btn btn-outline-dark live-btn btn-sm">Live View</button></a>
-
-                <label tabindex="0" class="px-3 switch my-auto">
-                    <input type="checkbox" id="themeToggle" onclick="handleClick(this);">
-                    <span class="slider round"></span>
-                </label>
+        <div class="search-navbar">
+            <div class="search-container">
+                <input type="text" name="search" placeholder="Search..." class="search-input" id="search-bar">
+                <a onclick="search()" class="search-btn">
+                    <i class="fa fa-search" aria-hidden="true"></i>
+                <!-- <img src="Images/search.png" height="10px" width="10px" alt=""> -->
+                </a>
             </div>
+        </div>
             
+        <div class="ml-auto d-flex flex-row-reverse">
+            <a class="px-3 text-white" id="live-view-btn" tabindex="0" target="_blank"><button type="button" class="btn btn-outline-dark live-btn btn-sm">Live View</button></a>
+
+            <label tabindex="0" class="px-3 switch my-auto">
+                <input type="checkbox" id="themeToggle" onclick="handleClick(this);">
+                <span class="slider round"></span>
+            </label>
         </div>  
     </nav>
 
@@ -86,79 +95,76 @@
         <div id="card_content">
             <div class="rows">
                 <div class="card" style="width: 19rem;" id="individual_card">
-                    <img src="Images/Jonathan2.jpg" class="card-img-top" alt="...">
+                    <div class="frame" id="developer-img" style="background-image: url('Images/Jonathan2.jpg')"></div>
                     <div class="card-body">
                         <h5 class="card-title"><strong>Jonathan Gaytan</strong></h5>
                         <h6 class="card-subtitle mb-2 text-muted">Project Manager, Front-end</h6>
                         <p class="card-text">I did nothing on this project, like absolutely nothing. Seriously I did nothing.</p>
                         <div class="social_media">
-                            <a class="fa fa-facebook" id="fb"></a>
-                            <a class="fa fa-twitter" id="twitter"></a>
-                            <a class="fa fa-instagram" id="IG"></a>
-                            <a class="fa fa-linkedin" id="link"></a>
-                            <a class="fa fa-github" id="git"></a>
+                            <a target="blank" href="https://www.youtube.com/channel/UCLFJxNvrg4j4KmMf3LGQK_w" class="fa fa-youtube" id="fb"></a>
+                            <a target="blank" href="https://twitter.com/JonathanG343" class="fa fa-twitter" id="twitter"></a>
+                            <a target="blank" href="https://www.instagram.com/jonathang09/" class="fa fa-instagram" id="IG"></a>
+                            <a target="blank" href="https://www.linkedin.com/in/jonathan-gaytan-b3bab01ab/" class="fa fa-linkedin" id="link"></a>
+                            <a target="blank" href="https://github.com/jonathan343" class="fa fa-github" id="git"></a>
                         </div>
                     </div>
                 </div>
                 <div class="card" style="width: 19rem;" id="individual_card">
-                    <img src="Images/Matthew.jpeg" class="card-img-top"  alt="...">
+                    <div class="frame" id="developer-img" style="background-image: url('Images/Matthew.jpg')"></div>
                     <div class="card-body">
                         <h5 class="card-title"><strong>Matthew Bunker</strong></h5>
                         <h6 class="card-subtitle mb-2 text-muted">Front-end, Movie/Tv Show API Manager</h6>
                         <p class="card-text">I did nothing on this project, like absolutely nothing. Seriously I did nothing.</p>
                         <div class="social_media">
-                            <a class="fa fa-facebook" id="fb"></a>
-                            <a class="fa fa-twitter" id="twitter"></a>
-                            <a class="fa fa-instagram" id="IG"></a>
-                            <a class="fa fa-linkedin" id="link"></a>
-                            <a class="fa fa-github" id="git"></a>
+                            <a target="blank" href="https://twitter.com/MatthewBunker17" class="fa fa-twitter" id="twitter"></a>
+                            <a target="blank" href="https://www.instagram.com/matthewb0816/" class="fa fa-instagram" id="IG"></a>
+                            <a target="blank" href="https://www.linkedin.com/in/matthew-bunker-744a14186/" class="fa fa-linkedin" id="link"></a>
+                            <a target="blank" href="https://github.com/MatthewBunker" class="fa fa-github" id="git"></a>
                         </div>
                     </div>
                 </div>
                 <div class="card" style="width: 19rem;" id="individual_card">
-                    <img src="Images/Abraham.jpg" class="card-img-top" alt="...">
+                    <div class="frame" id="developer-img" style="background-image: url('Images/Abraham.jpg')"></div>
                     <div class="card-body">
                         <h5 class="card-title"><strong>Abraham Sanchez</strong></h5>
                         <h6 class="card-subtitle mb-2 text-muted">Song API Manager</h6>
                         <p class="card-text">I did nothing on this project, like absolutely nothing. Seriously I did nothing.</p>
                         <div class="social_media">
-                            <a class="fa fa-facebook" id="fb"></a>
-                            <a class="fa fa-twitter" id="twitter"></a>
-                            <a class="fa fa-instagram" id="IG"></a>
-                            <a class="fa fa-linkedin" id="link"></a>
-                            <a class="fa fa-github" id="git"></a>
+                            <a target="blank" href="https://www.instagram.com/abrahamgmfb/" class="fa fa-instagram" id="IG"></a>
+                            <a target="blank" href="https://www.linkedin.com/in/theabrahamsanchez/" class="fa fa-linkedin" id="link"></a>
+                            <a target="blank" href="https://github.com/abrahamsama" class="fa fa-github" id="git"></a>
                         </div>
                     </div>
                 </div>
             </div>
             <div class="rows">
                 <div class="card" style="width: 19rem;" id="individual_card">
-                    <img src="Images/Jared.png" class="card-img-top" alt="...">
+                    <div class="frame" id="developer-img" style="background-image: url('Images/Jared.jpg')"></div>
                     <div class="card-body">
                         <h5 class="card-title"><strong>Jared Clifford</strong></h5>
                         <h6 class="card-subtitle mb-2 text-muted">Front-end, Databases Manager</h6>
                         <p class="card-text">I did nothing on this project, like absolutely nothing. Seriously I did nothing.</p>
                         <div class="social_media">
-                            <a class="fa fa-facebook" id="fb"></a>
-                            <a class="fa fa-twitter" id="twitter"></a>
-                            <a class="fa fa-instagram" id="IG"></a>
-                            <a class="fa fa-linkedin" id="link"></a>
-                            <a class="fa fa-github" id="git"></a>
+                            <a target="blank" href="https://www.facebook.com/jared.clifford.547/" class="fa fa-facebook" id="fb"></a>
+                            <a target="blank" href="https://twitter.com/CliffordTheDoge" class="fa fa-twitter" id="twitter"></a>
+                            <a target="blank" href="https://instagram.com/jared.cliff/" class="fa fa-instagram" id="IG"></a>
+                            <a target="blank" href="https://www.linkedin.com/in/jared-clifford-445584186" class="fa fa-linkedin" id="link"></a>
+                            <a target="blank" href="https://github.com/JaredClifford" class="fa fa-github" id="git"></a>
                         </div>
                     </div>
                 </div>
                 <div class="card" style="width: 19rem;" id="individual_card">
-                    <img src="Images/Joseph.jpg" class="card-img-top" alt="...">
+                    <div class="frame" id="developer-img" style="background-image: url('Images/Joseph.jpg')"></div>
                     <div class="card-body">
                         <h5 class="card-title"><strong>Joseph Phelan</strong></h5>
                         <h6 class="card-subtitle mb-2 text-muted">Team Coordinator</h6>
                         <p class="card-text">I did nothing on this project, like absolutely nothing. Seriously I did nothing.</p>
                         <div class="social_media">
-                            <a class="fa fa-facebook" id="fb"></a>
-                            <a class="fa fa-twitter" id="twitter"></a>
-                            <a class="fa fa-instagram" id="IG"></a>
-                            <a class="fa fa-linkedin" id="link"></a>
-                            <a class="fa fa-github" id="git"></a>
+                            <a target="blank" href="" class="fa fa-facebook" id="fb"></a>
+                            <a target="blank" href="" class="fa fa-twitter" id="twitter"></a>
+                            <a target="blank" href="" class="fa fa-instagram" id="IG"></a>
+                            <a target="blank" href="" class="fa fa-linkedin" id="link"></a>
+                            <a target="blank" href="" class="fa fa-github" id="git"></a>
                         </div>
                     </div>
                 </div>
@@ -276,4 +282,3 @@
     <script src="firebase.js"></script>
 </body>
 </html>
-                

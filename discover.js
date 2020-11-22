@@ -138,7 +138,7 @@ function getTopMovies(){
         var movieDiv = document.getElementById('discover-movies-list');
         movieDiv.innerHTML = "";
         for(let i = 0; i < info.length; i++){
-            movie_id = info[i].id;
+            let movie_id = info[i].id;
             
 
             const baseURL = "https://api.themoviedb.org/3/";
@@ -148,7 +148,6 @@ function getTopMovies(){
             fetch(url)
             .then(result => result.json())
             .then((data2) => {
-                // console.log(data2.production_companies);
                 if(data2.production_companies.length == 0){
                     movie_maker = "&nbsp;";
                 }
@@ -253,6 +252,53 @@ function getTopMovies(){
             document.getElementById(`reviews-${data2.id}`).innerHTML = "";
             var user = firebase.auth().currentUser;
             if (user){
+                var selfRef = db.collection("users").doc(user.uid);
+                selfRef.get().then(function(doc5) {
+                    if (doc5.exists) {
+                        var reviewRef = db.collection("users").doc(doc5.id).collection("MovieList").doc(`${data2.id}`);
+                        reviewRef.get().then(function(doc6) {
+                            console.log(doc5.id,user.uid);
+                            if (doc6.exists) {
+                                var reviewDiv = document.getElementById(`reviews-${data2.id}`);
+                                // console.log(doc6.data().rating);
+                                if(doc6.data().rating == 1){
+                                    // console.log("like detected");
+                                    // likeTotal +=1;
+                                    var likes = parseInt(document.getElementById(`likes-${data2.id}`).innerHTML);
+                                    likes+=1;
+                                    document.getElementById(`likes-${data2.id}`).innerHTML = likes;
+                                    
+                                }
+                                else if(doc6.data().rating == -1){
+                                    // dislikeTotal +=1;
+                                    var dislikes = parseInt(document.getElementById(`dislikes-${data2.id}`).innerHTML);
+                                    dislikes+=1;
+                                    document.getElementById(`dislikes-${data2.id}`).innerHTML = dislikes;
+                                }
+                                // reviewCount +=1;
+                                var reviewCount = parseInt(document.getElementById(`reviewCount-${data2.id}`).innerHTML);
+                                reviewCount+=1;
+                                document.getElementById(`reviewCount-${data2.id}`).innerHTML = reviewCount;
+                                const reviewData = 
+                                `
+                                <h4>${doc5.data().firstName} ${doc5.data().lastName}</h4>
+                                <h5>${doc6.data().review}</h5>
+                                <p class="mb-0">&nbsp;</p>
+                                `;
+                                reviewDiv.insertAdjacentHTML('beforeend',reviewData);
+
+
+                                
+                            }
+                        }).catch(function(error) {
+                            console.log("Error getting document1:", error);
+                        });
+                    }
+                })
+                .catch(function(error) {
+                    console.log("Error getting document2:", error);
+                });
+                
                 var docRef = db.collection("users").doc(user.uid).collection("friends");
                 docRef.get().then((querySnapshot) => {
                         // likeTotal = 0;
@@ -290,9 +336,11 @@ function getTopMovies(){
                                         `
                                         <h4>${doc5.data().firstName} ${doc5.data().lastName}</h4>
                                         <h5>${doc6.data().review}</h5>
-                                        <p>&nbsp;</p>
+                                        <p class="mb-0">&nbsp;</p>
                                         `;
                                         reviewDiv.insertAdjacentHTML('beforeend',reviewData);
+
+
                                         
                                     }
                                 }).catch(function(error) {
@@ -364,6 +412,7 @@ function saveReview(movie_id){
     } else {
         console.log("Not currently signed in");
     }
+    getTopMovies();
 }
 
 function writeMovieReview(movie_id){
@@ -662,6 +711,52 @@ function getTopShows(){
 
             var user = firebase.auth().currentUser;
             if (user){
+                var selfRef = db.collection("users").doc(user.uid);
+                selfRef.get().then(function(doc5) {
+                    if (doc5.exists) {
+                        var reviewRef = db.collection("users").doc(doc5.id).collection("ShowsList").doc(`${data2.id}`);
+                        reviewRef.get().then(function(doc6) {
+                            console.log(doc5.id,user.uid);
+                            if (doc6.exists) {
+                                var reviewDiv = document.getElementById(`reviews-show-${data2.id}`);
+                                // console.log(doc6.data().rating);
+                                if(doc6.data().rating == 1){
+                                    // console.log("like detected");
+                                    // likeTotal +=1;
+                                    var likes = parseInt(document.getElementById(`likes-show-${data2.id}`).innerHTML);
+                                    likes+=1;
+                                    document.getElementById(`likes-show-${data2.id}`).innerHTML = likes;
+                                    
+                                }
+                                else if(doc6.data().rating == -1){
+                                    // dislikeTotal +=1;
+                                    var dislikes = parseInt(document.getElementById(`dislikes-show-${data2.id}`).innerHTML);
+                                    dislikes+=1;
+                                    document.getElementById(`dislikes-show-${data2.id}`).innerHTML = dislikes;
+                                }
+                                // reviewCount +=1;
+                                var reviewCount = parseInt(document.getElementById(`reviewCount-show-${data2.id}`).innerHTML);
+                                reviewCount+=1;
+                                document.getElementById(`reviewCount-show-${data2.id}`).innerHTML = reviewCount;
+                                const reviewData = 
+                                `
+                                <h4>${doc5.data().firstName} ${doc5.data().lastName}</h4>
+                                <h5>${doc6.data().review}</h5>
+                                <p class="mb-0">&nbsp;</p>
+                                `;
+                                reviewDiv.insertAdjacentHTML('beforeend',reviewData);
+                                
+                            }
+                        }).catch(function(error) {
+                            console.log("Error getting document1:", error);
+                        });
+                    }
+                })
+                .catch(function(error) {
+                    console.log("Error getting document2:", error);
+                });
+
+
                 var docRef = db.collection("users").doc(user.uid).collection("friends");
                 docRef.get().then((querySnapshot) => {
                         // likeTotal = 0;
@@ -699,7 +794,7 @@ function getTopShows(){
                                         `
                                         <h4>${doc5.data().firstName} ${doc5.data().lastName}</h4>
                                         <h5>${doc6.data().review}</h5>
-                                        <p>&nbsp;</p>
+                                        <p class="mb-0">&nbsp;</p>
                                         `;
                                         reviewDiv.insertAdjacentHTML('beforeend',reviewData);
                                         
@@ -777,6 +872,8 @@ function saveShowReview(movie_id){
     } else {
         console.log("Not currently signed in");
     }
+
+    getTopShows();
 }
 
 function writeShowReview(movie_id){
