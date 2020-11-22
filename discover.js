@@ -411,7 +411,7 @@ function saveReview(movie_id){
     } else {
         console.log("Not currently signed in");
     }
-    getTopMovies();
+    // getTopMovies();
 }
 
 function writeMovieReview(movie_id){
@@ -437,6 +437,7 @@ function writeMovieReview(movie_id){
 firebase.auth().onAuthStateChanged(function(user) {
     if (user) {
         getTopMovies();
+        getTopShows();
     }
   });
 
@@ -841,6 +842,15 @@ function dislikeShowClick(movie_id){
     btn2 = document.getElementById(`like-show-${movie_id}`).style.color = "#000000";
 }
 
+function likeSongClick(movie_id){
+    btn = document.getElementById(`like-song-${movie_id}`).style.color = "#4278f5";
+    btn2 = document.getElementById(`dislike-song-${movie_id}`).style.color = "#000000";
+}
+
+function dislikeSongClick(movie_id){
+    btn = document.getElementById(`dislike-song-${movie_id}`).style.color = "#f55142";
+    btn2 = document.getElementById(`like-song-${movie_id}`).style.color = "#000000";
+}
 
 function saveShowReview(movie_id){
     dislikeBtn = document.getElementById(`dislike-show-${movie_id}`).style.color;
@@ -872,7 +882,7 @@ function saveShowReview(movie_id){
         console.log("Not currently signed in");
     }
 
-    getTopShows();
+    // getTopShows();
 }
 
 function writeShowReview(movie_id){
@@ -894,6 +904,57 @@ function writeShowReview(movie_id){
         });
 }
 
+function saveSongReview(movie_id){
+    dislikeBtn = document.getElementById(`dislike-song-${movie_id}`).style.color;
+    likeBtn = document.getElementById(`like-song-${movie_id}`).style.color;
+    var rating = 0;
+    var user = firebase.auth().currentUser;
+    var review = document.getElementById(`review-song-${movie_id}`).value;
+
+    if (likeBtn == "rgb(66, 120, 245)"){
+        rating = 1;
+        console.log("Like");
+    }
+    if (dislikeBtn == "rgb(245, 81, 66)"){
+        rating = -1;
+        console.log("Dislike");
+    }
+
+    if (user) {
+        console.log(rating);
+        db.collection("users").doc(user.uid).collection("MusicList").doc(movie_id).set({
+            review: review,
+            rating, rating
+        }).then(function() {
+            console.log("Review Written Successfully!");
+            document.getElementById(`close-song-btn-${movie_id}`).click();
+            
+        });
+    } else {
+        console.log("Not currently signed in");
+    }
+
+    // getTopShows();
+}
+
+function writeSongReview(movie_id){
+    var user = firebase.auth().currentUser;
+    var reviewRef = db.collection("users").doc(user.uid).collection("MusicList").doc(`${movie_id}`);
+    reviewRef.get().then(function(doc) {
+        if (doc.exists) {
+            document.getElementById(`review-song-${movie_id}`).innerHTML = doc.data().review;
+            if(doc.data().rating == 1){
+                btn = document.getElementById(`like-song-${movie_id}`).style.color = "#4278f5";
+            }
+            if(doc.data().rating == -1){
+                btn = document.getElementById(`dislike-song-${movie_id}`).style.color = "#f55142";
+            }
+        }
+        })
+        .catch(function(error) {
+            console.log("Error getting document1:", error);
+        });
+}
 
 //showMovies();
 function showMovies(){

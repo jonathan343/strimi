@@ -143,7 +143,7 @@ const UIController = (function() {
                                 <span aria-hidden="true">&times;</span>
                             </button>
                         </div>
-                        <div class="modal-body" id="reviews-show-${id2}">
+                        <div class="modal-body" id="reviews-song-${id2}">
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -153,7 +153,7 @@ const UIController = (function() {
                 </div>
             </div>
             
-            <div class="modal fade" id="modal2-show-${id2}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+            <div class="modal fade" id="modal2-song-${id2}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
                             <div class="modal-header">
@@ -182,6 +182,122 @@ const UIController = (function() {
             </div>
             `;
             document.body.insertAdjacentHTML('beforeend',modal);
+            document.getElementById(`reviews-song-${id2}`).innerHTML = "";
+
+            var user = firebase.auth().currentUser;
+            if (user){
+                var selfRef = db.collection("users").doc(user.uid);
+                selfRef.get().then(function(doc5) {
+                    if (doc5.exists) {
+                        var reviewRef = db.collection("users").doc(doc5.id).collection("MusicList").doc(`${id2}`);
+                        reviewRef.get().then(function(doc6) {
+                            console.log(doc5.id,user.uid);
+                            if (doc6.exists) {
+                                var reviewDiv = document.getElementById(`reviews-song-${id2}`);
+                                // console.log(doc6.data().rating);
+                                if(doc6.data().rating == 1){
+                                    // console.log("like detected");
+                                    // likeTotal +=1;
+                                    var likes = parseInt(document.getElementById(`likes-song-${id2}`).innerHTML);
+                                    likes+=1;
+                                    document.getElementById(`likes-song-${id2}`).innerHTML = likes;
+                                    
+                                }
+                                else if(doc6.data().rating == -1){
+                                    // dislikeTotal +=1;
+                                    var dislikes = parseInt(document.getElementById(`dislikes-song-${id2}`).innerHTML);
+                                    dislikes+=1;
+                                    document.getElementById(`dislikes-song-${id2}`).innerHTML = dislikes;
+                                }
+                                // reviewCount +=1;
+                                var reviewCount = parseInt(document.getElementById(`reviewCount-song-${id2}`).innerHTML);
+                                reviewCount+=1;
+                                document.getElementById(`reviewCount-song-${id2}`).innerHTML = reviewCount;
+                                const reviewData = 
+                                `
+                                <h4>${doc5.data().firstName} ${doc5.data().lastName}</h4>
+                                <h5>${doc6.data().review}</h5>
+                                <p class="mb-0">&nbsp;</p>
+                                `;
+                                reviewDiv.insertAdjacentHTML('beforeend',reviewData);
+                                
+                            }
+                        }).catch(function(error) {
+                            console.log("Error getting document1:", error);
+                        });
+                    }
+                })
+                .catch(function(error) {
+                    console.log("Error getting document2:", error);
+                });
+
+
+                var docRef = db.collection("users").doc(user.uid).collection("friends");
+                docRef.get().then((querySnapshot) => {
+                        // likeTotal = 0;
+                        // dislikeTotal = 0;
+                        // reviewCount = 0;
+                    querySnapshot.forEach((doc) => {
+                        var friendRef = db.collection("users").doc(doc.id);
+                        friendRef.get().then(function(doc5) {
+                            if (doc5.exists) {
+                                var reviewRef = db.collection("users").doc(doc5.id).collection("MusicList").doc(`${id2}`);
+                                reviewRef.get().then(function(doc6) {
+                                    console.log(doc5.id,user.uid);
+                                    if (doc6.exists) {
+                                        var reviewDiv = document.getElementById(`reviews-song-${id2}`);
+                                        // console.log(doc6.data().rating);
+                                        if(doc6.data().rating == 1){
+                                            // console.log("like detected");
+                                            // likeTotal +=1;
+                                            var likes = parseInt(document.getElementById(`likes-song-${id2}`).innerHTML);
+                                            likes+=1;
+                                            document.getElementById(`likes-song-${id2}`).innerHTML = likes;
+                                            
+                                        }
+                                        else if(doc6.data().rating == -1){
+                                            // dislikeTotal +=1;
+                                            var dislikes = parseInt(document.getElementById(`dislikes-song-${id2}`).innerHTML);
+                                            dislikes+=1;
+                                            document.getElementById(`dislikes-song-${id2}`).innerHTML = dislikes;
+                                        }
+                                        // reviewCount +=1;
+                                        var reviewCount = parseInt(document.getElementById(`reviewCount-song-${id2}`).innerHTML);
+                                        reviewCount+=1;
+                                        document.getElementById(`reviewCount-song-${id2}`).innerHTML = reviewCount;
+                                        const reviewData = 
+                                        `
+                                        <h4>${doc5.data().firstName} ${doc5.data().lastName}</h4>
+                                        <h5>${doc6.data().review}</h5>
+                                        <p class="mb-0">&nbsp;</p>
+                                        `;
+                                        reviewDiv.insertAdjacentHTML('beforeend',reviewData);
+                                        
+                                    }
+                                }).catch(function(error) {
+                                    console.log("Error getting document1:", error);
+                                });
+                            }
+                        })
+                        .catch(function(error) {
+                            console.log("Error getting document2:", error);
+                        });
+                        
+                        })
+                        // console.log("likes",likeTotal);
+                        // console.log("dislikes",dislikeTotal);
+                        // console.log("reviewCount",reviewCount);
+                        // const vals = [likeTotal,dislikeTotal,reviewCount];
+
+                        // document.getElementById(`likes-${id2}`).innerHTML = likeTotal;
+                        // document.getElementById(`dislikes-${id2}`).innerHTML = dislikeTotal;
+                        // document.getElementById(`reviewCount-${id2}`).innerHTML = reviewCount;
+
+                    });
+            }
+            else{
+                console.log("Not signed in");
+            }
         },
 
         // need method to create the song detail
