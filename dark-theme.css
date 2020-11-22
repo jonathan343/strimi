@@ -816,6 +816,12 @@ h4 {
     color: #F4CBB2;
 }
 
+#developer-img {
+  height: 375px;
+  background: transparent no-repeat center;
+  background-size: cover;
+}
+
 /* a tag */
 a, a:hover, a:focus, a:active {
     text-decoration: none;
