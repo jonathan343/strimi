@@ -178,8 +178,14 @@ body{
     padding-top: 78px;
     color: white;
     /* box-shadow: inset 0 0 0 1000px rgba(0,0,0,.5); */
-    height: 100vh;
+    /* height: 100vh; */
     background: linear-gradient(111.06deg, #3245B3 0.31%, rgba(99, 111, 181, 0) 99.16%), #551A8B;
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: repeat;
+    background-size: cover;
+    padding-bottom:50px;
+    min-height: 100vh;
 } 
 
 #discover h1{
@@ -684,17 +690,16 @@ body{
     border-radius: 30px;
     margin-bottom: 30px;
     background: rgba(55, 57, 63, 1);
-    /* box-shadow: 0 4px 8px 0 rgba(255, 255, 255, 0.1), 0 6px 20px 0 rgba(255, 255, 255, 0.09); */
-    box-shadow: 0 -2px 5px rgba(0, 0, 0, 1);
+    box-shadow: 0 4px 8px 0 rgba(255, 255, 255, 0.1), 0 6px 20px 0 rgba(255, 255, 255, 0.09);
     /* background: white; */
 }
 
 .thumb-lg {
-    height: 127px;
-    width: 88px;
+    height: 178px;
+    width: 120px;
 }
 .img-thumbnail {
-    padding: .25rem;
+    padding: .05rem;
     background-color: #fff;
     border: 1px solid #dee2e6;
     border-radius: .25rem;
@@ -717,6 +722,7 @@ h4 {
     color: white;
     overflow: hidden;
     text-overflow: ellipsis;
+    margin-bottom: 1px;
 }
 
 .discover-src-list > .row {
