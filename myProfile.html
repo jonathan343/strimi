@@ -77,43 +77,37 @@
         <!-- <div class="row align-items-start">
             <h1 class="pl-3" style="font-size: 7vw;" id="profile-welcome">Signed Out</h1>
         </div> -->
-        <div class="row">
-            <button type="button" style="display: none;" id="sign-out-btn" class="btn btn-outline-danger" onclick="signOut()">Sign Out</button>
-        </div>
-        <div class="container-fluid pt-5 pl-4 mt-4" id="profile-container">
+        
+        <div class="container-fluid pt-5 pl-4 mt-4" id="profile-container" style="padding-left: 10%; padding-right: 10%;">
             <div class="row">
-                <div class="col-md-4">
-                    <h3 id="profile-welcome">
+                <button type="button" id="sign-out-btn" class="btn btn-outline-danger" onclick="signOut()">Sign Out</button>
+                <button type="button" data-toggle="modal" data-target="#modal-edit" class="btn btn-outline-primary "><i class="fa fa-pencil" aria-hidden="true"></i>&nbsp;&nbsp;Edit</button>
+            </div>
+                <div class="col-md-4" style="margin: 0 auto;">
+                    <h3 id="profile-welcome" style="text-align: center;">
                         Signed Out
                     </h3>
-                    <img alt="Bootstrap Image Preview" src="https://www.layoutit.com/img/sports-q-c-140-140-3.jpg" class="rounded-circle" id="profile-img"> 
-                    <div class="col-md-4 mt-4">
-                        <button type="button" class="btn btn-outline-primary btn-sm">
-                            Edit Image
-                        </button>
-                        <button type="button" style="display: none;" id="sign-out-btn" class="btn btn-primary btn-outline-danger" onclick="signOut()">
-                            Sign Out
-                        </button>
-                    </div>
-                    
+                    <img src="" class="gradient" id="profile-img" style="display:block;margin-left: auto; margin-right: auto;"> 
+                    <h5 id="bio" style="text-align: center; padding-bottom: 10%;"></h5>
                 </div>
-                <div class="col-md-8">
-                    <div class="row">
-                        <div class="col-md-12">
-                            <h3>
+                <div class="col-md-8 mx-auto">
+                    <div class="row mx-auto">
+                        <div class="col-md-12 mx-auto">
+                            <h3 style="text-align: center;">
                                 Your Reviews
                             </h3>
-                            <div class="btn-group" role="group">
-                                 
-                                <button class="btn btn-secondary" type="button">
-                                    Movies
-                                </button> 
-                                <button class="btn btn-secondary" type="button">
-                                    TV Shows
-                                </button> 
-                                <button class="btn btn-secondary" type="button">
-                                    Songs
-                                </button> 
+                            <div class="col-lg-4 mx-auto">
+                                <div class="btn-group group-class" role="group" style="display: auto; margin-left: auto; margin-right: auto;">
+                                    <button class="btn btn-secondary" type="button">
+                                        Movies
+                                    </button> 
+                                    <button class="btn btn-secondary" type="button">
+                                        TV Shows
+                                    </button> 
+                                    <button class="btn btn-secondary" type="button">
+                                        Songs
+                                    </button> 
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -156,7 +150,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            
         </div>
     </div>
 
@@ -164,70 +158,51 @@
         <div id="live-view" style="display: none;">
             <div class="col px-2" id="live-view-content">
                 <h2 class="text-center pt-2">Live View</h1>
-                <div class="row live-view-person mx-auto my-2">
-                    <div class="col-3 my-auto ml-3 px-0 d-flex justify-content-center align-items-center live-view-img">
-                        <img src="Images/A_Letter.png" alt="">
-                    </div>
-                    <div class="col-8 my-auto ml-1 pr-0 pl-2 pt-1 live-view-content">
-                        <h6 class = "live-view-name">Abraham Sanchez</h6>
-                        <div><h9 class = "live-view-media">Are You Bored Yet?</h9></div>
-                        <h9 class = "live-view-media">Wallows</h9>
-                    </div>
-                </div>
-                <div class="row live-view-person mx-auto my-2">
-                    <div class="col-3 my-auto ml-3 px-0 d-flex justify-content-center align-items-center live-view-img">
-                        <img src="Images/letter-j-blue.png" alt="">
-                    </div>
-                    <div class="col-8 my-auto ml-1 pr-0 pl-2 pt-1 live-view-content">
-                        <h6 class = "live-view-name">Joseph Phelan</h6>
-                        <div><h9 class = "live-view-media">Firework</h9></div>
-                        <h9 class = "live-view-media">Katy Perry</h9>
-                    </div>
-                </div>
-                <div class="row live-view-person mx-auto my-2">
-                    <div class="col-3 my-auto ml-3 px-0 d-flex justify-content-center align-items-center live-view-img">
-                        <img src="Images/letter-m.png" alt="">
-                    </div>
-                    <div class="col-8 my-auto ml-1 pr-0 pl-2 pt-1 live-view-content">
-                        <h6 class = "live-view-name">Matthew Bunker</h6>
-                        <div><h9 class = "live-view-media">WAP</h9></div>
-                        <h9 class = "live-view-media">Cardi B</h9>
-                    </div>
-                </div>
-                <div class="row live-view-person mx-auto my-2">
-                    <div class="col-3 my-auto ml-3 px-0 d-flex justify-content-center align-items-center live-view-img">
-                        <img src="Images/letter-j-orange.png" alt="">
-                    </div>
-                    <div class="col-8 my-auto ml-1 pr-0 pl-2 pt-1 live-view-content">
-                        <h6 class = "live-view-name">Jared Clifford</h6>
-                        <div><h9 class = "live-view-media">Party In The U.S.A.</h9></div>
-                        <h9 class = "live-view-media">Miley Cyrus</h9>
-                    </div>
-                </div>
-                <div class="row live-view-person mx-auto my-2">
-                    <div class="col-3 my-auto ml-3 px-0 d-flex justify-content-center align-items-center live-view-img">
-                        <img src="Images/A_Letter.png" alt="">
-                    </div>
-                    <div class="col-8 my-auto ml-1 pr-0 pl-2 pt-1 live-view-content">
-                        <h6 class = "live-view-name">Shawna Thomas</h6>
-                        <div><h9 class = "live-view-media">Aggie War Hymn</h9></div>
-                        <h9 class = "live-view-media">Corps Of Cadets</h9>
-                    </div>
-                </div>
-                <div class="row live-view-person mx-auto my-2">
-                    <div class="col-3 my-auto ml-3 px-0 d-flex justify-content-center align-items-center live-view-img">
-                        <img src="Images/letter-n-green.png" alt="">
-                    </div>
-                    <div class="col-8 my-auto ml-1 pr-0 pl-2 pt-1 live-view-content">
-                        <h6 class = "live-view-name">Nick Milef</h6>
-                        <div><h9 class = "live-view-media">SAD!</h9></div>
-                        <h9 class = "live-view-media">XXXTentacion</h9>
-                    </div>
-                </div>
+                <div>
+                    You need to be signed in to use this feature   
+                </div> 
             </div>
         </div>
     </div>
 
+    <div class="modal fade" id="modal-edit" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLongTitle" style="color: black;">Edit Profile</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="modal-center">
+                        <div>
+                                <img class="modal-img" src="" id="modal-img">
+                        </div>
+                        <div>
+                            <input type="file" class="btn btn-primary" id="myFile" accept="image/*" onchange="showFile()">
+                        </div>
+                    </div>
+                    <div class="form-label-group">
+                        <input type="text" id="inputFName" class="form-control" placeholder="First Name" required autofocus>
+                        <label for="inputFName">First Name</label>
+                    </div>
+                    <div class="form-label-group">
+                        <input type="text" id="inputLName" class="form-control" placeholder="Last Name" required autofocus>
+                        <label for="inputLName">Last Name</label>
+                    </div>
+                    <div class="form-label-group">
+                        <input type="text" id="inputBio" class="form-control" placeholder="Bio" required autofocus>
+                        <label for="inputBio">Bio</label>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" onclick="updateBio()" data-dismiss="modal">Save changes</button>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <!-- Optional JavaScript -->
 
@@ -244,6 +219,7 @@
 
     <!-- TODO: Add SDKs for Firebase products that you want to use https://firebase.google.com/docs/web/setup#available-libraries -->
     <script src="https://www.gstatic.com/firebasejs/8.0.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.0.0/firebase-storage.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.0.0/firebase-firestore.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.0.0/firebase-analytics.js"></script>
 

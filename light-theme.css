@@ -293,7 +293,7 @@ body{
   }
 
   .live-view-person{
-      height: 14%;
+      height: 99px;
       width: 100%;
       background: rgba(0, 0, 0, 0.2);
       border-radius: 10px;
@@ -322,8 +322,10 @@ body{
 }
 
 .live-view-img img{
-    height: 90%;
-    border-radius: 50%;    
+    height: 85%;
+    min-height: 85%;
+    border-radius: 50%;  
+     
 }
 
 .live-view-name{

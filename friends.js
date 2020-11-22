@@ -1,3 +1,4 @@
+var db = firebase.firestore();
 document.getElementById("friend-search").onkeypress = function(e) {
     if(e.key === 'Enter') {
         searchPeople();
@@ -47,7 +48,15 @@ function searchPeople() {
             return people;
         }).then(listToInnerText);
     }
-    
+}
+
+function isInList(list,doc) {
+    for (let i = 0; i < list.length; i++) {
+        if (list[i].id == doc.id) {
+            return 1;
+        }
+    }
+    return 0;
 }
 
 function isInList(list,doc) {
@@ -86,7 +95,7 @@ function listToInnerText(docs) {
         <div class="col-lg-4">
             <div class="text-center card-box">
                 <div class="member-card pb-2">
-                    <div class="thumb-lg member-thumb mx-auto mb-2"><img src="Images/Profile_Pictures/${doc.data().firstName[0].toUpperCase()}_Letter.png" class="rounded-circle img-thumbnail" alt="profile-image"></div>
+                    <div class="thumb-lg member-thumb mx-auto mb-2"><img id="friend-${doc.id}" src="Images/Profile_Pictures/${searchFriendPFP(doc.id)}_Letter.png" class="rounded-circle img-thumbnail" alt="profile-image"></div>
                     <div class="">
                         <h4>${doc.data().firstName} ${doc.data().lastName}</h4>
                         <p class="text-muted">@${doc.data().firstName}</p>
@@ -251,4 +260,21 @@ function inputToTuple(input) {
     tuple[0] = input.substring(0,input.indexOf(" "));
     tuple[1] = input.substring(input.indexOf(" ")+1, input.length);
     return tuple;
+}
+
+function searchFriendPFP(id) {
+    var picRef = firebase.storage().ref(`users/${id}.jpg`).getDownloadURL().then( 
+        (url) => {
+            document.querySelector(`#friend-${id}`).src=url;
+    }).catch((error) => {
+        var picRef = firebase.storage().ref(`users/${id}.png`).getDownloadURL().then( 
+            (url) => {
+                document.querySelector(`#friend-${id}`).src=url;
+        }).catch((error) => {
+            picRef = firebase.storage().ref(`users/default${id.charCodeAt(0)%6}.jpg`).getDownloadURL().then(
+                (url) => {
+                    document.querySelector(`#friend-${id}`).src=url;
+            });
+        });
+    });
 }
