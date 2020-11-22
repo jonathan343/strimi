@@ -292,6 +292,8 @@ function getTopMovies(){
                                         <p>&nbsp;</p>
                                         `;
                                         reviewDiv.insertAdjacentHTML('beforeend',reviewData);
+
+                                        
                                         
                                     }
                                 }).catch(function(error) {
