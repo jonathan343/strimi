@@ -698,6 +698,10 @@ body{
     height: 178px;
     width: 120px;
 }
+.thumb-xlg {
+    height: 200px;
+    width: 200px;
+}
 .img-thumbnail {
     padding: .05rem;
     background-color: #fff;
