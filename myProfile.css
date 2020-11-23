@@ -1,7 +1,4 @@
-#profile-container{
-    background: rgba(55, 57, 63, 1);
-    border-radius: 25px;
-}
+
 #profile-img{
     width: 50%;
 }
@@ -24,9 +21,6 @@
 }
 .btn-default{
     color: rgba(0, 0, 0, 0.6);
-}
-.form-control{
-    min-height: 125px;
 }
 button.like{
     border: none;
