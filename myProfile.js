@@ -393,6 +393,19 @@ function saveShowChanges(id) {
     });
 }
 
+function saveSongChanges(id) {
+    user = firebase.auth().currentUser;
+    var updated = document.getElementById(`review-music-${id}`).value;
+    docRef = db.collection("users").doc(user.uid).collection(`MusicList`).doc(`${id}`);
+    docRef.get().then(function(doc){
+        rating = doc.data().rating;
+        db.collection("users").doc(user.uid).collection(`MusicList`).doc(`${id}`).set({
+            rating: rating,
+            review: updated
+        });
+    });
+}
+
 function showMovies(){
     getMovies();
     document.getElementById("profile-music-list").style.display = 'none';
@@ -520,6 +533,60 @@ function dislikeShowClick(movie_id){
                 review = doc.data().review;
                 rating = 0;
                 db.collection("users").doc(user.uid).collection(`ShowsList`).doc(movie_id).set({
+                    rating: rating,
+                    review: review
+                });
+            }
+        })
+}
+
+function likeSongClick(movie_id){
+    user = firebase.auth().currentUser;
+    docRef = db.collection("users").doc(user.uid).collection(`MusicList`).doc(movie_id);
+        docRef.get().then(function(doc){
+            if (doc.data().rating != 1) {
+                document.getElementById(`like-${movie_id}`).style.color = "#4278f5";
+                document.getElementById(`dislike-${movie_id}`).style.color = "#000000";
+                console.log(doc.data().rating);
+                review = doc.data().review;
+                rating = 1;
+                db.collection("users").doc(user.uid).collection(`MusicList`).doc(movie_id).set({
+                    rating: rating,
+                    review: review
+                });
+            } else {
+                document.getElementById(`dislike-${movie_id}`).style.color = "#000000";
+                console.log("here");
+                document.getElementById(`like-${movie_id}`).style.color = "#000000";
+                review = doc.data().review;
+                rating = 0;
+                db.collection("users").doc(user.uid).collection(`MusicList`).doc(movie_id).set({
+                    rating: rating,
+                    review: review
+                });
+            }
+        })
+}
+
+function dislikeSongClick(movie_id){
+    user = firebase.auth().currentUser;
+    docRef = db.collection("users").doc(user.uid).collection(`MusicList`).doc(movie_id);
+        docRef.get().then(function(doc){
+            if (doc.data().rating != -1) {
+                document.getElementById(`like-${movie_id}`).style.color = "#000000";
+                document.getElementById(`dislike-${movie_id}`).style.color = "#f55142";
+                review = doc.data().review;
+                rating = -1;
+                db.collection("users").doc(user.uid).collection(`MusicList`).doc(movie_id).set({
+                    rating: rating,
+                    review: review
+                });
+            } else {
+                document.getElementById(`dislike-${movie_id}`).style.color = "#000000";
+                document.getElementById(`like-${movie_id}`).style.color = "#000000";
+                review = doc.data().review;
+                rating = 0;
+                db.collection("users").doc(user.uid).collection(`MusicList`).doc(movie_id).set({
                     rating: rating,
                     review: review
                 });
