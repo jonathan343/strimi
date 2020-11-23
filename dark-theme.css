@@ -379,9 +379,9 @@ body{
 }
 
 .live-view-media{
-    font-size: 12px;
+    font-size: 14px;
     color: rgba(255, 255, 255, 0.7);
-    
+    line-height: 18px;
 }
 
 /* .main-content{
@@ -840,6 +840,3 @@ a, a:hover, a:focus, a:active {
     max-width: 100%;
     height: auto;
 }
-
-
-
