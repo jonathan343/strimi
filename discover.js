@@ -930,10 +930,10 @@ function goLeft() {
     console.log(element.classList.length==3);
     if (element.classList.length==3) {
         element = document.getElementById(`discover-movies-list`);
-        document.getElementById(`discover-movies-list`).scrollLeft -= (element.firstElementChild.clientWidth+4);
+        document.getElementById(`discover-movies-list`).scrollLeft -= (element.firstElementChild.clientWidth+4.2);
     } else { 
         element = document.getElementById(`discover-shows-list`);
-        document.getElementById(`discover-shows-list`).scrollLeft -= (element.firstElementChild.clientWidth+4);
+        document.getElementById(`discover-shows-list`).scrollLeft -= (element.firstElementChild.clientWidth+4.2);
     }
 }
 
@@ -942,9 +942,9 @@ function goRight() {
     console.log(element.classList.length==3);
     if (element.classList.length==3) {
         element = document.getElementById(`discover-movies-list`);
-        document.getElementById(`discover-movies-list`).scrollLeft += (element.firstElementChild.clientWidth+4);
+        document.getElementById(`discover-movies-list`).scrollLeft += (element.firstElementChild.clientWidth+4.2);
     } else { 
         element = document.getElementById(`discover-shows-list`);
-        document.getElementById(`discover-shows-list`).scrollLeft += (element.firstElementChild.clientWidth+4);
+        document.getElementById(`discover-shows-list`).scrollLeft += (element.firstElementChild.clientWidth+4.2);
     }
 }
