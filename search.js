@@ -142,7 +142,6 @@ function getMovieID(movie){
                     if (doc5.exists) {
                         var reviewRef = db.collection("users").doc(doc5.id).collection("MovieList").doc(`${data2.id}`);
                         reviewRef.get().then(function(doc6) {
-                            console.log(doc5.id,user.uid);
                             if (doc6.exists) {
                                 var reviewDiv = document.getElementById(`search-reviews-${data2.id}`);
                                 // console.log(doc6.data().rating);
@@ -195,7 +194,6 @@ function getMovieID(movie){
                             if (doc5.exists) {
                                 var reviewRef = db.collection("users").doc(doc5.id).collection("MovieList").doc(`${data2.id}`);
                                 reviewRef.get().then(function(doc6) {
-                                    console.log(doc5.id,user.uid);
                                     if (doc6.exists) {
                                         var reviewDiv = document.getElementById(`search-reviews-${data2.id}`);
                                         // console.log(doc6.data().rating);
@@ -450,7 +448,6 @@ function getShowID(movie){
                     if (doc5.exists) {
                         var reviewRef = db.collection("users").doc(doc5.id).collection("ShowsList").doc(`${data2.id}`);
                         reviewRef.get().then(function(doc6) {
-                            console.log(doc5.id,user.uid);
                             if (doc6.exists) {
                                 var reviewDiv = document.getElementById(`search-reviews-show-${data2.id}`);
                                 // console.log(doc6.data().rating);
@@ -502,7 +499,6 @@ function getShowID(movie){
                             if (doc5.exists) {
                                 var reviewRef = db.collection("users").doc(doc5.id).collection("ShowsList").doc(`${data2.id}`);
                                 reviewRef.get().then(function(doc6) {
-                                    console.log(doc5.id,user.uid);
                                     if (doc6.exists) {
                                         var reviewDiv = document.getElementById(`search-reviews-show-${data2.id}`);
                                         // console.log(doc6.data().rating);
