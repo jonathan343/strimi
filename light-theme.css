@@ -293,7 +293,7 @@ body{
   }
 
   .live-view-person{
-      height: 14%;
+      height: 99px;
       width: 100%;
       background: rgba(0, 0, 0, 0.2);
       border-radius: 10px;
@@ -322,8 +322,10 @@ body{
 }
 
 .live-view-img img{
-    height: 90%;
-    border-radius: 50%;    
+    height: 85%;
+    min-height: 85%;
+    border-radius: 50%;  
+     
 }
 
 .live-view-name{
@@ -680,9 +682,34 @@ body{
     background: transparent no-repeat center;
     background-size: cover;
 }
+
+#Problem_card, #Need_card, #Goal_card{
+    background: white;
+    color: black;
+    width: 50%;
+    font-size: large;
+    margin-bottom: 50px; 
+}
   
   /* a tag */
 a, a:hover, a:focus, a:active {
     text-decoration: none;
     color: inherit;
+}
+
+/* my profile */
+#profile-container{
+    background: rgba(55, 57, 63, 1);
+    border-radius: 25px;
+}
+#profile-img{
+    width: 50%;
+}
+.img-thumbnail2 {
+    padding: .1rem;
+    background-color: #fff;
+    border: 1px solid #dee2e6;
+    border-radius: .1px;
+    max-width: 100%;
+    height: auto;
 }

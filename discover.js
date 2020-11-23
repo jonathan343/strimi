@@ -1,4 +1,5 @@
 var db = firebase.firestore();
+updateLiveView();
 
 function addMovie(MovieID){
     var user = firebase.auth().currentUser;

@@ -30,6 +30,7 @@ function handleSignUp() {
                 email: email,
                 firstName: firstName,
                 lastName: lastName,
+                bio: "",
                 followers: 0,
                 following: 0,
                 reviewCount: 0
