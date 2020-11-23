@@ -18,7 +18,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
 
-    <title>strimi | Discover</title>
+    <title>strimi | Search</title>
     <meta name="keywords" content="strimi, Spotify, Netflix, Apple Music, Hulu">
     <meta name="description" content="This is a social media platform that centralizes all streaming platforms and allows you to share your favorite movies, shows, and songs.">
     
@@ -47,14 +47,14 @@
                 <li class="nav-item"><a href="discover.html" class="cool-link nav-link">Discover</a></li>
                 <li class="nav-item"><a href="friends.html" class="cool-link nav-link">Friends</a></li>
                 <li class="nav-item"><a href="myProfile.html" class="cool-link nav-link">My Profile</a></li>
-                <li class="nav-item"><a href="About_Us.html" class="cool-link nav-link active">About Us</a></li>
+                <li class="nav-item"><a href="About_Us.html" class="cool-link nav-link">About Us</a></li>
             </ul>
         </div>
             
         <div class="search-navbar">
             <div class="search-container">
                 <input type="text" name="search" placeholder="Search..." class="search-input" id="search-bar">
-                <a onclick="search()" class="search-btn">
+                <a onclick="searchLoad()" class="search-btn">
                     <i class="fa fa-search" aria-hidden="true"></i>
                 <!-- <img src="Images/search.png" height="10px" width="10px" alt=""> -->
                 </a>
@@ -74,335 +74,31 @@
     <!-- Home Screen -->
     <div class="container-fluid parallax-home" id="discover">
         <div class="row align-items-start">
-            <h1 class="pl-3">Discover</h1>
+            <h1 class="pl-3">Search</h1>
         </div>
         <div class="col-lg-4 text-center mb-3 mx-auto">
             <div class="btn-group mb-3 ml-3" role="group" aria-label="Discover Selections">
-                <button type="button" id="discover-movies-btn" class="btn btn-secondary active">Movies</button>
-                <button type="button" id="discover-shows-btn" class="btn btn-secondary">TV Shows</button>
-                <button type="button" id="discover-music-btn" class="btn btn-secondary">Music</button>
+                <button type="button" id="search-movies-btn" class="btn btn-secondary active" onclick="searchMovies()"> Movies</button>
+                <button type="button" id="search-shows-btn" class="btn btn-secondary" onclick="searchShows()">TV Shows</button>
+                <button type="button" id="search-music-btn" class="btn btn-secondary" onclick="searchMusic()">Songs</button>
             </div>
         </div>
         <div class="container-fluid discover-src-list">
-            <div class="row" id="discover-movies-list">
-                <div class="col-lg-4">
-                    <div class="text-center card-box">
-                        <div class="member-card pb-2">
-                            <div class="thumb-lg member-thumb mx-auto mb-2"><img src="Images/Profile_Pictures/J_Letter.png" class="rounded-circle img-thumbnail" alt="profile-image"></div>
-                            <div class="">
-                                <h4>The Office</h4>
-                                <p class="text-muted">TV Network</p>
-                            </div>
-                            <button type="button" id="" class="btn btn-primary mt-3 btn-rounded waves-effect w-md waves-light" onclick="">Read Review</button>
-                            <div class="mt-4">
-                                <div class="row">
-                                    <div class="col-4">
-                                        <div class="mt-3">
-                                            <h4 id="followers-${doc.id}">11</h4>
-                                            <p class="mb-0 text-muted">Likes</p>
-                                        </div>
-                                    </div>
-                                    <div class="col-4">
-                                        <div class="mt-3">
-                                            <h4 id="following-${doc.id}">11</h4>
-                                            <p class="mb-0 text-muted">Dislikes</p>
-                                        </div>
-                                    </div>
-                                    <div class="col-4">
-                                        <div class="mt-3">
-                                            <h4 id="reviewCount-${doc.id}">11</h4>
-                                            <p class="mb-0 text-muted">Reviews</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4">
-                    <div class="text-center card-box">
-                        <div class="member-card pb-2">
-                            <div class="thumb-lg member-thumb mx-auto mb-2"><img src="Images/Profile_Pictures/J_Letter.png" class="rounded-circle img-thumbnail" alt="profile-image"></div>
-                            <div class="">
-                                <h4>The Office</h4>
-                                <p class="text-muted">TV Network</p>
-                            </div>
-                            <button type="button" id="" class="btn btn-primary mt-3 btn-rounded waves-effect w-md waves-light" onclick="">read</button>
-                            <div class="mt-4">
-                                <div class="row">
-                                    <div class="col-4">
-                                        <div class="mt-3">
-                                            <h4 id="followers-${doc.id}">11</h4>
-                                            <p class="mb-0 text-muted">Followers</p>
-                                        </div>
-                                    </div>
-                                    <div class="col-4">
-                                        <div class="mt-3">
-                                            <h4 id="following-${doc.id}">11</h4>
-                                            <p class="mb-0 text-muted">Following</p>
-                                        </div>
-                                    </div>
-                                    <div class="col-4">
-                                        <div class="mt-3">
-                                            <h4 id="reviewCount-${doc.id}">11</h4>
-                                            <p class="mb-0 text-muted">Reviews</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4">
-                    <div class="text-center card-box">
-                        <div class="member-card pb-2">
-                            <div class="thumb-lg member-thumb mx-auto mb-2"><img src="Images/Profile_Pictures/J_Letter.png" class="rounded-circle img-thumbnail" alt="profile-image"></div>
-                            <div class="">
-                                <h4>The Office</h4>
-                                <p class="text-muted">TV Network</p>
-                            </div>
-                            <button type="button" id="" class="btn btn-primary mt-3 btn-rounded waves-effect w-md waves-light" onclick="">read</button>
-                            <div class="mt-4">
-                                <div class="row">
-                                    <div class="col-4">
-                                        <div class="mt-3">
-                                            <h4 id="followers-${doc.id}">11</h4>
-                                            <p class="mb-0 text-muted">Followers</p>
-                                        </div>
-                                    </div>
-                                    <div class="col-4">
-                                        <div class="mt-3">
-                                            <h4 id="following-${doc.id}">11</h4>
-                                            <p class="mb-0 text-muted">Following</p>
-                                        </div>
-                                    </div>
-                                    <div class="col-4">
-                                        <div class="mt-3">
-                                            <h4 id="reviewCount-${doc.id}">11</h4>
-                                            <p class="mb-0 text-muted">Reviews</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4">
-                    <div class="text-center card-box">
-                        <div class="member-card pb-2">
-                            <div class="thumb-lg member-thumb mx-auto mb-2"><img src="Images/Profile_Pictures/J_Letter.png" class="rounded-circle img-thumbnail" alt="profile-image"></div>
-                            <div class="">
-                                <h4>The Office</h4>
-                                <p class="text-muted">TV Network</p>
-                            </div>
-                            <button type="button" id="" class="btn btn-primary mt-3 btn-rounded waves-effect w-md waves-light" onclick="">read</button>
-                            <div class="mt-4">
-                                <div class="row">
-                                    <div class="col-4">
-                                        <div class="mt-3">
-                                            <h4 id="followers-${doc.id}">11</h4>
-                                            <p class="mb-0 text-muted">Followers</p>
-                                        </div>
-                                    </div>
-                                    <div class="col-4">
-                                        <div class="mt-3">
-                                            <h4 id="following-${doc.id}">11</h4>
-                                            <p class="mb-0 text-muted">Following</p>
-                                        </div>
-                                    </div>
-                                    <div class="col-4">
-                                        <div class="mt-3">
-                                            <h4 id="reviewCount-${doc.id}">11</h4>
-                                            <p class="mb-0 text-muted">Reviews</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4">
-                    <div class="text-center card-box">
-                        <div class="member-card pb-2">
-                            <div class="thumb-lg member-thumb mx-auto mb-2"><img src="Images/Profile_Pictures/J_Letter.png" class="rounded-circle img-thumbnail" alt="profile-image"></div>
-                            <div class="">
-                                <h4>The Office</h4>
-                                <p class="text-muted">TV Network</p>
-                            </div>
-                            <button type="button" id="" class="btn btn-primary mt-3 btn-rounded waves-effect w-md waves-light" onclick="">read</button>
-                            <div class="mt-4">
-                                <div class="row">
-                                    <div class="col-4">
-                                        <div class="mt-3">
-                                            <h4 id="followers-${doc.id}">11</h4>
-                                            <p class="mb-0 text-muted">Followers</p>
-                                        </div>
-                                    </div>
-                                    <div class="col-4">
-                                        <div class="mt-3">
-                                            <h4 id="following-${doc.id}">11</h4>
-                                            <p class="mb-0 text-muted">Following</p>
-                                        </div>
-                                    </div>
-                                    <div class="col-4">
-                                        <div class="mt-3">
-                                            <h4 id="reviewCount-${doc.id}">11</h4>
-                                            <p class="mb-0 text-muted">Reviews</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+            <div class="row" id="search-movies-list">
 
+            </div>
+            <div class="row" id="search-shows-list">
 
+            </div>
+            <input type="hidden" id='hidden_token'>  
+            <div class="row" id="search-music-list">
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-                <!-- <div class="col-md-4 mt-0 px-0 text-justify media-content">
-                    <div class="row pl-5 mb-0 pt-2 align-items-center">
-                        <h2 class="my-0">Wallows</h2>
-                        <div class ="mt-auto ml-5"><h8 class=" mt-auto ml-5">8 friends listen to this</h8></div>
-                    </div>
-                    <div class="row main-content pl-2 mx-0">
-                        <div class="col-6 main-content-img my-auto mr-2 px-0">
-                            <div class="d-flex justify-content-center">
-                                <img src="Images/wallows.jpeg" alt="">
-                            </div>
-                        </div>
-                        <div class="col-5 main-content-selections my-auto px-0">
-                            <a href="">
-                                <div class="main-content-selection mcs-1 d-flex justify-content-center align-items-center mx-auto">
-                                    <p>Add Song</p>
-                                </div>
-                            </a>
-                            <a href="">
-                                <div class="main-content-selection mcs-2 d-flex justify-content-center align-items-center mx-auto">
-                                    <p>Recommend</p>
-                                </div>
-                            </a>
-                            <a href="">
-                                <div class="main-content-selection mcs-3 d-flex justify-content-center align-items-center mx-auto">
-                                    <p>Favorite</p>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4 mt-0 text-justify media-content">
-                    <div class="row pl-5 mb-0 pt-2 align-items-center">
-                        <h2 class="my-0">Billie Eilish</h2>
-                        <div class ="mt-auto ml-1"><h8 class=" mt-auto ml-5">6 friends listen to this</h8></div>
-                        
-                    </div>
-                    <div class="row main-content pl-2 mx-0">
-                        <div class="col-6 main-content-img my-auto mr-2 px-0">
-                            <div class="d-flex justify-content-center">
-                                <img src="Images/billie.jpg" alt="">
-                            </div>
-                        </div>
-                        <div class="col-5 main-content-selections my-auto px-0">
-                            <a href="">
-                                <div class="main-content-selection mcs-1 d-flex justify-content-center align-items-center mx-auto">
-                                    <p>Add Song</p>
-                                </div>
-                            </a>
-                            <a href="">
-                                <div class="main-content-selection mcs-2 d-flex justify-content-center align-items-center mx-auto">
-                                    <p>Recommend</p>
-                                </div>
-                            </a>
-                            <a href="">
-                                <div class="main-content-selection mcs-3 d-flex justify-content-center align-items-center mx-auto">
-                                    <p>Favorite</p>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-                </div> -->
             </div>
         </div>
-        <!-- <div class="row"> -->
-            <!-- <div class="col-md-4 text-justify media-content">
-                <div class="row pl-5 mb-0 pt-2 align-items-center">
-                    <h2 class="my-0">Khalid</h2>
-                    <div class ="mt-auto ml-5"><h8 class=" mt-auto ml-5">5 friends listen to this</h8></div>
-                </div>
-                <div class="row main-content pl-2 mx-0">
-                    <div class="col-6 main-content-img my-auto mr-2 px-0">
-                        <div class="d-flex justify-content-center">
-                            <img src="Images/khalid.jpg" alt="">
-                        </div>
-                    </div>
-                    <div class="col-5 main-content-selections my-auto px-0">
-                        <a href="">
-                            <div class="main-content-selection mcs-1 d-flex justify-content-center align-items-center mx-auto">
-                                <p>Add Song</p>
-                            </div>
-                        </a>
-                        <a href="">
-                            <div class="main-content-selection mcs-2 d-flex justify-content-center align-items-center mx-auto">
-                                <p>Recommend</p>
-                            </div>
-                        </a>
-                        <a href="">
-                            <div class="main-content-selection mcs-3 d-flex justify-content-center align-items-center mx-auto">
-                                <p>Favorite</p>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4 text-justify media-content">
-                <div class="row pl-5 mb-0 pt-2 align-items-center">
-                    <h2 class="my-0">The Smiths</h2>
-                    <div class ="mt-auto "><h8 class=" mt-auto ml-5">2 friends listen to this</h8></div>
-                    
-                </div>
-                <div class="row main-content pl-2 mx-0">
-                    <div class="col-6 main-content-img my-auto mr-2 px-0">
-                        <div class="d-flex justify-content-center">
-                            <img src="Images/smiths.jpg" alt="">
-                        </div>
-                    </div>
-                    <div class="col-5 main-content-selections my-auto px-0">
-                        <a href="">
-                            <div class="main-content-selection mcs-1 d-flex justify-content-center align-items-center mx-auto">
-                                <p>Add Song</p>
-                            </div>
-                        </a>
-                        <a href="">
-                            <div class="main-content-selection mcs-2 d-flex justify-content-center align-items-center mx-auto">
-                                <p>Recommend</p>
-                            </div>
-                        </a>
-                        <a href="">
-                            <div class="main-content-selection mcs-3 d-flex justify-content-center align-items-center mx-auto">
-                                <p>Favorite</p>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-            </div> -->
-        <!-- </div> -->
     </div>
 
     <div class="container">
-        <div id="live-view">
+        <div id="live-view" style="display: none;">
             <div class="col px-2" id="live-view-content">
                 <h2 class="text-center pt-2">Live View</h1>
                 <div class="row live-view-person mx-auto my-2">
@@ -504,5 +200,8 @@
     </script>
 
     <script src="firebase.js"></script>
+    <script src="search.js"></script>
+    <script src="config.js"></script>
+    <script src="spotify2.js"></script>
 </body>
 </html>

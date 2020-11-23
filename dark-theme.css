@@ -379,9 +379,9 @@ body{
 }
 
 .live-view-media{
-    font-size: 12px;
+    font-size: 14px;
     color: rgba(255, 255, 255, 0.7);
-    
+    line-height: 18px;
 }
 
 /* .main-content{
@@ -477,79 +477,6 @@ body{
     height: 5rem;
     transform: translateY(80%);
 }
-
-/* .modal-dialog{
-    max-width: none;
-    position: absolute;
-    z-index: 1032;
-    top: 0;
-    width: 100vw;
-    height: 100vh;
-    margin: 0;
-    background-color: rgb(0, 0, 0,0.8);
-    
-}
-.main-section{
-    margin: 0 auto;
-    margin-top: 130px;
-    padding: 0;
-}
-.modal-content{
-    background-color: #3b4652;
-    opacity: .95;
-    padding: 0 18px;
-    box-shadow: 0px 0px 3px #848484;
-}
-.user-img{
-    margin-top: -50px;
-    margin-bottom: 35px;
-}
-.user-img img{
-    height: 100px;
-    width: 100px;
-    border-radius: 5px;
-    box-shadow: 0px 0px 2px #848484;
-}
-.form-group{
-    margin-bottom: 25px;
-}
-.form-group input{
-    height: 42px;
-    border-radius: 5px;
-    border: 0;
-    font-size: 18px;
-    padding-left: 54px;
-}
-.form-group::before{
-    font-family: 'Font Awesome\ 5 free';
-    content: "\f2be";
-    position: absolute;
-    font-size: 22px;
-    color: white;
-    left: 28px;
-    padding-top: 4px;
-}
-.form-group:last-of-type::before{
-    content: "\f023";
-}
-#log-in-btn{
-    width: 40%;
-    margin: 5px 0 25px;
-    background-color: red;
-    color: white;
-    font-size: 19px;
-    padding: 7px 14px;
-    border-radius: 5px;
-}
-#log-in-btn:hover, #log-in-btn:focus{
-    background-color: blue !important;
-}
-.forgot{
-    padding: 5px 0 25px;
-}
-.forgot a{
-    color: #c2fbfe;
-} */
 
 .card-signin {
     border: 0;
@@ -727,6 +654,10 @@ body{
     height: 178px;
     width: 120px;
 }
+.thumb-xlg {
+    height: 180px;
+    width: 180px;
+}
 .img-thumbnail {
     padding: .05rem;
     background-color: #fff;
@@ -870,10 +801,21 @@ h4 {
     color: #F4CBB2;
 }
 
+#yt:hover{
+    color: #FF0000;
+}
+
 #developer-img {
   height: 375px;
   background: transparent no-repeat center;
   background-size: cover;
+}
+
+#Problem_card, #Need_card, #Goal_card{
+    background: rgba(55, 57, 63, 1);
+    width: 50%;
+    font-size: large;
+    margin-bottom: 50px; 
 }
 
 /* a tag */
@@ -882,5 +824,19 @@ a, a:hover, a:focus, a:active {
     color: inherit;
 }
 
-
-
+/* my profile */
+#profile-container{
+    background: rgba(55, 57, 63, 1);
+    border-radius: 25px;
+}
+#profile-img{
+    width: 50%;
+}
+.img-thumbnail2 {
+    /* padding: .1rem; */
+    background-color: #fff;
+    border: 1px solid #dee2e6;
+    border-radius: .1px;
+    max-width: 100%;
+    height: auto;
+}

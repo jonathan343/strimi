@@ -1,11 +1,11 @@
-// firebase.auth().onAuthStateChanged(function(user) {
-//     if(user){
-//         window.location.replace("discover.html");
-//     }
-//     else{
-//         document.getElementById("navbar").style.display = "none";
-//     }
-// });
+firebase.auth().onAuthStateChanged(function(user) {
+    if(user){
+        window.location.replace("discover.html");
+    }
+    else{
+        document.getElementById("navbar").style.display = "none";
+    }
+});
 
 
 function handleSignUp() {
@@ -33,7 +33,9 @@ function handleSignUp() {
                 bio: "",
                 followers: 0,
                 following: 0,
-                reviewCount: 0
+                reviewCount: 0,
+                recentPrimary: "No Reviews",
+                recentSecondary: ""
                 }).then(function() {
                     console.log("Document successfully written!");
                     document.getElementById('sign-up-form').style.display='none';

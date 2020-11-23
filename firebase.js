@@ -46,10 +46,10 @@ function updateLiveView(){
                                 <div class="col-3 my-auto ml-3 px-0 d-flex justify-content-center align-items-center live-view-img">
                                     <img id="img-${doc.id}" class="rounded-circle img-thumbnail2" src="${getPFP(doc.id)} alt="">
                                 </div>
-                                <div class="col-8 my-auto ml-1 pr-0 pl-2 pt-1 live-view-content">
-                                    <h6 class = "live-view-name">${firstName} ${lastName}</h6>
-                                    <div><h9 class = "live-view-media">Are You Bored Yet?</h9></div>
-                                    <h9 class = "live-view-media">Wallows</h9>
+                                <div class="col-8 mt-4 ml-1 pr-0 pl-2 pt-1 live-view-content">
+                                    <h6 class = "live-view-name mb-1">${firstName} ${lastName}</h6>
+                                    <div><h9 class = "live-view-media mb-2">${doc2.data().recentPrimary}</h9></div>
+                                    <h9 class = "live-view-media">${doc2.data().recentSecondary}</h9>
                                 </div>
                             </div>
                             `;
@@ -93,50 +93,18 @@ firebase.auth().onAuthStateChanged(function(user) {
     }
 });
 
-function getPFP(id) {
-    var picRef = firebase.storage().ref(`users/${id}.jpg`).getDownloadURL().then( 
-        (url) => {
-            document.querySelector(`#img-${id}`).src=url;
-    }).catch((error) => {
-        var picRef = firebase.storage().ref(`users/${id}.png`).getDownloadURL().then( 
-            (url) => {
-                document.querySelector(`#img-${id}`).src=url;
-        }).catch((error) => {
-            picRef = firebase.storage().ref(`users/default${id.charCodeAt(0)%6}.jpg`).getDownloadURL().then(
-                (url) => {
-                    document.querySelector(`#img-${id}`).src=url;
-            });
-        });
-    });
-    
-    return "";
-}
 //Search functions
 
-function searchs(){
+function searchLoad(){
     var search_input = document.getElementById("search-bar").value;
+    window.location.href = "search.html?search="+search_input;
+    // window.location.replace("search.html");
     console.log(search_input);
-    getMovieID(search_input);
-    getTvShowID(search_input);
+    
+    //getTvShowID(search_input);
     //call getSongID(search_input) function here
 }
 
-function getMovieID(movie){
-    const baseURL = "https://api.themoviedb.org/3/";
-    const API_key = "0b3c99fd0f35bf406b61b4076e59dce5"; //key for the movie database API
-    let movie_id;
-    let url = baseURL + "search/movie?api_key=" + API_key + "&query=" + movie;
-
-    fetch(url)
-    .then(result => result.json())
-    .then((data) => {
-        let info = data.results.slice(0, 15);
-        for(let i = 0; i < info.length; i++){
-            movie_id = info[i].id;
-            getMovieDetails(movie_id);      
-        } 
-    })
-}
 
 function getTVShowID(tv_show){
     const baseURL = "https://api.themoviedb.org/3/";
@@ -154,3 +122,21 @@ function getTVShowID(tv_show){
         } 
     })
 }
+function getPFP(id) {
+    var picRef = firebase.storage().ref(`users/${id}.jpg`).getDownloadURL().then( 
+        (url) => {
+            document.querySelector(`#img-${id}`).src=url;
+    }).catch((error) => {
+        var picRef = firebase.storage().ref(`users/${id}.png`).getDownloadURL().then( 
+            (url) => {
+                document.querySelector(`#img-${id}`).src=url;
+        }).catch((error) => {
+            picRef = firebase.storage().ref(`users/default${id.charCodeAt(0)%6}.jpg`).getDownloadURL().then(
+                (url) => {
+                    document.querySelector(`#img-${id}`).src=url;
+            });
+        });
+    });
+    
+    return "";
+    }
