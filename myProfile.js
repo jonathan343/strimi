@@ -134,3 +134,27 @@ function showFile(){
     });
       
 }
+
+function showReviews(){
+    user= firebase.auth().currentUser;
+    var userList = db.collection("users").doc(user.uid);
+
+    for(let i = 0; i < user.)
+
+    const html =
+            `
+            <div class="col-lg-4 mt-2">
+                <div class="text-center card-box">
+                    <div class="member-card pb-2">
+                        <div class="col-12">
+                            <h4>${info[i].title}</h4>
+                            <p class="text-muted">${movie_maker}</p>
+                        </div>
+                        <div class="thumb-lg member-thumb mx-auto mb-2"><img src="${poster_image}" class=" img-thumbnail" alt="profile-image"></div>
+                        <h4 class="mx-auto">Rating: ${rating}</h4>
+                        <p class="mx-auto">${review}</p>
+                    </div>
+                </div>
+            </div>
+            `;
+}
