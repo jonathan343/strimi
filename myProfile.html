@@ -98,15 +98,23 @@
                         </h3>
                         <div class="col-lg-4 mx-auto">
                             <div class="btn-group group-class" role="group" style="display: auto; margin-left: auto; margin-right: auto;">
-                                <button class="btn btn-secondary" type="button">
+                                <button class="btn btn-secondary" type="button" id="profile-movies-btn" onclick="showMovies()">
                                     Movies
                                 </button> 
-                                <button class="btn btn-secondary" type="button">
+                                <button class="btn btn-secondary" type="button" id="profile-shows-btn" onclick="showShows()">
                                     TV Shows
                                 </button> 
-                                <button class="btn btn-secondary" type="button">
+                                <button class="btn btn-secondary" type="button" id="profile-music-btn" onclick="showMusic()">
                                     Songs
                                 </button> 
+                            </div>
+                        </div>
+                        <div class="container-fluid discover-src-list" style="padding-bottom: 10%;">
+                            <div class="row" style="display: flex;" id="profile-movies-list">
+                            </div>
+                            <div class="row" style="display: none;" id="profile-shows-list">
+                            </div>
+                            <div class="row" style="display: none;" id="profile-music-list">
                             </div>
                         </div>
                     </div>

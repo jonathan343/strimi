@@ -47,9 +47,9 @@ function updateLiveView(){
                                     <img id="img-${doc.id}" class="rounded-circle img-thumbnail2" src="${getPFP(doc.id)} alt="">
                                 </div>
                                 <div class="col-8 mt-4 ml-1 pr-0 pl-2 pt-1 live-view-content">
-                                    <h6 class = "live-view-name">${firstName} ${lastName}</h6>
-                                    <div><h9 class = "live-view-media">Are You Bored Yet?</h9></div>
-                                    <h9 class = "live-view-media">Wallows</h9>
+                                    <h6 class = "live-view-name mb-1">${firstName} ${lastName}</h6>
+                                    <div><h9 class = "live-view-media mb-2">${doc2.data().recentPrimary}</h9></div>
+                                    <h9 class = "live-view-media">${doc2.data().recentSecondary}</h9>
                                 </div>
                             </div>
                             `;

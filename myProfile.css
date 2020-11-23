@@ -1,0 +1,60 @@
+#profile-container{
+    background: rgba(55, 57, 63, 1);
+    border-radius: 25px;
+}
+#profile-img{
+    width: 50%;
+}
+.img-thumbnail2 {
+    padding: .1rem;
+    background-color: #fff;
+    border: 1px solid #dee2e6;
+    border-radius: .1px;
+    max-width: 100%;
+    height: auto;
+}
+
+.modal-body h4{
+    color: black;
+    font-size: 20px;
+}
+.modal-body h5{
+    color: rgba(0, 0, 0, 0.6);
+    font-size: 15px;
+}
+.btn-default{
+    color: rgba(0, 0, 0, 0.6);
+}
+.form-control{
+    min-height: 125px;
+}
+button.like{
+    border: none;
+    background: none;
+}
+button.like:hover{
+    border: none;
+    background: none;
+    color: #4278f5;
+}
+button.like:focus{
+    border: none;
+    background: none;
+    color: #4278f5;
+    outline: none;
+}
+button.dislike{
+    border: none;
+    background: none;
+}
+button.dislike:hover{
+    border: none;
+    background: none;
+    color: #f55142;
+}
+button.dislike:focus{
+    border: none;
+    background: none;
+    color: #f55142;
+    outline: none;
+}
