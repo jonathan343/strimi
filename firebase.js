@@ -46,7 +46,7 @@ function updateLiveView(){
                                 <div class="col-3 my-auto ml-3 px-0 d-flex justify-content-center align-items-center live-view-img">
                                     <img id="img-${doc.id}" class="rounded-circle img-thumbnail2" src="${getPFP(doc.id)} alt="">
                                 </div>
-                                <div class="col-8 my-auto ml-1 pr-0 pl-2 pt-1 live-view-content">
+                                <div class="col-8 mt-4 ml-1 pr-0 pl-2 pt-1 live-view-content">
                                     <h6 class = "live-view-name">${firstName} ${lastName}</h6>
                                     <div><h9 class = "live-view-media">Are You Bored Yet?</h9></div>
                                     <h9 class = "live-view-media">Wallows</h9>
@@ -121,6 +121,7 @@ function getTVShowID(tv_show){
             getTVShowDetails(tv_show_id);      
         } 
     })
+}
 function getPFP(id) {
     var picRef = firebase.storage().ref(`users/${id}.jpg`).getDownloadURL().then( 
         (url) => {
@@ -139,4 +140,3 @@ function getPFP(id) {
     
     return "";
     }
-}
