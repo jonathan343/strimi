@@ -39,7 +39,6 @@ function handleSignUp() {
                 }).then(function() {
                     console.log("Document successfully written!");
                     document.getElementById('sign-up-form').style.display='none';
-                    window.location.replace("discover.html");
                     db.collection("users").doc(user.uid).collection("MovieList").doc("abcdefghij").set({
                     }).then(function() {
                         console.log("Movie Collection Created");
@@ -51,6 +50,7 @@ function handleSignUp() {
                     db.collection("users").doc(user.uid).collection("ShowsList").doc("abcdefghij").set({
                     }).then(function() {
                         console.log("Shows Collection Created");
+                        window.location.replace("discover.html");
                     });
                 }).catch(function(error) {
                     console.log("error adding document: ", error);
