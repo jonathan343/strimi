@@ -1,14 +1,17 @@
-// firebase.auth().onAuthStateChanged(function(user) {
-//     if(user){
-//         window.location.replace("discover.html");
-//     }
-//     else{
-//         document.getElementById("navbar").style.display = "none";
-//     }
-// });
+var signInState = false;
+
+firebase.auth().onAuthStateChanged(function(user) {
+    if(user && !signInState){
+        window.location.replace("discover.html");
+    }
+    else{
+        document.getElementById("navbar").style.display = "none";
+    }
+});
 
 
 function handleSignUp() {
+    signInState = true;
     var firstName = document.getElementById("inputFName").value;
     var lastName = document.getElementById("inputLName").value;
     var email = document.getElementById('inputEmail').value;
