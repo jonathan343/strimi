@@ -590,7 +590,7 @@ function saveShowSearchReview(movie_id){
 
     if (user) {
         console.log(rating);
-        db.collection("users").doc(user.uid).collection("MovieList").doc(movie_id).set({
+        db.collection("users").doc(user.uid).collection("ShowsList").doc(movie_id).set({
             review: review,
             rating, rating
         }).then(function() {
@@ -606,7 +606,7 @@ function saveShowSearchReview(movie_id){
 
 function writeShowSearchReview(movie_id){
     var user = firebase.auth().currentUser;
-    var reviewRef = db.collection("users").doc(user.uid).collection("MovieList").doc(`${movie_id}`);
+    var reviewRef = db.collection("users").doc(user.uid).collection("ShowsList").doc(`${movie_id}`);
     reviewRef.get().then(function(doc) {
         if (doc.exists) {
             document.getElementById(`search-review-show-${movie_id}`).innerHTML = doc.data().review;
