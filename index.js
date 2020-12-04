@@ -50,7 +50,6 @@ function handleSignUp() {
                     db.collection("users").doc(user.uid).collection("ShowsList").doc("abcdefghij").set({
                     }).then(function() {
                         console.log("Shows Collection Created");
-                        window.location.replace("discover.html");
                     });
                 }).catch(function(error) {
                     console.log("error adding document: ", error);
@@ -72,6 +71,7 @@ function handleSignUp() {
     });
     // [END createwithemail]
     //var user = firebase.auth().currentUser;
+    window.location.replace("discover.html");
   }
 
 function signIn() {
