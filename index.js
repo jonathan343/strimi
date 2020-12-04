@@ -71,7 +71,6 @@ function handleSignUp() {
     });
     // [END createwithemail]
     //var user = firebase.auth().currentUser;
-    window.location.replace("discover.html");
   }
 
 function signIn() {
