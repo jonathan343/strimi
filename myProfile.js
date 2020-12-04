@@ -140,6 +140,9 @@ function getMovies(){
     const baseURL = "https://api.themoviedb.org/3/";
     const API_key = "0b3c99fd0f35bf406b61b4076e59dce5"; //key for the movie database API
     user = firebase.auth().currentUser;
+
+    document.getElementById("profile-movies-list").innerHTML = "";
+
     var docRef = db.collection("users").doc(user.uid).collection("MovieList");
         docRef.get().then((querySnapshot) => {
             querySnapshot.forEach((movie) => {
