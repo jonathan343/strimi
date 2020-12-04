@@ -1,11 +1,11 @@
-firebase.auth().onAuthStateChanged(function(user) {
-    if(user){
-        window.location.replace("discover.html");
-    }
-    else{
-        document.getElementById("navbar").style.display = "none";
-    }
-});
+// firebase.auth().onAuthStateChanged(function(user) {
+//     if(user){
+//         window.location.replace("discover.html");
+//     }
+//     else{
+//         document.getElementById("navbar").style.display = "none";
+//     }
+// });
 
 
 function handleSignUp() {
@@ -42,15 +42,18 @@ function handleSignUp() {
                     db.collection("users").doc(user.uid).collection("MovieList").doc("abcdefghij").set({
                     }).then(function() {
                         console.log("Movie Collection Created");
+                        db.collection("users").doc(user.uid).collection("MusicList").doc("abcdefghij").set({
+                        }).then(function() {
+                            console.log("Music Collection Created");
+                            db.collection("users").doc(user.uid).collection("ShowsList").doc("abcdefghij").set({
+                            }).then(function() {
+                                console.log("Shows Collection Created");
+                                window.location.replace("discover.html");
+                            });
+                        });
+                        
                     });
-                    db.collection("users").doc(user.uid).collection("MusicList").doc("abcdefghij").set({
-                    }).then(function() {
-                        console.log("Music Collection Created");
-                    });
-                    db.collection("users").doc(user.uid).collection("ShowsList").doc("abcdefghij").set({
-                    }).then(function() {
-                        console.log("Shows Collection Created");
-                    });
+                    
                 }).catch(function(error) {
                     console.log("error adding document: ", error);
                 })
