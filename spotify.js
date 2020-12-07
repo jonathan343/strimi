@@ -187,7 +187,7 @@ const UIController = (function() {
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                            <button type="button" class="btn btn-primary" onclick="saveSongReview('${id2}')" >Save Review</button>
+                            <button type="button" class="btn btn-primary" onclick="saveSongReview('${id2}','${name}','${artist}')" >Save Review</button>
                         </div>
                     </div>
                 </div>

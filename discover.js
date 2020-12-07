@@ -241,7 +241,7 @@ function getTopMovies(){
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                            <button type="button" class="btn btn-primary" onclick="saveReview('${data2.id}')" >Save Review</button>
+                            <button type="button" class="btn btn-primary" onclick="saveReview('${data2.id}','${info[i].title}','${movie_maker}')" >Save Review</button>
                         </div>
                     </div>
                 </div>
@@ -383,7 +383,7 @@ function dislikeClick(movie_id){
     btn2 = document.getElementById(`like-${movie_id}`).style.color = "#000000";
 }
 
-function saveReview(movie_id){
+function saveReview(movie_id,Title,Producer){
     dislikeBtn = document.getElementById(`dislike-${movie_id}`).style.color;
     likeBtn = document.getElementById(`like-${movie_id}`).style.color;
     var rating = 0;
@@ -407,7 +407,7 @@ function saveReview(movie_id){
         }).then(function() {
             console.log("Review Written Successfully!");
             document.getElementById(`close-btn-${movie_id}`).click();
-            
+            firebase.database().ref(user.uid).set(Title+':'+Producer);
         });
     } else {
         console.log("Not currently signed in");
@@ -701,7 +701,7 @@ function getTopShows(){
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                            <button type="button" class="btn btn-primary" onclick="saveShowReview('${data2.id}')" >Save Review</button>
+                            <button type="button" class="btn btn-primary" onclick="saveShowReview('${data2.id}','${data2.name}','${show_maker}')" >Save Review</button>
                         </div>
                     </div>
                 </div>
@@ -853,7 +853,7 @@ function dislikeSongClick(movie_id){
     btn2 = document.getElementById(`like-song-${movie_id}`).style.color = "#000000";
 }
 
-function saveShowReview(movie_id){
+function saveShowReview(movie_id,Title,Producer){
     dislikeBtn = document.getElementById(`dislike-show-${movie_id}`).style.color;
     likeBtn = document.getElementById(`like-show-${movie_id}`).style.color;
     var rating = 0;
@@ -877,7 +877,7 @@ function saveShowReview(movie_id){
         }).then(function() {
             console.log("Review Written Successfully!");
             document.getElementById(`close-show-btn-${movie_id}`).click();
-            
+            firebase.database().ref(user.uid).set(Title+':'+Producer);
         });
     } else {
         console.log("Not currently signed in");
@@ -905,7 +905,7 @@ function writeShowReview(movie_id){
         });
 }
 
-function saveSongReview(movie_id){
+function saveSongReview(movie_id,Title,Producer){
     dislikeBtn = document.getElementById(`dislike-song-${movie_id}`).style.color;
     likeBtn = document.getElementById(`like-song-${movie_id}`).style.color;
     var rating = 0;
@@ -929,6 +929,7 @@ function saveSongReview(movie_id){
         }).then(function() {
             console.log("Review Written Successfully!");
             document.getElementById(`close-song-btn-${movie_id}`).click();
+            firebase.database().ref(user.uid).set(Title+':'+Producer);
             
         });
     } else {
