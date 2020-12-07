@@ -34,34 +34,62 @@ function updateLiveView(){
         var docRef = db.collection("users").doc(user.uid).collection("friends");
         docRef.get().then((querySnapshot) => {
             querySnapshot.forEach((doc) => {
-                var friendRef = db.collection("users").doc(doc.id);
-                friendRef.get().then(function(doc2) {
-                    if (doc2.exists) {
-                        if (user.uid != doc.id) {
-                            var firstName = doc2.data().firstName;
-                            var lastName = doc2.data().lastName;
-                            const html =
-                            `
-                            <div class="row live-view-person mx-auto my-2" id="${doc.id}">
-                                <div class="col-3 my-auto ml-3 px-0 d-flex justify-content-center align-items-center live-view-img">
-                                    <img id="img-${doc.id}" class="rounded-circle img-thumbnail2" src="${getPFP(doc.id)} alt="">
-                                </div>
-                                <div class="col-8 mt-4 ml-1 pr-0 pl-2 pt-1 live-view-content">
-                                    <h6 class = "live-view-name mb-1">${firstName} ${lastName}</h6>
-                                    <div><h9 class = "live-view-media mb-2">${doc2.data().recentPrimary}</h9></div>
-                                    <h9 class = "live-view-media">${doc2.data().recentSecondary}</h9>
-                                </div>
-                            </div>
-                            `;
-                            mainDiv.insertAdjacentHTML('beforeend',html);
-                        } 
-                    } else {
-                        // doc.data() will be undefined in this case
-                        alert("No Friend In Data Base");
-                    }
-                }).catch(function(error) {
-                    console.log("Error getting document:", error);
+                if (user.uid != doc.id) {
+                    var firstName = doc.data().firstName;
+                    var lastName = doc.data().lastName;
+                    const html =
+                    `
+                    <div class="row live-view-person mx-auto my-2 sidecard" id="card-${doc.id}">
+                        <div class="col-3 my-auto ml-3 px-0 d-flex justify-content-center align-items-center live-view-img">
+                            <img id="img-${doc.id}" class="rounded-circle img-thumbnail2" src="${getPFP(doc.id)} alt="">
+                        </div>
+                        <div class="col-8 mt-4 ml-1 pr-0 pl-2 pt-1 live-view-content">
+                            <h6 class = "live-view-name mb-1">${firstName} ${lastName}</h6>
+                            <div><h9 class = "live-view-media mb-2" id="recent1-${doc.id}">NotReady</h9></div>
+                            <h9 class = "live-view-media" id="recent2-${doc.id}" onclick="test('${doc.id}')">Not Ready</h9>
+                        </div>
+                    </div>
+                    `
+                    /*const script =
+                    `<script>
+                        inner1 = document.getElementById("recent1-${doc.id}");
+                        document.getElementById("recent1-N1kHR3IsTmPqGC5uOXLUxJTrYmw2").value="yoo";
+                        rtdbRef = rtdb.child('${doc.id}');
+                        rtdbRef.on('value', snap=> inner1.innerText = snap.val());
+                        inner1 = document.getElementById("test");
+                        rtdbRef = rtdb.child('tester');
+                        rtdbRef.on('value', snap=> inner1.innerText = snap.val());
+                        console.log("this ran");
+                    </script>
+                    `;*/
+                    mainDiv.insertAdjacentHTML('beforeend',html);
+                    //document.body.insertAdjacentHTML('beforeend',script);
+                } 
+            });
+        }).then( function(){
+            people = document.querySelectorAll('.sidecard');
+            people.forEach(person => {
+                console.log(person);
+                id = person.id.split("-");
+                console.log(id[1]);
+                var script   = document.createElement("script");
+                script.type  = "text/javascript";
+                //script.src   = "path/to/your/javascript.js";    // use this for linked script
+                script.text  = 
+                `
+                rtdb = firebase.database().ref('${id[1]}');
+                rtdb.on('value', (snapshot) => {
+                    song = snapshot.val();
+                    res = song.split(":");
+                    console.log(song,res[0],res[1],res)
+                    inner1 = document.getElementById("recent1-${id[1]}");
+                    inner2 = document.getElementById("recent2-${id[1]}");
+                    inner1.innerText = res[0];
+                    inner2.innerText = res[1];
+                    
                 });
+                `              // use this for inline script
+                document.body.appendChild(script);
             });
         });
     } else {

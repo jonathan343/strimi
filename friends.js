@@ -100,7 +100,7 @@ function listToInnerText(docs) {
                         <h4>${doc.data().firstName} ${doc.data().lastName}</h4>
                         <p class="text-muted">@${doc.data().firstName}</p>
                     </div>
-                    <button type="button" id="btn-${doc.id}" class="btn ${vals[2]} mt-3 btn-rounded waves-effect w-md waves-light" onclick="${vals[1]}('${doc.id}')">${vals[0]}</button>
+                    <button type="button" id="btn-${doc.id}" class="btn ${vals[2]} mt-3 btn-rounded waves-effect w-md waves-light" onclick="${vals[1]}('${doc.id}','${doc.data().firstName}','${doc.data().lastName}')">${vals[0]}</button>
                     <div class="mt-4">
                         <div class="row">
                             <div class="col-4">
@@ -136,7 +136,7 @@ function listToInnerText(docs) {
     })
 }
 
-function addFriend(doc) {
+function addFriend(doc,docFirstName,docLastName) {
     var user = firebase.auth().currentUser;
     document.getElementById(`btn-${doc}`).classList.remove("btn-primary");
     document.getElementById(`btn-${doc}`).classList.add("btn-danger");
@@ -146,7 +146,9 @@ function addFriend(doc) {
     document.getElementById(`btn-${doc}`).setAttribute('onclick',`removeFriend("${doc}");`)
 
     if (user) {
-        db.collection("users").doc(user.uid).collection("friends").doc(doc).set({
+        db.collection("users").doc(user.uid).collection("friends").doc(doc).set({ 
+            firstName: docFirstName,
+            lastName: docLastName
         }).then(function() {
             db.collection("users").doc(user.uid).update({
                 following: firebase.firestore.FieldValue.increment(1)
@@ -192,7 +194,7 @@ function addFriend(doc) {
 }
 
 
-function removeFriend(doc) {
+function removeFriend(doc,firstName,lastName) {
     var user = firebase.auth().currentUser;
     document.getElementById(`btn-${doc}`).classList.remove("btn-danger");
     document.getElementById(`btn-${doc}`).classList.add("btn-primary");
