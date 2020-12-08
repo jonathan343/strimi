@@ -29,7 +29,17 @@ function handleClick(cb) {
 function updateLiveView(){
     var user = firebase.auth().currentUser;
     var mainDiv = document.getElementById('live-view-content');
-    mainDiv.innerHTML = '<h2 class="text-center pt-2">Live View</h1>';
+    mainDiv.innerHTML = 
+    `
+    <h2 class="text-center pt-2">Live View</h1>
+    <div class="text-center mb-1 mx-auto">
+        <div class="btn-group mb-3 ml-3" role="group" aria-label="Discover Selections">
+            <button type="button" id="live-movies-btn" class="btn btn-secondary" onclick="showLiveMovies()"> Movies</button>
+            <button type="button" id="live-shows-btn" class="btn btn-secondary" onclick="showLiveShows()">TV Shows</button>
+            <button type="button" id="live-music-btn" class="btn btn-secondary active" onclick="showLiveSongs()">Songs</button>
+        </div>
+    </div>
+    `
     if (user) {
         var docRef = db.collection("users").doc(user.uid).collection("friends");
         docRef.get().then((querySnapshot) => {
@@ -45,52 +55,20 @@ function updateLiveView(){
                         </div>
                         <div class="col-8 mt-4 ml-1 pr-0 pl-2 pt-1 live-view-content">
                             <h6 class = "live-view-name mb-1">${firstName} ${lastName}</h6>
-                            <div><h9 class = "live-view-media mb-2" id="recent1-${doc.id}">NotReady</h9></div>
-                            <h9 class = "live-view-media" id="recent2-${doc.id}" onclick="test('${doc.id}')">Not Ready</h9>
+                            <div><h9 class = "live-view-media mb-2" id="recent1-${doc.id}">No Reviews</h9></div>
+                            <h9 class = "live-view-media" id="recent2-${doc.id}" onclick="test('${doc.id}')"></h9>
                         </div>
                     </div>
                     `
-                    /*const script =
-                    `<script>
-                        inner1 = document.getElementById("recent1-${doc.id}");
-                        document.getElementById("recent1-N1kHR3IsTmPqGC5uOXLUxJTrYmw2").value="yoo";
-                        rtdbRef = rtdb.child('${doc.id}');
-                        rtdbRef.on('value', snap=> inner1.innerText = snap.val());
-                        inner1 = document.getElementById("test");
-                        rtdbRef = rtdb.child('tester');
-                        rtdbRef.on('value', snap=> inner1.innerText = snap.val());
-                        console.log("this ran");
-                    </script>
-                    `;*/
                     mainDiv.insertAdjacentHTML('beforeend',html);
-                    //document.body.insertAdjacentHTML('beforeend',script);
+                    var script = document.createElement("script");
+                    script.id = `script-${doc.id}`
+                    script.type  = "text/javascript";
+                    document.body.appendChild(script);
                 } 
             });
         }).then( function(){
-            people = document.querySelectorAll('.sidecard');
-            people.forEach(person => {
-                console.log(person);
-                id = person.id.split("-");
-                console.log(id[1]);
-                var script   = document.createElement("script");
-                script.type  = "text/javascript";
-                //script.src   = "path/to/your/javascript.js";    // use this for linked script
-                script.text  = 
-                `
-                rtdb = firebase.database().ref('${id[1]}');
-                rtdb.on('value', (snapshot) => {
-                    song = snapshot.val();
-                    res = song.split(":");
-                    console.log(song,res[0],res[1],res)
-                    inner1 = document.getElementById("recent1-${id[1]}");
-                    inner2 = document.getElementById("recent2-${id[1]}");
-                    inner1.innerText = res[0];
-                    inner2.innerText = res[1];
-                    
-                });
-                `              // use this for inline script
-                document.body.appendChild(script);
-            });
+            showLiveMovies();
         });
     } else {
         const html =
@@ -167,4 +145,112 @@ function getPFP(id) {
     });
     
     return "";
-    }
+}
+
+
+function showLiveMovies() {
+    runMovies();
+    document.getElementById("live-music-btn").classList.remove('active');
+    document.getElementById("live-shows-btn").classList.remove('active');
+    document.getElementById("live-movies-btn").classList.add('active');
+}
+
+function showLiveShows() {
+    runShows();
+    document.getElementById("live-music-btn").classList.remove('active');
+    document.getElementById("live-shows-btn").classList.add('active');
+    document.getElementById("live-movies-btn").classList.remove('active');
+}
+
+function showLiveSongs() {
+    runSongs();
+    document.getElementById("live-music-btn").classList.add('active');
+    document.getElementById("live-shows-btn").classList.remove('active');
+    document.getElementById("live-movies-btn").classList.remove('active');
+}
+
+function runSongs() {
+    people = document.querySelectorAll('.sidecard');
+    people.forEach(person => {
+        console.log(person);
+        id = person.id.split("-")[1];
+        document.getElementById(`script-${id}`).remove();
+        var script = document.createElement("script");
+        script.id = `script-${id}`
+        script.type  = "text/javascript";
+        script.text  = 
+            `
+            firebase.database().ref('${id}/movie').off();
+            firebase.database().ref('${id}/show').off();
+            rtdb = firebase.database().ref('${id}/song');
+            rtdb.on('value', (snapshot) => {
+                console.log(id);
+                song = snapshot.val();
+                res = song.split(":");
+                console.log(song,res[0],res[1],res)
+                inner1 = document.getElementById("recent1-${id}");
+                inner2 = document.getElementById("recent2-${id}");
+                inner1.innerText = res[0];
+                inner2.innerText = res[1];
+                
+            });
+            `              // use this for inline script
+       document.body.appendChild(script);
+    });
+}
+
+function runShows() {
+    people = document.querySelectorAll('.sidecard');
+    people.forEach(person => {
+        console.log(person);
+        id = person.id.split("-")[1];
+        document.getElementById(`script-${id}`).remove();
+        var script = document.createElement("script");
+        script.id = `script-${id}`
+        script.text  = 
+            `
+            firebase.database().ref('${id}/movie').off();
+            firebase.database().ref('${id}/song').off();
+            firebase.database().ref('${id}/show').on('value', (snapshot) => {
+                console.log(id);
+                song = snapshot.val();
+                res = song.split(":");
+                console.log(song,res[0],res[1],res)
+                inner1 = document.getElementById("recent1-${id}");
+                inner2 = document.getElementById("recent2-${id}");
+                inner1.innerText = res[0];
+                inner2.innerText = res[1];
+                
+            });
+            `              // use this for inline script
+       document.body.appendChild(script);
+    });
+}
+
+function runMovies() {
+    people = document.querySelectorAll('.sidecard');
+    people.forEach(person => {
+        console.log(person);
+        id = person.id.split("-")[1];
+        document.getElementById(`script-${id}`).remove();
+        var script = document.createElement("script");
+        script.id = `script-${id}`
+        script.text  = 
+            `
+            firebase.database().ref('${id}/show').off();
+            firebase.database().ref('${id}/song').off();
+            firebase.database().ref('${id}/movie').on('value', (snapshot) => {
+                console.log(id);
+                song = snapshot.val();
+                res = song.split(":");
+                console.log(song,res[0],res[1],res)
+                inner1 = document.getElementById("recent1-${id}");
+                inner2 = document.getElementById("recent2-${id}");
+                inner1.innerText = res[0];
+                inner2.innerText = res[1];
+                
+            });
+            `              // use this for inline script
+       document.body.appendChild(script);
+    });
+}

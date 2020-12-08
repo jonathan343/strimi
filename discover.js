@@ -310,7 +310,7 @@ function getTopMovies(){
                             if (doc5.exists) {
                                 var reviewRef = db.collection("users").doc(doc5.id).collection("MovieList").doc(`${data2.id}`);
                                 reviewRef.get().then(function(doc6) {
-                                    console.log(doc5.id,user.uid);
+                                    console.log("this prints twice");
                                     if (doc6.exists) {
                                         var reviewDiv = document.getElementById(`reviews-${data2.id}`);
                                         // console.log(doc6.data().rating);
@@ -407,7 +407,8 @@ function saveReview(movie_id,Title,Producer){
         }).then(function() {
             console.log("Review Written Successfully!");
             document.getElementById(`close-btn-${movie_id}`).click();
-            firebase.database().ref(user.uid).set(Title+':'+Producer);
+            if (likeBtn == "rgb(66, 120, 245)")
+                firebase.database().ref(`${user.uid}/movie`).set(Title+':'+Producer);
         });
     } else {
         console.log("Not currently signed in");
@@ -877,7 +878,8 @@ function saveShowReview(movie_id,Title,Producer){
         }).then(function() {
             console.log("Review Written Successfully!");
             document.getElementById(`close-show-btn-${movie_id}`).click();
-            firebase.database().ref(user.uid).set(Title+':'+Producer);
+            if (likeBtn == "rgb(66, 120, 245)")
+                firebase.database().ref(`${user.uid}/show`).set(Title+':'+Producer);
         });
     } else {
         console.log("Not currently signed in");
@@ -929,7 +931,8 @@ function saveSongReview(movie_id,Title,Producer){
         }).then(function() {
             console.log("Review Written Successfully!");
             document.getElementById(`close-song-btn-${movie_id}`).click();
-            firebase.database().ref(user.uid).set(Title+':'+Producer);
+            if (likeBtn == "rgb(66, 120, 245)")
+                firebase.database().ref(`${user.uid}/song`).set(Title+':'+Producer);
             
         });
     } else {
