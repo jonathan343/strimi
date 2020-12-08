@@ -837,5 +837,11 @@ a, a:hover, a:focus, a:active {
     height: auto;
 }
 
+/*discover */
+.col-12 button{
+    margin-bottom: 10px;
+}
+
+
 
 
