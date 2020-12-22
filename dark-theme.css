@@ -842,10 +842,35 @@ a, a:hover, a:focus, a:active {
     height: auto;
 }
 
+
+/*discover */
+.col-12 button{
+    margin-bottom: 10px;
+}
+
+.card-text{
+    display: flex;
+    overflow: auto;
+    margin-bottom: 10px;
+}
+
+#trailer{
+    width: 100%;
+    height: 230px;
+}
+
+.bottom-buttons{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
+
 p{
     overflow: hidden;
     text-overflow: ellipsis;
 }
+
 
 #profile-container{
     background: rgba(55, 57, 63, 1);

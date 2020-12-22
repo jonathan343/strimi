@@ -139,12 +139,13 @@ function getTopMovies(){
         movieDiv.innerHTML = "";
         for(let i = 0; i < info.length; i++){
             let movie_id = info[i].id;
-            
+            console.log(movie_id);
 
             const baseURL = "https://api.themoviedb.org/3/";
             const API_key = "0b3c99fd0f35bf406b61b4076e59dce5"; //key for the movie database API
             
             let url = baseURL + "movie/" + movie_id + "?api_key=" + API_key;
+            
             fetch(url)
             .then(result => result.json())
             .then((data2) => {
@@ -155,21 +156,29 @@ function getTopMovies(){
                     movie_maker = data2.production_companies[0].name;
                 }
                 
-                poster_image = "https://image.tmdb.org/t/p/w500" + info[i].poster_path;
+                let poster_image = "https://image.tmdb.org/t/p/w500" + info[i].poster_path;
+
+                url = baseURL + "movie/" + movie_id + "/videos?api_key=" + API_key + "&language=en-US";
+                fetch(url)
+                .then(result => result.json())
+                .then((data3) => {
+                    let video_id = data3.results[0].key;
 
                 const html =
             `
-            <div class="col-lg-4 mt-2">
+            <div class="col-lg-4 mt-2" id="front-card-${data2.id}" >
                 <div class="text-center card-box">
-                    <div class="member-card pb-2">
+                    <div class="member-card pb-2" >
                         <div class="col-12">
                             <h4>${info[i].title}</h4>
                             <p class="text-muted">${movie_maker}</p>
+                            <button type="button" onclick="flipCardToBack(${data2.id})" class="mr-2 btn btn-sm btn-primary mt-2 btn-rounded waves-effect w-md waves-light">More Info.</button>
                         </div>
-                        <div class="thumb-lg member-thumb mx-auto mb-2"><img src="${poster_image}" class=" img-thumbnail" alt="profile-image"></div>
+                        <div class="thumb-lg member-thumb mx-auto mb-2"><a href="https://www.youtube.com/watch?v=${video_id}" target="_blank"><img src="${poster_image}" class=" img-thumbnail" alt="profile-image"></a></div>
                         
-                        <button type="button" id="" class="mr-2 btn btn-primary mt-2 btn-rounded waves-effect w-md waves-light" data-toggle="modal" data-target="#modal-${data2.id}" onclick="">Read Reviews</button>
-                        <button type="button" id="" class="ml-2 btn btn-primary mt-2 btn-rounded waves-effect w-md waves-light" data-toggle="modal" data-target="#modal2-${data2.id}" onclick="writeMovieReview('${data2.id}')">Write Review</button>
+                        <button type="button" id="" class="mr-2 btn btn-md btn-primary mt-2 btn-rounded waves-effect w-md waves-light" data-toggle="modal" data-target="#modal-${data2.id}" onclick="">Read Reviews</button>
+                        <button type="button" id="" class="ml-2 btn btn-md btn-primary mt-2 btn-rounded waves-effect w-md waves-light" data-toggle="modal" data-target="#modal2-${data2.id}" onclick="writeMovieReview('${data2.id}')">Write Review</button>
+                    
                         <div class="mt-2">
                             <div class="row">
                                 <div class="col-4">
@@ -257,7 +266,7 @@ function getTopMovies(){
                     if (doc5.exists) {
                         var reviewRef = db.collection("users").doc(doc5.id).collection("MovieList").doc(`${data2.id}`);
                         reviewRef.get().then(function(doc6) {
-                            console.log(doc5.id,user.uid);
+                            //console.log(doc5.id,user.uid);
                             if (doc6.exists) {
                                 var reviewDiv = document.getElementById(`reviews-${data2.id}`);
                                 // console.log(doc6.data().rating);
@@ -309,8 +318,8 @@ function getTopMovies(){
                         friendRef.get().then(function(doc5) {
                             if (doc5.exists) {
                                 var reviewRef = db.collection("users").doc(doc5.id).collection("MovieList").doc(`${data2.id}`);
-                                reviewRef.get().then(function(doc6) {
-                                    console.log("this prints twice");
+                                reviewRef.get().then(function(doc6) 
+                                                     
                                     if (doc6.exists) {
                                         var reviewDiv = document.getElementById(`reviews-${data2.id}`);
                                         // console.log(doc6.data().rating);
@@ -367,10 +376,215 @@ function getTopMovies(){
             else{
                 console.log("Not signed in");
             }
+                });
             });
             //test = getMovieDetails(movie_id);
         }     
     })
+}
+
+function flipCardToBack(movie_id){
+    let cardDisplay = document.getElementById(`front-card-${movie_id}`)
+
+    const baseURL = "https://api.themoviedb.org/3/";
+    const API_key = "0b3c99fd0f35bf406b61b4076e59dce5"; //key for the movie database API
+    let url = baseURL + "movie/" + movie_id + "?api_key=" + API_key;
+    
+    fetch(url)
+    .then(result => result.json())
+    .then((data) => {
+        let overview = data.overview;
+        url = baseURL + "movie/" + movie_id + "/videos?api_key=" + API_key + "&language=en-US";
+        fetch(url)
+        .then(result => result.json())
+        .then((data2) => {
+            let video_id = data2.results[0].key;
+
+            url = baseURL + "movie/" + movie_id + "/watch/providers?api_key=" + API_key;
+            fetch(url)
+            .then(result => result.json())
+            .then((data3) => {
+
+                const html =
+                    `
+                        <div class="col-lg-4 mt-2" id="back-card-${movie_id}">
+                            <div class="card-box">
+                                <iframe id="trailer" src="https://www.youtube.com/watch?v=${video_id}"></iframe>
+                                <div class="text-center member-card pb-2">
+                                    <div class="mt-2">
+                                        <div class="card-body">
+                                            <h5>Summary:</h5>
+                                            <p class="card-text">${overview}</p>
+                                            <div class="bottom-buttons">
+                                            <button type="button" id="" class="mr-2 btn btn-md btn-primary mt-2 btn-rounded waves-effect w-md waves-light" data-toggle="modal" data-target="#modal3-${movie_id}" onclick="">Rent/Buy</button>
+                                                <button type="button" onclick="flipCardToFront(${movie_id})" class="mr-2 btn btn-sm btn-primary mt-2 btn-rounded waves-effect w-md waves-light">Go Back</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+
+                const modal =
+                `
+                    <div class="modal fade" id="modal3-${movie_id}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLongTitle">Rent/Buy</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body" id="reviews-${movie_id}">
+                                        <div id="rent-${movie_id}">
+                                            <h5><strong>Rent:</strong></h5>
+                                        </div>
+                                        <div id="buy-${movie_id}">
+                                            <h5><strong>Buy:</strong></h5>
+                                        </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                `
+                document.body.insertAdjacentHTML('beforeend',modal);
+
+                if(data3.results.US != undefined){
+                    console.log(data3.results)
+                    let Rproviders = data3.results.US.rent;
+                    if(Rproviders != undefined){
+                        if(Rproviders.length > 0){
+                            let rent_id = document.getElementById(`rent-${movie_id}`);
+                            for(let i = Rproviders.length - 1; i >= 0; i--){
+                                let Rprovider = Rproviders[i].provider_name;
+                                
+                                const Rent =
+                                    `
+                                        <h5>${Rprovider}</h5>
+                                    `;
+                    
+                                rent_id.insertAdjacentHTML('afterend', Rent);
+                            }
+                        }
+                    }
+                }
+
+                
+                if(data3.results.US != undefined){
+                    let Bproviders = data3.results.US.buy;
+                    if(Bproviders != undefined){
+                        if(Bproviders.length > 0){
+                            let buy_id = document.getElementById(`buy-${movie_id}`);
+                            for(let i =Bproviders.length - 1; i >= 0; i--){
+                                let Bprovider = Bproviders[i].provider_name;
+                                
+                                const Buy =
+                                    `
+                                        <h5>${Bprovider}</h5>
+                                    `;
+                    
+                                buy_id.insertAdjacentHTML('afterend', Buy);
+                            }
+                        }
+                    }
+                }
+
+                cardDisplay.insertAdjacentHTML('afterend',html);
+                cardDisplay.parentNode.removeChild(cardDisplay);
+
+                let cardDisplay2 = document.getElementById(`back-card-${movie_id}`);
+
+                cardDisplay2.style.transform = 'rotateY(360deg)';
+                cardDisplay2.style.transition = 'transform 0.8s';
+                cardDisplay2.style.perspective = '1000px';
+            });
+        });
+    });
+}
+
+function flipCardToFront(movie_id){
+    let cardDisplay = document.getElementById(`back-card-${movie_id}`)
+
+    const baseURL = "https://api.themoviedb.org/3/";
+    const API_key = "0b3c99fd0f35bf406b61b4076e59dce5"; //key for the movie database API
+    let url = baseURL + "movie/" + movie_id + "?api_key=" + API_key;
+    
+    fetch(url)
+    .then(result => result.json())
+    .then((data2) => {
+        if(data2.production_companies.length == 0){
+            movie_maker = "&nbsp;";
+        }
+        else{
+            movie_maker = data2.production_companies[0].name;
+        }
+
+        let poster_image = "https://image.tmdb.org/t/p/w500" + data2.poster_path;
+
+        url = baseURL + "movie/" + movie_id + "/videos?api_key=" + API_key + "&language=en-US";
+        fetch(url)
+        .then(result => result.json())
+        .then((data3) => {
+            let video_id = data3.results[0].key;
+
+    const html =
+    `
+        <div class="col-lg-4 mt-2" id="front-card-${movie_id}" >
+            <div class="text-center card-box">
+                <div class="member-card pb-2" >
+                    <div class="col-12">
+                        <h4>${data2.title}</h4>
+                        <p class="text-muted">${movie_maker}</p>
+                        <button type="button" onclick="flipCardToBack(${movie_id})" class="mr-2 btn btn-sm btn-primary mt-2 btn-rounded waves-effect w-md waves-light">More Info.</button>
+                    </div>
+                    <div class="thumb-lg member-thumb mx-auto mb-2"><a href="https://www.youtube.com/watch?v=${video_id}" target="_blank"><img src="${poster_image}" class=" img-thumbnail" alt="profile-image"></a></div>
+                    
+                    <button type="button" id="" class="mr-2 btn btn-md btn-primary mt-2 btn-rounded waves-effect w-md waves-light" data-toggle="modal" data-target="#modal-${movie_id}" onclick="">Read Reviews</button>
+                    <button type="button" id="" class="ml-2 btn btn-md btn-primary mt-2 btn-rounded waves-effect w-md waves-light" data-toggle="modal" data-target="#modal2-${movie_id}" onclick="writeMovieReview('${movie_id}')">Write Review</button>
+                
+                    <div class="mt-2">
+                        <div class="row">
+                            <div class="col-4">
+                                <div class="mt-3">
+                                    <h4 id="likes-${movie_id}">0</h4>
+                                    <p class="mb-0 text-muted">Likes</p>
+                                </div>
+                            </div>
+                            <div class="col-4">
+                                <div class="mt-3">
+                                    <h4 id="dislikes-${movie_id}">0</h4>
+                                    <p class="mb-0 text-muted">Dislikes</p>
+                                </div>
+                            </div>
+                            <div class="col-4">
+                                <div class="mt-3">
+                                    <h4 id="reviewCount-${movie_id}">0</h4>
+                                    <p class="mb-0 text-muted">Reviews</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    `;
+    
+    cardDisplay.insertAdjacentHTML('afterend',html);
+    cardDisplay.parentNode.removeChild(cardDisplay);
+
+    let cardDisplay2 = document.getElementById(`front-card-${movie_id}`);
+
+    cardDisplay2.style.transform = 'rotateY(360deg)';
+    cardDisplay2.style.transition = 'transform 0.8s';
+    cardDisplay2.style.perspective = '1000px';
+        });
+
+    });
 }
 
 function likeClick(movie_id){
