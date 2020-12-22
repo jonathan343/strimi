@@ -105,22 +105,18 @@ function getShows(){
         
                         const html =
                     `
-                    <div class="col-lg-4 mt-2">
-                        <div class="text-center card-box">
-                            <div class="member-card pb-2">
+                    <div class="card card-box" style="width: 100%">
+                        <div class="card-body">
+                            <div class="card-title">
                                 <div class="col-12">
                                     <h4>${data2.name}</h4>
                                     <p class="text-muted">${movie_maker}</p>
                                 </div>
+                            </div>
+                            <div class="card-text">
                                 <div class="thumb-lg member-thumb mx-auto mb-2"><img src="${poster_image}" class=" img-thumbnail" alt="profile-image"></div>
-                                <button id="like-${data2.id}" class="like" onclick="likeShowClick('${data2.id}')">
-                                    <i class="fa fa-thumbs-o-up fa-2x" id='thumbs-${data2.id}' aria-hidden="true"></i>
-                                </button>
-                                <button id="dislike-${data2.id}" class="dislike" onclick="dislikeShowClick('${data2.id}')">
-                                    <i class="fa fa-thumbs-o-down fa-2x" aria-hidden="true"></i>
-                                </button>
-                                <div>
-                                    <button type="button" id="" class="ml-2 btn btn-primary mt-2 btn-rounded waves-effect w-md waves-light" data-toggle="modal" data-target="#modal-show-${data2.id}" >Edit Review</button>
+                                <i class="fa fa-2x" id="thumbs-${data2.id}" aria-hidden="true"></i>
+                                <div id = "review-show-${show.id}" style="align-self: stretch; overflow-wrap: break-word;">
                                 </div>
                             </div>
                         </div>
