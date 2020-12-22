@@ -1,14 +1,17 @@
-// firebase.auth().onAuthStateChanged(function(user) {
-//     if(user){
-//         window.location.replace("discover.html");
-//     }
-//     else{
-//         document.getElementById("navbar").style.display = "none";
-//     }
-// });
+var signInState = false;
+
+firebase.auth().onAuthStateChanged(function(user) {
+    if(user && !signInState){
+        window.location.replace("discover.html");
+    }
+    else{
+        document.getElementById("navbar").style.display = "none";
+    }
+});
 
 
 function handleSignUp() {
+    signInState = true;
     var firstName = document.getElementById("inputFName").value;
     var lastName = document.getElementById("inputLName").value;
     var email = document.getElementById('inputEmail').value;
@@ -33,23 +36,27 @@ function handleSignUp() {
                 bio: "",
                 followers: 0,
                 following: 0,
-                reviewCount: 0
+                reviewCount: 0,
+                recentPrimary: "No Reviews",
+                recentSecondary: ""
                 }).then(function() {
                     console.log("Document successfully written!");
                     document.getElementById('sign-up-form').style.display='none';
-                    window.location.replace("discover.html");
                     db.collection("users").doc(user.uid).collection("MovieList").doc("abcdefghij").set({
                     }).then(function() {
                         console.log("Movie Collection Created");
+                        db.collection("users").doc(user.uid).collection("MusicList").doc("abcdefghij").set({
+                        }).then(function() {
+                            console.log("Music Collection Created");
+                            db.collection("users").doc(user.uid).collection("ShowsList").doc("abcdefghij").set({
+                            }).then(function() {
+                                console.log("Shows Collection Created");
+                                window.location.replace("discover.html");
+                            });
+                        });
+                        
                     });
-                    db.collection("users").doc(user.uid).collection("MusicList").doc("abcdefghij").set({
-                    }).then(function() {
-                        console.log("Music Collection Created");
-                    });
-                    db.collection("users").doc(user.uid).collection("ShowsList").doc("abcdefghij").set({
-                    }).then(function() {
-                        console.log("Shows Collection Created");
-                    });
+                    
                 }).catch(function(error) {
                     console.log("error adding document: ", error);
                 })

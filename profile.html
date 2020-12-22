@@ -9,8 +9,8 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <!-- <link rel="stylesheet" href="style.css" > -->
     <link rel="stylesheet" href="light-theme.css"  id="theme-link">
+    <link rel="stylesheet" href="myProfile.css">
     <link rel="stylesheet" href="friends.css" type="text/css">
-
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
@@ -18,7 +18,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
 
-    <title>strimi | Friends</title>
+    <title>strimi | My Profile</title>
     <meta name="keywords" content="strimi, Spotify, Netflix, Apple Music, Hulu">
     <meta name="description" content="This is a social media platform that centralizes all streaming platforms and allows you to share your favorite movies, shows, and songs.">
     
@@ -45,9 +45,9 @@
         <div id="navbarCollapse" class="collapse navbar-collapse justify-content-start">
             <ul class="nav navbar-nav">
                 <li class="nav-item"><a href="discover.html" class="cool-link nav-link">Discover</a></li>
-                <li class="nav-item"><a href="friends.html" class="cool-link nav-link active">Friends</a></li>
-                <li class="nav-item"><a href="myProfile.html" class="cool-link nav-link">My Profile</a></li>  
-                <li class="nav-item"><a href="About_Us.html" class="cool-link nav-link" id="test">About Us</a></li>
+                <li class="nav-item"><a href="friends.html" class="cool-link nav-link">Friends</a></li>
+                <li class="nav-item"><a href="myProfile.html" class="cool-link nav-link active">My Profile</a></li>  
+                <li class="nav-item"><a href="About_Us.html" class="cool-link nav-link">About Us</a></li>
             </ul>
         </div>
             
@@ -74,38 +74,65 @@
 
     <!-- Home Screen -->
     <div class="container-fluid parallax-home" id="discover">
-        <div class="row align-items-start">
-            <h1 class="pl-3" id="profile-welcome">Friends</h1>
-        </div>
-        <div class="row">
-            <!-- Search form -->
-            <div class="md-form active-purple-2 mb-3 mx-auto px-2">
-                <p class="mb-1">Find Friends</p>
-                <input id="friend-search" class="form-control" style="min-width: 400px;" type="text" placeholder="Search" aria-label="Search">
-                <p class="mt-4 mb-0">Scroll Right ------></p>
-            </div> 
-        </div>
-        <div class="content">
-            <div class="container-fluid friend-src-list">
-                <div class="row" id="friendList">
+        <!-- <div class="row align-items-start">
+            <h1 class="pl-3" style="font-size: 7vw;" id="profile-welcome">Signed Out</h1>
+        </div> -->
+        
+        <div class="container-fluid pt-5 pl-4 mt-4" id="profile-container" style="padding-left: 10%; padding-right: 10%;">
+            <div class="col-md-4" style="margin: 0 auto;">
+                <h3 id="profile-welcome" style="text-align: center;">
+                    
+                </h3>
+                <img src="" class="gradient mb-3" id="profile-img" style="display:block;margin-left: auto; margin-right: auto;"> 
+                <h5 id="bio" style="text-align: center; padding-bottom: 10%;"></h5>
+            </div>
+            <div class="col-md-8 mx-auto">
+                <div class="row mx-auto">
+                    <div class="col-md-12 mx-auto">
+                        <h3 style="text-align: center;">
+                            Your Reviews
+                        </h3>
+                        <div class="col-lg-4 mx-auto mb-3">
+                            <div class="btn-group group-class" role="group" style="display: auto; margin-left: auto; margin-right: auto;">
+                                <button class="btn btn-secondary" type="button" id="profile-movies-btn" onclick="showMovies()">
+                                    Movies
+                                </button> 
+                                <button class="btn btn-secondary" type="button" id="profile-shows-btn" onclick="showShows()">
+                                    TV Shows
+                                </button> 
+                                <button class="btn btn-secondary" type="button" id="profile-music-btn" onclick="showMusic()">
+                                    Songs
+                                </button> 
+                            </div>
+                        </div>
+                        <div class="row">
+                            <li class="card-columns" style="display: flex;" id="profile-movies-list">
+                            </li>
+                            <li class="card-columns" style="display: none;" id="profile-shows-list">
+                            </li>
+                            <li class="card-columns" style="display: none;" id="profile-music-list">
+                            </li>
+                        </div>
+                    </div>
                 </div>
-                <!-- end row -->
-            </div>
-            <!-- container -->
-        </div>
-    </div>
-
-    <div class="container">
-        <div id="live-view" style="display: none;">
-            <div class="col px-2" id="live-view-content">
-                <h2 class="text-center pt-2">Live View</h1>
-                <div>
-                    You need to be signed in to use this feature   
-                </div> 
             </div>
         </div>
-    </div>
 
+        
+       
+
+
+        <div class="container">
+            <div id="live-view" style="display: none;">
+                <div class="col px-2" id="live-view-content">
+                    <h2 class="text-center pt-2">Live View</h1>
+                    <div>
+                        You need to be signed in to use this feature   
+                    </div> 
+                </div>
+            </div>
+        </div>
+    </div>
 
     <!-- Optional JavaScript -->
 
@@ -143,13 +170,9 @@
     // Initialize Firebase
     firebase.initializeApp(firebaseConfig);
     firebase.analytics();
-    
     </script>
-    <script src="firebase.js"></script>
-    <script src="friends.js"></script>
 
-    <script>
-    
-    </script>
+    <script src="firebase.js"></script>
+    <script src="profile.js"></script>
 </body>
 </html>

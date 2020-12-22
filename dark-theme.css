@@ -198,6 +198,13 @@ body{
     min-width: 350px;
 }
 
+#homeTxt{
+    font-weight: normal;
+    letter-spacing: 0.2em;
+    font-size:calc(5px + 0.8vw);
+    margin-top: -3%;
+}
+
 .modal-img {
     border-radius:999em;
     width: 250px;
@@ -217,12 +224,6 @@ body{
     bottom: 0;
 }
 
-#homeTxt{
-    font-weight: normal;
-    letter-spacing: 0.2em;
-    font-size:calc(5px + 0.8vw);
-    margin-top: -3%;
-}
 
 .btn2:hover, .btn2:focus, .btn2.active, .open>.dropdown-toggle.btn2 {
     background-color: rgba(0, 0, 0,0.3);
@@ -379,9 +380,9 @@ body{
 }
 
 .live-view-media{
-    font-size: 12px;
+    font-size: 14px;
     color: rgba(255, 255, 255, 0.7);
-    
+    line-height: 18px;
 }
 
 /* .main-content{
@@ -654,6 +655,10 @@ body{
     height: 178px;
     width: 120px;
 }
+.thumb-xlg {
+    height: 180px;
+    width: 180px;
+}
 .img-thumbnail {
     padding: .05rem;
     background-color: #fff;
@@ -829,13 +834,14 @@ a, a:hover, a:focus, a:active {
     width: 50%;
 }
 .img-thumbnail2 {
-    padding: .1rem;
+    /* padding: .1rem; */
     background-color: #fff;
     border: 1px solid #dee2e6;
     border-radius: .1px;
     max-width: 100%;
     height: auto;
 }
+
 
 /*discover */
 .col-12 button{
@@ -860,4 +866,13 @@ a, a:hover, a:focus, a:active {
 }
 
 
+p{
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
 
+
+#profile-container{
+    background: rgba(55, 57, 63, 1);
+    border-radius: 25px;
+}

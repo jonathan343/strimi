@@ -250,7 +250,7 @@ function getTopMovies(){
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                            <button type="button" class="btn btn-primary" onclick="saveReview('${data2.id}')" >Save Review</button>
+                            <button type="button" class="btn btn-primary" onclick="saveReview('${data2.id}','${info[i].title}','${movie_maker}')" >Save Review</button>
                         </div>
                     </div>
                 </div>
@@ -318,8 +318,8 @@ function getTopMovies(){
                         friendRef.get().then(function(doc5) {
                             if (doc5.exists) {
                                 var reviewRef = db.collection("users").doc(doc5.id).collection("MovieList").doc(`${data2.id}`);
-                                reviewRef.get().then(function(doc6) {
-                                    //console.log(doc5.id,user.uid);
+                                reviewRef.get().then(function(doc6) 
+                                                     
                                     if (doc6.exists) {
                                         var reviewDiv = document.getElementById(`reviews-${data2.id}`);
                                         // console.log(doc6.data().rating);
@@ -597,7 +597,7 @@ function dislikeClick(movie_id){
     btn2 = document.getElementById(`like-${movie_id}`).style.color = "#000000";
 }
 
-function saveReview(movie_id){
+function saveReview(movie_id,Title,Producer){
     dislikeBtn = document.getElementById(`dislike-${movie_id}`).style.color;
     likeBtn = document.getElementById(`like-${movie_id}`).style.color;
     var rating = 0;
@@ -621,12 +621,13 @@ function saveReview(movie_id){
         }).then(function() {
             console.log("Review Written Successfully!");
             document.getElementById(`close-btn-${movie_id}`).click();
-            
+            if (likeBtn == "rgb(66, 120, 245)")
+                firebase.database().ref(`${user.uid}/movie`).set(Title+':'+Producer);
         });
     } else {
         console.log("Not currently signed in");
     }
-    getTopMovies();
+    // getTopMovies();
 }
 
 function writeMovieReview(movie_id){
@@ -652,6 +653,7 @@ function writeMovieReview(movie_id){
 firebase.auth().onAuthStateChanged(function(user) {
     if (user) {
         getTopMovies();
+        // getTopShows();
     }
   });
 
@@ -914,7 +916,7 @@ function getTopShows(){
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                            <button type="button" class="btn btn-primary" onclick="saveShowReview('${data2.id}')" >Save Review</button>
+                            <button type="button" class="btn btn-primary" onclick="saveShowReview('${data2.id}','${data2.name}','${show_maker}')" >Save Review</button>
                         </div>
                     </div>
                 </div>
@@ -1056,8 +1058,17 @@ function dislikeShowClick(movie_id){
     btn2 = document.getElementById(`like-show-${movie_id}`).style.color = "#000000";
 }
 
+function likeSongClick(movie_id){
+    btn = document.getElementById(`like-song-${movie_id}`).style.color = "#4278f5";
+    btn2 = document.getElementById(`dislike-song-${movie_id}`).style.color = "#000000";
+}
 
-function saveShowReview(movie_id){
+function dislikeSongClick(movie_id){
+    btn = document.getElementById(`dislike-song-${movie_id}`).style.color = "#f55142";
+    btn2 = document.getElementById(`like-song-${movie_id}`).style.color = "#000000";
+}
+
+function saveShowReview(movie_id,Title,Producer){
     dislikeBtn = document.getElementById(`dislike-show-${movie_id}`).style.color;
     likeBtn = document.getElementById(`like-show-${movie_id}`).style.color;
     var rating = 0;
@@ -1081,13 +1092,14 @@ function saveShowReview(movie_id){
         }).then(function() {
             console.log("Review Written Successfully!");
             document.getElementById(`close-show-btn-${movie_id}`).click();
-            
+            if (likeBtn == "rgb(66, 120, 245)")
+                firebase.database().ref(`${user.uid}/show`).set(Title+':'+Producer);
         });
     } else {
         console.log("Not currently signed in");
     }
 
-    getTopShows();
+    // getTopShows();
 }
 
 function writeShowReview(movie_id){
@@ -1109,6 +1121,59 @@ function writeShowReview(movie_id){
         });
 }
 
+function saveSongReview(movie_id,Title,Producer){
+    dislikeBtn = document.getElementById(`dislike-song-${movie_id}`).style.color;
+    likeBtn = document.getElementById(`like-song-${movie_id}`).style.color;
+    var rating = 0;
+    var user = firebase.auth().currentUser;
+    var review = document.getElementById(`review-song-${movie_id}`).value;
+
+    if (likeBtn == "rgb(66, 120, 245)"){
+        rating = 1;
+        console.log("Like");
+    }
+    if (dislikeBtn == "rgb(245, 81, 66)"){
+        rating = -1;
+        console.log("Dislike");
+    }
+
+    if (user) {
+        console.log(rating);
+        db.collection("users").doc(user.uid).collection("MusicList").doc(movie_id).set({
+            review: review,
+            rating, rating
+        }).then(function() {
+            console.log("Review Written Successfully!");
+            document.getElementById(`close-song-btn-${movie_id}`).click();
+            if (likeBtn == "rgb(66, 120, 245)")
+                firebase.database().ref(`${user.uid}/song`).set(Title+':'+Producer);
+            
+        });
+    } else {
+        console.log("Not currently signed in");
+    }
+
+    // getTopShows();
+}
+
+function writeSongReview(movie_id){
+    var user = firebase.auth().currentUser;
+    var reviewRef = db.collection("users").doc(user.uid).collection("MusicList").doc(`${movie_id}`);
+    reviewRef.get().then(function(doc) {
+        if (doc.exists) {
+            document.getElementById(`review-song-${movie_id}`).innerHTML = doc.data().review;
+            if(doc.data().rating == 1){
+                btn = document.getElementById(`like-song-${movie_id}`).style.color = "#4278f5";
+            }
+            if(doc.data().rating == -1){
+                btn = document.getElementById(`dislike-song-${movie_id}`).style.color = "#f55142";
+            }
+        }
+        })
+        .catch(function(error) {
+            console.log("Error getting document1:", error);
+        });
+}
 
 //showMovies();
 function showMovies(){
@@ -1136,4 +1201,43 @@ function showMusic(){
     document.getElementById("discover-music-btn").classList.add('active');
     document.getElementById("discover-shows-btn").classList.remove('active');
     document.getElementById("discover-movies-btn").classList.remove('active');
+
+}
+
+function goLeft() {
+    var element = document.getElementById(`discover-movies-btn`);
+    console.log(element.classList.length==3);
+    if (element.classList.length==3) {
+        element = document.getElementById(`discover-movies-list`);
+        document.getElementById(`discover-movies-list`).scrollLeft -= (element.firstElementChild.clientWidth+4.2);
+    }  else { 
+        var element = document.getElementById(`discover-shows-btn`);
+        if(element.classList.length==3){
+            element = document.getElementById(`discover-shows-list`);
+            document.getElementById(`discover-shows-list`).scrollLeft -= (element.firstElementChild.clientWidth+4.2);
+        }
+        else{
+            element = document.getElementById(`discover-music-list`);
+            document.getElementById(`discover-music-list`).scrollLeft -= (element.firstElementChild.clientWidth+4.2);
+        }
+    }
+}
+
+function goRight() {
+    var element = document.getElementById(`discover-movies-btn`);
+    console.log(element.classList.length==3);
+    if (element.classList.length==3) {
+        element = document.getElementById(`discover-movies-list`);
+        document.getElementById(`discover-movies-list`).scrollLeft += (element.firstElementChild.clientWidth+4.2);
+    } else { 
+        var element = document.getElementById(`discover-shows-btn`);
+        if(element.classList.length==3){
+            element = document.getElementById(`discover-shows-list`);
+            document.getElementById(`discover-shows-list`).scrollLeft += (element.firstElementChild.clientWidth+4.2);
+        }
+        else{
+            element = document.getElementById(`discover-music-list`);
+            document.getElementById(`discover-music-list`).scrollLeft += (element.firstElementChild.clientWidth+4.2);
+        }
+    }
 }
