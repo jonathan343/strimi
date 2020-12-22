@@ -118,16 +118,22 @@ function showFile(){
         image.src = reader.result;
         image2.src = reader.result;
     }
+    firebase.storage().ref().child(`users/${user.uid}.jpg`).delete().catch(function (error) {
+        console.log("Didn't have jpg");
+    });
+    firebase.storage().ref().child(`users/${user.uid}.png`).delete().catch(function (error) {
+        console.log("Didn't have png");
+    });
+    firebase.storage().ref().child(`users/${user.uid}.gif`).delete().catch(function (error) {
+        console.log("Didn't have jpg");
+    });
+    
     if (file.type == "image/jpeg")
         picRef = firebase.storage().ref().child(`users/${user.uid}.jpg`);
-        firebase.storage().ref().child(`users/${user.uid}.png`).delete().catch(function (error) {
-            console.log("Didn't have png");
-        });
     if (file.type == "image/png")
         picRef = firebase.storage().ref().child(`users/${user.uid}.png`);
-        firebase.storage().ref().child(`users/${user.uid}.jpg`).delete().catch(function (error) {
-            console.log("Didn't have jpg");
-        });
+    if (file.type == "image/gif")
+        picRef = firebase.storage().ref().child(`users/${user.uid}.gif`)
     reader.readAsDataURL(file);
     console.log(file)
     picRef.put(file).then(function(snapshot) {

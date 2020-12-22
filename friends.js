@@ -95,7 +95,7 @@ function listToInnerText(docs) {
         <div class="col-lg-4">
             <div class="text-center card-box">
                 <div class="member-card pb-2">
-                    <div class="thumb-lg member-thumb mx-auto mb-2"><img id="friend-${doc.id}" src="Images/Profile_Pictures/${searchFriendPFP(doc.id)}_Letter.png" class="rounded-circle img-thumbnail" alt="profile-image"></div>
+                    <div class="thumb-lg member-thumb mx-auto mb-2"><img id="friend-${doc.id}" onclick="friendLoad('${doc.id}')" src="Images/Profile_Pictures/${searchFriendPFP(doc.id)}_Letter.png" class="rounded-circle img-thumbnail" alt="profile-image"></div>
                     <div class="">
                         <h4>${doc.data().firstName} ${doc.data().lastName}</h4>
                         <p class="text-muted">@${doc.data().firstName}</p>

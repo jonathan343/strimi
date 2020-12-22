@@ -49,7 +49,7 @@ function updateLiveView(){
                     var lastName = doc.data().lastName;
                     const html =
                     `
-                    <div class="row live-view-person mx-auto my-2 sidecard" id="card-${doc.id}">
+                    <div class="row live-view-person mx-auto my-2 sidecard" id="card-${doc.id}" onclick="friendLoad('${doc.id}')">
                         <div class="col-3 my-auto ml-3 px-0 d-flex justify-content-center align-items-center live-view-img">
                             <img id="img-${doc.id}" class="rounded-circle img-thumbnail2" src="${getPFP(doc.id)} alt="">
                         </div>
@@ -68,7 +68,7 @@ function updateLiveView(){
                 } 
             });
         }).then( function(){
-            showLiveMovies();
+            showLiveSongs();
         });
     } else {
         const html =
@@ -110,7 +110,9 @@ function searchLoad(){
     //getTvShowID(search_input);
     //call getSongID(search_input) function here
 }
-
+function friendLoad(search_input){
+    window.location.href = "profile.html?user="+search_input;
+}
 
 function getTVShowID(tv_show){
     const baseURL = "https://api.themoviedb.org/3/";
@@ -172,7 +174,6 @@ function showLiveSongs() {
 function runSongs() {
     people = document.querySelectorAll('.sidecard');
     people.forEach(person => {
-        console.log(person);
         id = person.id.split("-")[1];
         document.getElementById(`script-${id}`).remove();
         var script = document.createElement("script");
@@ -184,10 +185,12 @@ function runSongs() {
             firebase.database().ref('${id}/show').off();
             rtdb = firebase.database().ref('${id}/song');
             rtdb.on('value', (snapshot) => {
-                console.log(id);
-                song = snapshot.val();
-                res = song.split(":");
-                console.log(song,res[0],res[1],res)
+                if (snapshot.exists()) {
+                    song = snapshot.val();
+                    res = song.split(":");
+                } else {
+                    res = ["No Data",""]
+                }
                 inner1 = document.getElementById("recent1-${id}");
                 inner2 = document.getElementById("recent2-${id}");
                 inner1.innerText = res[0];
@@ -202,7 +205,6 @@ function runSongs() {
 function runShows() {
     people = document.querySelectorAll('.sidecard');
     people.forEach(person => {
-        console.log(person);
         id = person.id.split("-")[1];
         document.getElementById(`script-${id}`).remove();
         var script = document.createElement("script");
@@ -212,10 +214,12 @@ function runShows() {
             firebase.database().ref('${id}/movie').off();
             firebase.database().ref('${id}/song').off();
             firebase.database().ref('${id}/show').on('value', (snapshot) => {
-                console.log(id);
-                song = snapshot.val();
-                res = song.split(":");
-                console.log(song,res[0],res[1],res)
+                if (snapshot.exists()) {
+                    song = snapshot.val();
+                    res = song.split(":");
+                } else {
+                    res = ["No Data",""]
+                }
                 inner1 = document.getElementById("recent1-${id}");
                 inner2 = document.getElementById("recent2-${id}");
                 inner1.innerText = res[0];
@@ -230,7 +234,6 @@ function runShows() {
 function runMovies() {
     people = document.querySelectorAll('.sidecard');
     people.forEach(person => {
-        console.log(person);
         id = person.id.split("-")[1];
         document.getElementById(`script-${id}`).remove();
         var script = document.createElement("script");
@@ -240,10 +243,12 @@ function runMovies() {
             firebase.database().ref('${id}/show').off();
             firebase.database().ref('${id}/song').off();
             firebase.database().ref('${id}/movie').on('value', (snapshot) => {
-                console.log(id);
-                song = snapshot.val();
-                res = song.split(":");
-                console.log(song,res[0],res[1],res)
+                if (snapshot.exists()) {
+                    song = snapshot.val();
+                    res = song.split(":");
+                } else {
+                    res = ["No Data",""]
+                }
                 inner1 = document.getElementById("recent1-${id}");
                 inner2 = document.getElementById("recent2-${id}");
                 inner1.innerText = res[0];

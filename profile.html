@@ -79,13 +79,9 @@
         </div> -->
         
         <div class="container-fluid pt-5 pl-4 mt-4" id="profile-container" style="padding-left: 10%; padding-right: 10%;">
-            <div class="row">
-                <button type="button" id="sign-out-btn" class="btn btn-outline-danger mr-2" onclick="signOut()">Sign Out</button>
-                <button type="button" data-toggle="modal" data-target="#modal-edit" class="btn btn-outline-primary "><i class="fa fa-pencil" aria-hidden="true"></i>&nbsp;&nbsp;Edit</button>
-            </div>
             <div class="col-md-4" style="margin: 0 auto;">
                 <h3 id="profile-welcome" style="text-align: center;">
-                    Signed Out
+                    
                 </h3>
                 <img src="" class="gradient mb-3" id="profile-img" style="display:block;margin-left: auto; margin-right: auto;"> 
                 <h5 id="bio" style="text-align: center; padding-bottom: 10%;"></h5>
@@ -109,19 +105,21 @@
                                 </button> 
                             </div>
                         </div>
-                        <div class="container-fluid discover-src-list" style="padding-bottom: 10%;">
-                            <div class="row" style="display: flex;" id="profile-movies-list">
-                            </div>
-                            <div class="row" style="display: none;" id="profile-shows-list">
-                            </div>
-                            <div class="row" style="display: none;" id="profile-music-list">
-                            </div>
+                        <div class="row">
+                            
+                            <li class="card-columns" style="display: flex;" id="profile-movies-list">
+                            </li>
+                            <li class="row" style="display: none;" id="profile-shows-list">
+                            </li>
+                            <li class="row" style="display: none;" id="profile-music-list">
+                            </li>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
 
+        
        
 
 
@@ -132,41 +130,6 @@
                     <div>
                         You need to be signed in to use this feature   
                     </div> 
-                </div>
-            </div>
-        </div>
-
-        <div class="modal fade" id="modal-edit" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLongTitle" style="color: black;">Edit Profile</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        <div class="modal-center">
-                            <div>
-                                    <img class="modal-img" src="" id="modal-img">
-                            </div>
-                            <div>
-                                <input type="file" class="btn btn-primary" id="myFile" accept="image/*" onchange="showFile()">
-                            </div>
-                        </div>
-                        <div class="form-label-group">
-                            <input type="text" id="inputFName" class="form-control" placeholder="First Name" required autofocus>
-                            <label for="inputFName">First Name</label>
-                        </div>
-                        <div class="form-label-group">
-                            <input type="text" id="inputLName" class="form-control" placeholder="Last Name" required autofocus>
-                            <label for="inputLName">Last Name</label>
-                        </div>
-                        <div class="form-label-group">
-                            <input type="text" id="inputBio" class="form-control" placeholder="Bio" required autofocus>
-                            <label for="inputBio">Bio</label>
-                        </div>
-                    </div>
                 </div>
             </div>
         </div>
@@ -211,6 +174,6 @@
     </script>
 
     <script src="firebase.js"></script>
-    <script src="myProfile.js"></script>
+    <script src="profile.js"></script>
 </body>
 </html>
