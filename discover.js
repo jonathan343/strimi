@@ -318,7 +318,7 @@ function getTopMovies(){
                         friendRef.get().then(function(doc5) {
                             if (doc5.exists) {
                                 var reviewRef = db.collection("users").doc(doc5.id).collection("MovieList").doc(`${data2.id}`);
-                                reviewRef.get().then(function(doc6) 
+                                reviewRef.get().then(function(doc6) {
                                                      
                                     if (doc6.exists) {
                                         var reviewDiv = document.getElementById(`reviews-${data2.id}`);
