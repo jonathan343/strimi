@@ -126,12 +126,13 @@ function getShows(){
                     showDiv.insertAdjacentHTML('beforeend',html);
                     }).then(function() {
                         if (show.data().rating == 1) {
-                            document.getElementById(`thumbs-${data2.id}`).classList.add("fa-thumbs-o-up");
-                            document.getElementById(`like-${show.id}`).style.color = "#4278f5";
+                            document.getElementById(`thumbs-${show.id}`).classList.add("fa-thumbs-o-up");
+                            document.getElementById(`thumbs-${show.id}`).style.color = "#4278f5";
                         } else if (show.data().rating == -1) {
-                            document.getElementById(`dislike-${show.id}`).style.color = "#f55142";
+                            document.getElementById(`thumbs-${show.id}`).classList.add("fa-thumbs-o-down");
+                            document.getElementById(`thumbs-${show.id}`).style.color = "#f55142";
                         }
-                        document.getElementById(`review-show-${show.id}`).value = show.data().review;
+                        document.getElementById(`review-show-${show.id}`).innerText = show.data().review;
                     })
                 }
             });
