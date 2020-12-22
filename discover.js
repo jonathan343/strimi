@@ -454,36 +454,42 @@ function flipCardToBack(movie_id){
                 `
                 document.body.insertAdjacentHTML('beforeend',modal);
 
-                let Rproviders = data3.results.US.rent;
-                if(Rproviders != null){
-                    if(Rproviders.length > 0){
-                        let rent_id = document.getElementById(`rent-${movie_id}`);
-                        for(let i = Rproviders.length - 1; i >= 0; i--){
-                            let Rprovider = Rproviders[i].provider_name;
-                            
-                            const Rent =
-                                `
-                                    <h5>${Rprovider}</h5>
-                                `;
-                
-                            rent_id.insertAdjacentHTML('afterend', Rent);
+                if(data3.results.US != undefined){
+                    console.log(data3.results)
+                    let Rproviders = data3.results.US.rent;
+                    if(Rproviders != undefined){
+                        if(Rproviders.length > 0){
+                            let rent_id = document.getElementById(`rent-${movie_id}`);
+                            for(let i = Rproviders.length - 1; i >= 0; i--){
+                                let Rprovider = Rproviders[i].provider_name;
+                                
+                                const Rent =
+                                    `
+                                        <h5>${Rprovider}</h5>
+                                    `;
+                    
+                                rent_id.insertAdjacentHTML('afterend', Rent);
+                            }
                         }
                     }
                 }
 
-                let Bproviders = data3.results.US.buy;
-                if(Bproviders != null){
-                    if(Bproviders.length > 0){
-                        let buy_id = document.getElementById(`buy-${movie_id}`);
-                        for(let i =Bproviders.length - 1; i >= 0; i--){
-                            let Bprovider = Bproviders[i].provider_name;
-                            
-                            const Buy =
-                                `
-                                    <h5>${Bprovider}</h5>
-                                `;
                 
-                            buy_id.insertAdjacentHTML('afterend', Buy);
+                if(data3.results.US != undefined){
+                    let Bproviders = data3.results.US.buy;
+                    if(Bproviders != undefined){
+                        if(Bproviders.length > 0){
+                            let buy_id = document.getElementById(`buy-${movie_id}`);
+                            for(let i =Bproviders.length - 1; i >= 0; i--){
+                                let Bprovider = Bproviders[i].provider_name;
+                                
+                                const Buy =
+                                    `
+                                        <h5>${Bprovider}</h5>
+                                    `;
+                    
+                                buy_id.insertAdjacentHTML('afterend', Buy);
+                            }
                         }
                     }
                 }
