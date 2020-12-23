@@ -426,6 +426,10 @@ function flipCardToBack(movie_id){
                         </div>
                     `;
 
+                if(document.body.contains(document.getElementById(`modal3-${movie_id}`))){
+                    document.getElementById(`modal3-${movie_id}`).parentNode.removeChild(document.getElementById(`modal3-${movie_id}`));
+                }
+
                 const modal =
                 `
                     <div class="modal fade" id="modal3-${movie_id}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
@@ -439,10 +443,10 @@ function flipCardToBack(movie_id){
                                 </div>
                                 <div class="modal-body" id="reviews-${movie_id}">
                                         <div id="rent-${movie_id}">
-                                            <h5><strong>Rent:</strong></h5>
+                                            <h5 id="rent-title-${movie_id}"><strong>Rent:</strong></h5>
                                         </div>
                                         <div id="buy-${movie_id}">
-                                            <h5><strong>Buy:</strong></h5>
+                                            <h5 id="buy-title-${movie_id}"><strong>Buy:</strong></h5>
                                         </div>
                                 </div>
                                 <div class="modal-footer">
@@ -455,11 +459,10 @@ function flipCardToBack(movie_id){
                 document.body.insertAdjacentHTML('beforeend',modal);
 
                 if(data3.results.US != undefined){
-                    console.log(data3.results)
                     let Rproviders = data3.results.US.rent;
                     if(Rproviders != undefined){
                         if(Rproviders.length > 0){
-                            let rent_id = document.getElementById(`rent-${movie_id}`);
+                            let rent_id = document.getElementById(`rent-title-${movie_id}`);
                             for(let i = Rproviders.length - 1; i >= 0; i--){
                                 let Rprovider = Rproviders[i].provider_name;
                                 
@@ -479,7 +482,7 @@ function flipCardToBack(movie_id){
                     let Bproviders = data3.results.US.buy;
                     if(Bproviders != undefined){
                         if(Bproviders.length > 0){
-                            let buy_id = document.getElementById(`buy-${movie_id}`);
+                            let buy_id = document.getElementById(`buy-title-${movie_id}`);
                             for(let i =Bproviders.length - 1; i >= 0; i--){
                                 let Bprovider = Bproviders[i].provider_name;
                                 
