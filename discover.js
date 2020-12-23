@@ -1025,3 +1025,4 @@ function goRight() {
             document.getElementById(`discover-music-list`).scrollLeft += (element.firstElementChild.clientWidth+4.2);
         }
     }
+}
