@@ -29,10 +29,10 @@
     <!-- Navigation Bar -->
     <nav class="navbar fixed-top navbar-default navbar-expand-md navbar-dark " id="navbar">
         <div class="navbar-header d-flex col">
-            <a class="navbar-brand" href="index.html">
+            <a class="navbar-brand" href="discover.html">
                 <img src="Images/strimi_logo_cropped.png" alt="Logo" class="d-inline-block align-center" id="logo">
             </a>
-            <a class="my-auto navbar-brand" href="index.html">
+            <a class="my-auto navbar-brand" href="discover.html">
                 <div id="logo-text"><h3>strimi</h3></div>
             </a>
             
@@ -54,7 +54,7 @@
         <div class="search-navbar">
             <div class="search-container">
                 <input type="text" name="search" placeholder="Search..." class="search-input" id="search-bar">
-                <a onclick="search()" class="search-btn">
+                <a onclick="searchLoad()" class="search-btn">
                     <i class="fa fa-search" aria-hidden="true"></i>
                 <!-- <img src="Images/search.png" height="10px" width="10px" alt=""> -->
                 </a>
@@ -80,14 +80,14 @@
         
         <div class="container-fluid pt-5 pl-4 mt-4" id="profile-container" style="padding-left: 10%; padding-right: 10%;">
             <div class="row">
-                <button type="button" id="sign-out-btn" class="btn btn-outline-danger" onclick="signOut()">Sign Out</button>
+                <button type="button" id="sign-out-btn" class="btn btn-outline-danger mr-2" onclick="signOut()">Sign Out</button>
                 <button type="button" data-toggle="modal" data-target="#modal-edit" class="btn btn-outline-primary "><i class="fa fa-pencil" aria-hidden="true"></i>&nbsp;&nbsp;Edit</button>
             </div>
             <div class="col-md-4" style="margin: 0 auto;">
                 <h3 id="profile-welcome" style="text-align: center;">
                     Signed Out
                 </h3>
-                <img src="" class="gradient" id="profile-img" style="display:block;margin-left: auto; margin-right: auto;"> 
+                <img src="" class="gradient mb-3" id="profile-img" style="display:block;margin-left: auto; margin-right: auto;"> 
                 <h5 id="bio" style="text-align: center; padding-bottom: 10%;"></h5>
             </div>
             <div class="col-md-8 mx-auto">
@@ -96,17 +96,25 @@
                         <h3 style="text-align: center;">
                             Your Reviews
                         </h3>
-                        <div class="col-lg-4 mx-auto">
+                        <div class="col-lg-4 mx-auto mb-3">
                             <div class="btn-group group-class" role="group" style="display: auto; margin-left: auto; margin-right: auto;">
-                                <button class="btn btn-secondary" type="button">
+                                <button class="btn btn-secondary" type="button" id="profile-movies-btn" onclick="showMovies()">
                                     Movies
                                 </button> 
-                                <button class="btn btn-secondary" type="button">
+                                <button class="btn btn-secondary" type="button" id="profile-shows-btn" onclick="showShows()">
                                     TV Shows
                                 </button> 
-                                <button class="btn btn-secondary" type="button">
+                                <button class="btn btn-secondary" type="button" id="profile-music-btn" onclick="showMusic()">
                                     Songs
                                 </button> 
+                            </div>
+                        </div>
+                        <div class="container-fluid discover-src-list" style="padding-bottom: 10%;">
+                            <div class="row" style="display: flex;" id="profile-movies-list">
+                            </div>
+                            <div class="row" style="display: none;" id="profile-shows-list">
+                            </div>
+                            <div class="row" style="display: none;" id="profile-music-list">
                             </div>
                         </div>
                     </div>
@@ -117,51 +125,48 @@
        
 
 
-    <div class="container">
-        <div id="live-view" style="display: none;">
-            <div class="col px-2" id="live-view-content">
-                <h2 class="text-center pt-2">Live View</h1>
-                <div>
-                    You need to be signed in to use this feature   
-                </div> 
+        <div class="container">
+            <div id="live-view" style="display: none;">
+                <div class="col px-2" id="live-view-content">
+                    <h2 class="text-center pt-2">Live View</h1>
+                    <div>
+                        You need to be signed in to use this feature   
+                    </div> 
+                </div>
             </div>
         </div>
-    </div>
 
-    <div class="modal fade" id="modal-edit" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLongTitle" style="color: black;">Edit Profile</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <div class="modal-center">
-                        <div>
-                                <img class="modal-img" src="" id="modal-img">
+        <div class="modal fade" id="modal-edit" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLongTitle" style="color: black;">Edit Profile</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="modal-center">
+                            <div>
+                                    <img class="modal-img" src="" id="modal-img">
+                            </div>
+                            <div>
+                                <input type="file" class="btn btn-primary" id="myFile" accept="image/*" onchange="showFile()">
+                            </div>
                         </div>
-                        <div>
-                            <input type="file" class="btn btn-primary" id="myFile" accept="image/*" onchange="showFile()">
+                        <div class="form-label-group">
+                            <input type="text" id="inputFName" class="form-control" placeholder="First Name" required autofocus>
+                            <label for="inputFName">First Name</label>
+                        </div>
+                        <div class="form-label-group">
+                            <input type="text" id="inputLName" class="form-control" placeholder="Last Name" required autofocus>
+                            <label for="inputLName">Last Name</label>
+                        </div>
+                        <div class="form-label-group">
+                            <input type="text" id="inputBio" class="form-control" placeholder="Bio" required autofocus>
+                            <label for="inputBio">Bio</label>
                         </div>
                     </div>
-                    <div class="form-label-group">
-                        <input type="text" id="inputFName" class="form-control" placeholder="First Name" required autofocus>
-                        <label for="inputFName">First Name</label>
-                    </div>
-                    <div class="form-label-group">
-                        <input type="text" id="inputLName" class="form-control" placeholder="Last Name" required autofocus>
-                        <label for="inputLName">Last Name</label>
-                    </div>
-                    <div class="form-label-group">
-                        <input type="text" id="inputBio" class="form-control" placeholder="Bio" required autofocus>
-                        <label for="inputBio">Bio</label>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary" onclick="updateBio()" data-dismiss="modal">Save changes</button>
                 </div>
             </div>
         </div>
@@ -183,6 +188,7 @@
     <!-- TODO: Add SDKs for Firebase products that you want to use https://firebase.google.com/docs/web/setup#available-libraries -->
     <script src="https://www.gstatic.com/firebasejs/8.0.0/firebase-auth.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.0.0/firebase-storage.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.0.0/firebase-database.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.0.0/firebase-firestore.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.0.0/firebase-analytics.js"></script>
 
