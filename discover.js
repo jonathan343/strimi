@@ -1140,3 +1140,41 @@ function showMusic(){
     document.getElementById("discover-shows-btn").classList.remove('active');
     document.getElementById("discover-movies-btn").classList.remove('active');
 }
+
+function goLeft() {
+    var element = document.getElementById(`discover-movies-btn`);
+    console.log(element.classList.length==3);
+    if (element.classList.length==3) {
+        element = document.getElementById(`discover-movies-list`);
+        document.getElementById(`discover-movies-list`).scrollLeft -= (element.firstElementChild.clientWidth+4.2);
+    }  else { 
+        var element = document.getElementById(`discover-shows-btn`);
+        if(element.classList.length==3){
+            element = document.getElementById(`discover-shows-list`);
+            document.getElementById(`discover-shows-list`).scrollLeft -= (element.firstElementChild.clientWidth+4.2);
+        }
+        else{
+            element = document.getElementById(`discover-music-list`);
+            document.getElementById(`discover-music-list`).scrollLeft -= (element.firstElementChild.clientWidth+4.2);
+        }
+    }
+}
+
+function goRight() {
+    var element = document.getElementById(`discover-movies-btn`);
+    console.log(element.classList.length==3);
+    if (element.classList.length==3) {
+        element = document.getElementById(`discover-movies-list`);
+        document.getElementById(`discover-movies-list`).scrollLeft += (element.firstElementChild.clientWidth+4.2);
+    } else { 
+        var element = document.getElementById(`discover-shows-btn`);
+        if(element.classList.length==3){
+            element = document.getElementById(`discover-shows-list`);
+            document.getElementById(`discover-shows-list`).scrollLeft += (element.firstElementChild.clientWidth+4.2);
+        }
+        else{
+            element = document.getElementById(`discover-music-list`);
+            document.getElementById(`discover-music-list`).scrollLeft += (element.firstElementChild.clientWidth+4.2);
+        }
+    }
+}
