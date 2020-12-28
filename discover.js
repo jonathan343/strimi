@@ -385,9 +385,9 @@ function getTopMovies(){
 
 function flipCardToBack(movie_id){
     let cardDisplay = document.getElementById(`front-card-${movie_id}`);
-    let likes = document.getElementById(`likes-${movie_id}`);
-    let dislikes = document.getElementById(`dislikes-${movie_id}`);
-    let reviewCount = document.getElementById(`reviewCount-${movie_id}`);
+    let likes = document.getElementById(`likes-${movie_id}`).innerHTML;
+    let dislikes = document.getElementById(`dislikes-${movie_id}`).innerHTML;
+    let reviewCount = document.getElementById(`reviewCount-${movie_id}`).innerHTML;
 
     const baseURL = "https://api.themoviedb.org/3/";
     const API_key = "0b3c99fd0f35bf406b61b4076e59dce5"; //key for the movie database API
@@ -420,7 +420,7 @@ function flipCardToBack(movie_id){
                                             <p class="card-text">${overview}</p>
                                             <div class="bottom-buttons">
                                             <button type="button" id="" class="mr-2 btn btn-md btn-primary mt-2 btn-rounded waves-effect w-md waves-light" data-toggle="modal" data-target="#modal3-${movie_id}" onclick="">Rent/Buy</button>
-                                                <button type="button" onclick="flipCardToFront(${movie_id},${likes},${disliked},${reviewCount})" class="mr-2 btn btn-sm btn-primary mt-2 btn-rounded waves-effect w-md waves-light">Go Back</button>
+                                                <button type="button" onclick="flipCardToFront(${movie_id},${likes},${dislikes},${reviewCount})" class="mr-2 btn btn-sm btn-primary mt-2 btn-rounded waves-effect w-md waves-light">Go Back</button>
                                             </div>
                                         </div>
                                     </div>
