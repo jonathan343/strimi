@@ -412,7 +412,7 @@ function flipCardToBack(movie_id){
                     `
                         <div class="col-lg-4 mt-2" id="back-card-${movie_id}">
                             <div class="card-box">
-                                <iframe id="trailer" src="https://www.youtube.com/watch?v=${video_id}"></iframe>
+                                <iframe id="trailer" src="https://www.youtube.com/embed/${video_id}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                                 <div class="text-center member-card pb-2">
                                     <div class="mt-2">
                                         <div class="card-body">
